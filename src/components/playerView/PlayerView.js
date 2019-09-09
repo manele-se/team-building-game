@@ -9,15 +9,10 @@ import { Provider } from "../../context";
 const PlayerView = () => {
   return (
     <Provider>
-      <div>
-        <Header gameTitle="Elena" />
-        <QuestionHeader
-          question="question: 1"
-          questionText="How many lives a cat has?"
-        />
-        <Answers />
-        <QuitButton />
-      </div>
+      <Header />
+      <QuestionHeader />
+      <Answers />
+      <QuitButton />
     </Provider>
   );
 };

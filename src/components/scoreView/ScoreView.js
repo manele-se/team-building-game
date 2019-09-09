@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import QuitButton from "../../layouts/QuitButton";
 import Header from "../../layouts/Header";
+import { Provider } from "../../context";
 
 import ScoreBoard from "./ScoreBoard";
 
 class ScoreView extends Component {
   render() {
     return (
-      <div>
+      <Provider>
         <Header />
         <ScoreBoard />
         <QuitButton />
-      </div>
+      </Provider>
     );
   }
 }

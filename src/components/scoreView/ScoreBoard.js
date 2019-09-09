@@ -3,8 +3,8 @@ import React, { Component } from "react";
 class ScoreBoard extends Component {
   render() {
     return (
-      <div className="container card card-body mb-3 p-4 col-10 offset-1 ">
-        <div className="progress ">
+      <div className="container card card-body mb-3 p-4 col-10 offset-1 board">
+        <div className="progress">
           <div
             className="progress-bar-striped bg-success card py-2 "
             style={{

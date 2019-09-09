@@ -12,14 +12,10 @@ class Answers extends Component {
         {value => {
           const { answers } = value;
           return (
-            <React.Fragment className="row">
-              <div>
-                <div>
-                  {answers.map(answer => (
-                    <Answer key={answer.id} answer={answer} />
-                  ))}
-                </div>
-              </div>
+            <React.Fragment>
+              {answers.map(answer => (
+                <Answer key={answer.id} textAnswer={answer.textAnswer} />
+              ))}
             </React.Fragment>
           );
         }}

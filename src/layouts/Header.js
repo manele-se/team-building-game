@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { Consumer } from "../context";
 
 const Header = props => {
   const newGame = e => {
@@ -9,20 +9,22 @@ const Header = props => {
   };
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark mb-3 py-2">
-      <div className="container">
-        <h1 className="title">{props.gameTitle}</h1>
-        <button className="btn btn-success" onClick={newGame}>
-          New Quiz
-        </button>
-      </div>
-    </nav>
+    <Consumer>
+      {value => {
+        const { gameTitle } = value;
+        return (
+          <nav className="navbar navbar-expand-sm navbar-dark mb-3 py-3 card bg-light">
+            <div className="container">
+              <h1 className="title">{gameTitle}</h1>
+              <button className="btn btn-success" onClick={newGame}>
+                New Quiz
+              </button>
+            </div>
+          </nav>
+        );
+      }}
+    </Consumer>
   );
-};
-
-//check the type of the prototype
-Header.propTypes = {
-  gameTitle: PropTypes.string.isRequired
 };
 
 export default Header;

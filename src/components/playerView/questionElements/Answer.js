@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Consumer } from "../../../context";
 
 class Answer extends Component {
+  state = {
+    background: ""
+  };
   //show green if right answer, show red if wrong anwer
   onShowResult = (textAnswer, e) => {
     let isRight = "0";
@@ -22,28 +24,24 @@ class Answer extends Component {
   };
 
   render() {
+    const { textAnswer } = this.props;
+    const { background } = this.state;
     return (
-      <Consumer>
-        {value => {
-          const { textAnswer, background } = value;
-          return (
-            <div
-              className={`card card-body mb-3 p-4 col-10 offset-1 ${background}`}
-              onClick={this.onShowResult.bind(this, textAnswer)}
-            >
-              <div className="list-group">
-                <div className="list-group ">{textAnswer} </div>
-              </div>
-            </div>
-          );
-        }}
-      </Consumer>
+      <div
+        className={`card card-body mb-3 p-4 col-10 offset-1 ${background}`}
+        onClick={this.onShowResult.bind(this, textAnswer)}
+      >
+        <div className="list-group">
+          <div className="list-group ">{textAnswer} </div>
+        </div>
+      </div>
     );
   }
 }
+
 //check the type of the prototype
 Answer.propTypes = {
-  textAnswer: PropTypes.object.isRequired
+  textAnswer: PropTypes.string.isRequired
 };
 
 export default Answer;

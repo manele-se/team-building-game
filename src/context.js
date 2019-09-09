@@ -44,9 +44,9 @@ export class Provider extends Component {
       }
     ],
 
-    //can we have multiple states in the same context?
-    question: "How many cats has Elena?",
-    background: "",
+    questionTitle: "Question: 1",
+    questionText: "How many cats has Elena?",
+    gameTitle: "Questions about Elena",
 
     dispatch: action => {
       this.setState(state => reducer(state, action));
@@ -56,7 +56,7 @@ export class Provider extends Component {
   render() {
     //the provider provides the value
     return (
-      //we pass th entire state
+      //we pass the entire state
       <Context.Provider value={this.state}>
         {this.props.children}
       </Context.Provider>

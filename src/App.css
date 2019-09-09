@@ -1,2 +1,3 @@
-
-
+.progress + .progress {
+  margin-top: 5rem;
+}
