@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = () => {
+const QuitButton = () => {
   //quit the game
   const quit = e => {
     e.preventDefault();
@@ -16,4 +16,4 @@ const Button = () => {
   );
 };
 
-export default Button;
+export default QuitButton;

@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Consumer } from "../../../context";
 
 class Answer extends Component {
-  state = {
-    background: ""
-  };
   //show green if right answer, show red if wrong anwer
   onShowResult = (textAnswer, e) => {
-    let isRight = "A cat has 9 lives";
-
+    let isRight = "0";
     if (isRight === textAnswer) {
       //show green
       this.setState({
@@ -25,18 +22,22 @@ class Answer extends Component {
   };
 
   render() {
-    //property to pull out
-    const { textAnswer } = this.props.answer;
-    console.log("here");
     return (
-      <div
-        className={`card card-body mb-3 p-4 col-10 offset-1 ${this.state.background}`}
-        onClick={this.onShowResult.bind(this, textAnswer)}
-      >
-        <div className="list-group">
-          <div className="list-group ">{textAnswer} </div>
-        </div>
-      </div>
+      <Consumer>
+        {value => {
+          const { textAnswer, background } = value;
+          return (
+            <div
+              className={`card card-body mb-3 p-4 col-10 offset-1 ${background}`}
+              onClick={this.onShowResult.bind(this, textAnswer)}
+            >
+              <div className="list-group">
+                <div className="list-group ">{textAnswer} </div>
+              </div>
+            </div>
+          );
+        }}
+      </Consumer>
     );
   }
 }
