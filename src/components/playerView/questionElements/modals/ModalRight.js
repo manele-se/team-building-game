@@ -1,19 +1,17 @@
 import React, { Component } from "react";
-import "../../../../App.css";
 
+//it doesn't show the modal at all!!!why?????
 class ModalRight extends Component {
   render() {
-    if (!this.props.show) {
-      return null;
-    }
     return (
-      <div className="backdrop">
-        <div className="modal ">
-          {this.props.children}
+      <div>
+        <button className="button" id="modalButton">
+          Click here
+        </button>
 
-          <div className="footer">
-            <button onClick={this.props.onClose}>Close</button>
-          </div>
+        <div id="simpleModal" className="modal">
+          <span className="closeBtn">&times;</span>
+          <p>Modal Test{console.log("into modal")}</p>
         </div>
       </div>
     );
