@@ -10,10 +10,23 @@ const reducer = (state, action) => {
         ...state
         //start a new game
       };
-    case "ISRIGHT":
+    case "IS_RIGHT_OR_WRONG":
       return {
         ...state
         //change background and activate the modal
+        /*if (textAnswer === action.payload ) {
+          //show green
+          this.setState({
+            background: "list-group-item-success"
+          });
+          console.log(textAnswer + " green");
+        } else {
+          console.log(textAnswer + " red");
+          //show red
+          this.setState({
+            background: "list-group-item-danger"
+          });
+        }*/
       };
     case "QUIT":
       return {
@@ -47,6 +60,24 @@ export class Provider extends Component {
     questionTitle: "Question: 1",
     questionText: "How many cats has Elena?",
     gameTitle: "Questions about Elena",
+
+    scores: [
+      {
+        id: 23,
+        name: "Patrik",
+        score: 3
+      },
+      {
+        id: 24,
+        name: "Hugo",
+        score: 4
+      },
+      {
+        id: 25,
+        name: "Frida",
+        score: 5
+      }
+    ],
 
     dispatch: action => {
       this.setState(state => reducer(state, action));

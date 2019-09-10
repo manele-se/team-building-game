@@ -9,7 +9,7 @@ class QuestionHeader extends Component {
           const { questionTitle, questionText } = value;
           return (
             <React.Fragment>
-              <div className="jumbotron col-10 offset-1">
+              <div className="jumbotron col-10 offset-1 board">
                 <h2 className="question">{questionTitle}</h2>
                 <p className="textQuestion">{questionText}</p>
               </div>

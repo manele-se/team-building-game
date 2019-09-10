@@ -1,3 +1,22 @@
 .progress + .progress {
   margin-top: 5rem;
 }
+
+.board {
+  box-shadow: 2px 2px 2px #3333;
+}
+
+.backdrop {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 50;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 5;
+  max-width: 500;
+  min-height: 300;
+  margin: 0 auto;
+  padding: 30;
+}

@@ -6,8 +6,6 @@ import PlayerView from "./components/playerView/PlayerView";
 import ScoreView from "./components/scoreView/ScoreView";
 
 function App() {
-  //state to refactor: TAKE IT AWAY , THIS IS JUST TO TEST UI
-
   return (
     <Router>
       <Route exact path="/play" component={PlayerView} />
