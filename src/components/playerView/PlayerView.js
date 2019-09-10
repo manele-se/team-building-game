@@ -3,7 +3,7 @@ import Header from "../../layouts/Header";
 
 import Answers from "./questionElements/Answers";
 import QuestionHeader from "./questionElements/QuestionHeader";
-import QuitButton from "../../layouts/QuitButton";
+import QuitButton from "../../layouts/buttons/QuitButton";
 import { Provider } from "../../context";
 
 const PlayerView = () => {

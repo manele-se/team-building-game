@@ -1,24 +1,21 @@
 import React from "react";
 import { Consumer } from "../context";
+import NewQuizButton from "./buttons/NewQuizButton";
+import CreateQuizButton from "./buttons/CreateQuizButton";
 
 const Header = props => {
-  const newGame = e => {
-    e.preventDefault();
-    //code to start a new game
-    console.log("button clicked");
-  };
-
   return (
     <Consumer>
       {value => {
         const { gameTitle } = value;
         return (
-          <nav className="navbar navbar-expand-sm navbar-dark mb-3 py-3 card bg-light">
-            <div className="container">
+          <nav className="navbar navbar-expand-sm mb-3 py-3  navStyle">
+            <div className="container ">
               <h1 className="title">{gameTitle}</h1>
-              <button className="btn btn-success" onClick={newGame}>
-                New Quiz
-              </button>
+              <div className="navButtons">
+                <NewQuizButton />
+                <CreateQuizButton />
+              </div>
             </div>
           </nav>
         );

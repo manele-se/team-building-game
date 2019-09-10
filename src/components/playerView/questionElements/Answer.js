@@ -34,7 +34,7 @@ class Answer extends Component {
         {value => {
           return (
             <div
-              className={`card card-body mb-3 p-4 col-10 offset-1 style={{ cursor: 'pointer'}} ${background}  `}
+              className={`card card-body mb-3 p-4 col-10 offset-1 board style={{ cursor: 'pointer'}} ${background}  `}
               style={{ cursor: "pointer" }}
               onClick={this.onShowResult.bind(this, textAnswer)}
             >

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProgressBar from "./ProgressBar";
+import PlayerProgressBar from "./PlayerProgressBar";
 import { Consumer } from "../../context";
 
 class ScoreBoard extends Component {
@@ -9,15 +9,17 @@ class ScoreBoard extends Component {
         {value => {
           const { scores } = value;
           return (
-            <React.Fragment>
-              {scores.map(score => (
-                <ProgressBar
-                  key={score.id}
-                  name={score.name}
-                  score={score.score}
-                />
-              ))}
-            </React.Fragment>
+            <div className="container card mb-3 p-4 col-10 offset-1 board">
+              <React.Fragment>
+                {scores.map(score => (
+                  <PlayerProgressBar
+                    key={score.id}
+                    name={score.name}
+                    score={score.score}
+                  />
+                ))}
+              </React.Fragment>
+            </div>
           );
         }}
       </Consumer>

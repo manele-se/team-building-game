@@ -65,17 +65,17 @@ export class Provider extends Component {
       {
         id: 23,
         name: "Patrik",
-        score: 3
+        score: 30
       },
       {
         id: 24,
         name: "Hugo",
-        score: 4
+        score: 40
       },
       {
         id: 25,
         name: "Frida",
-        score: 5
+        score: 50
       }
     ],
 

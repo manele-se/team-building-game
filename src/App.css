@@ -1,9 +1,9 @@
-.progress + .progress {
-  margin-top: 5rem;
+.progress {
+  margin: 1.3rem;
 }
 
 .board {
-  box-shadow: 2px 2px 2px #3333;
+  box-shadow: 1px 1px 1px #3333;
 }
 
 .backdrop {
@@ -19,4 +19,46 @@
   min-height: 300;
   margin: 0 auto;
   padding: 30;
+}
+
+.createquizbutton {
+  margin-right: 0rem;
+}
+
+.navButtons {
+  display: flex;
+  flex-direction: row;
+  flex-direction: flex-end;
+  padding-right: 2rem;
+}
+
+.buttonStyle {
+  margin-right: 2rem;
+}
+
+.titleCard {
+  background: rgb(184, 250, 251);
+  background: linear-gradient(
+    0deg,
+    rgb(182, 247, 248) 0%,
+    rgb(255, 234, 190) 100%
+  );
+}
+
+.textQuestion {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.questionNr {
+  font-size: 1.2rem;
+}
+
+.navStyle {
+  margin: 1.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  padding-left: 2rem;
 }

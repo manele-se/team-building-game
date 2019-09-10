@@ -8,8 +8,8 @@ const QuitButton = () => {
   };
 
   return (
-    <div className="mb-3 p-4 col-10 offset-1 ">
-      <button className="btn btn-danger btn-block" onClick={quit}>
+    <div className="offset-1 py-4  ">
+      <button className="btn btn-danger " onClick={quit}>
         Quit
       </button>
     </div>
