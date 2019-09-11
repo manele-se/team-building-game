@@ -13,7 +13,11 @@ class Answers extends Component {
           return (
             <React.Fragment>
               {answers.map(answer => (
-                <Answer key={answer.id} textAnswer={answer.textAnswer} />
+                <Answer
+                  key={answer.id}
+                  textAnswer={answer.textAnswer}
+                  isRight={answer.isRight}
+                />
               ))}
             </React.Fragment>
           );

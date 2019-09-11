@@ -8,16 +8,18 @@ class Answer extends Component {
   };
   //ifRight: setBackground green, showModalPanelRight, playerScore ++, uppdateScore in Master
   //ifWrong: setBackf´ground red, showModalPanelWrong
-  onShowResult = (textAnswer, e) => {
-    let isRight = "0";
-    if (isRight === textAnswer) {
+  onShowResult = dispatch => {
+    const { isRight } = this.props;
+    dispatch({
+      type: "ANSWERED",
+      isRight
+    });
+    if (isRight) {
       //show green
       this.setState({
         background: "list-group-item-success"
       });
-      console.log(textAnswer + " green");
     } else {
-      console.log(textAnswer + " red");
       //show red
       this.setState({
         background: "list-group-item-danger"
@@ -26,17 +28,20 @@ class Answer extends Component {
   };
 
   render() {
-    const { textAnswer } = this.props;
+    const { textAnswer, isRight } = this.props;
     const { background } = this.state;
 
     return (
       <Consumer>
         {value => {
+          const { dispatch } = value;
           return (
             <div
               className={`card card-body mb-3 p-4 col-10 offset-1 board style={{ cursor: 'pointer'}} ${background}  `}
               style={{ cursor: "pointer" }}
-              onClick={this.onShowResult.bind(this, textAnswer)}
+              onClick={this.onShowResult.bind(this, dispatch)}
+              data-toggle="modal"
+              data-target={isRight ? "#modalRight" : "#modalWrong"}
             >
               <div className="list-group">
                 <div className="list-group ">{textAnswer} </div>

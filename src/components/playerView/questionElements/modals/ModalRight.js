@@ -1,17 +1,25 @@
 import React, { Component } from "react";
 
-//it doesn't show the modal at all!!!why?????
 class ModalRight extends Component {
   render() {
     return (
-      <div>
-        <button className="button" id="modalButton">
-          Click here
-        </button>
-
-        <div id="simpleModal" className="modal">
-          <span className="closeBtn">&times;</span>
-          <p>Modal Test{console.log("into modal")}</p>
+      <div
+        class="modal "
+        tabindex="-1"
+        role="dialog"
+        id="modalRight"
+        data-backdrop="static"
+        data-keyboard="false"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Congratulation!!!</h5>
+            </div>
+            <div class="modal-body">
+              <p>:)</p>
+            </div>
+          </div>
         </div>
       </div>
     );

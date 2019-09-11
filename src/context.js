@@ -5,33 +5,20 @@ const Context = React.createContext();
 const reducer = (state, action) => {
   //evaluate the action
   switch (action.type) {
-    case "NEW":
+    case "NEW_QUIZ":
       return {
         ...state
-        //start a new game
+        //start a new set of questions for a new tem member
       };
-    case "IS_RIGHT_OR_WRONG":
+    case "ANSWERED":
+      //send the player id and isRight answer to the database to uppdate the scoreboard
       return {
         ...state
-        //change background and activate the modal
-        /*if (textAnswer === action.payload ) {
-          //show green
-          this.setState({
-            background: "list-group-item-success"
-          });
-          console.log(textAnswer + " green");
-        } else {
-          console.log(textAnswer + " red");
-          //show red
-          this.setState({
-            background: "list-group-item-danger"
-          });
-        }*/
       };
     case "QUIT":
       return {
         ...state
-        //quit the game , send information to the master
+        //quit the game , send information to the db
       };
     default:
       return state;
@@ -41,31 +28,34 @@ const reducer = (state, action) => {
 //here you can place your global states
 export class Provider extends Component {
   state = {
-    //to put into the database
+    //mockdata to put into the database
     answers: [
       {
         id: 1,
-        textAnswer: "1"
+        textAnswer: "1m",
+        isRight: false
       },
       {
         id: 2,
-        textAnswer: "0"
+        textAnswer: "Are you kidding me?",
+        isRight: true
       },
       {
         id: 3,
-        textAnswer: "2"
+        textAnswer: "2.6 m",
+        isRight: false
       }
     ],
 
-    questionTitle: "Question: 1",
-    questionText: "How many cats has Elena?",
-    gameTitle: "Questions about Elena",
+    questionTitle: "Question: 2/10",
+    questionText: "How tall is the tree behind you?",
+    gameTitle: "Questions about a tree",
 
     scores: [
       {
         id: 23,
         name: "Patrik",
-        score: 30
+        score: 20
       },
       {
         id: 24,
