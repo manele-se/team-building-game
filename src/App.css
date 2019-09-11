@@ -47,3 +47,30 @@
   font-size: 2.5rem;
   padding-left: 2rem;
 }
+
+.image {
+  max-width: 8rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modalStyleTitleRight {
+  color: rgb(17, 153, 17);
+  font-size: 1.8rem;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+}
+
+.contentModalRight {
+  background: rgb(208, 255, 224);
+  background: linear-gradient(
+    0deg,
+    rgb(233, 255, 236) 0%,
+    rgb(251, 242, 198) 100%
+  );
+  font-family: "Chilanka", cursive;
+}

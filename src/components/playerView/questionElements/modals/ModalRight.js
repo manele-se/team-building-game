@@ -1,29 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
+import glad from "../../../../images/glad.png";
 
-class ModalRight extends Component {
-  render() {
-    return (
-      <div
-        class="modal "
-        tabindex="-1"
-        role="dialog"
-        id="modalRight"
-        data-backdrop="static"
-        data-keyboard="false"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Congratulation!!!</h5>
-            </div>
-            <div class="modal-body">
-              <p>:)</p>
-            </div>
-          </div>
-        </div>
+ModalRight = () => {
+  return (
+    <div class="modal-content contentModalRight">
+      <div class="modal-header">
+        <h5 class="modal-title modalStyleTitleRight">Congratulation! </h5>
       </div>
-    );
-  }
-}
+      <div class="modal-body">
+        <p>
+          <img src={glad} className="image" alt="smily face" />{" "}
+        </p>
+      </div>
+    </div>
+  );
+};
 
 export default ModalRight;
