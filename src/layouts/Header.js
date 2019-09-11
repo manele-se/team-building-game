@@ -1,7 +1,6 @@
 import React from "react";
 import { Consumer } from "../context";
-import NewQuizButton from "./buttons/NewQuizButton";
-import CreateQuizButton from "./buttons/CreateQuizButton";
+import HomeButton from "./buttons/HomeButton";
 
 const Header = props => {
   return (
@@ -13,8 +12,7 @@ const Header = props => {
             <div className="container ">
               <h1 className="title">{gameTitle}</h1>
               <div className="navButtons">
-                <NewQuizButton />
-                <CreateQuizButton />
+                <HomeButton />
               </div>
             </div>
           </nav>

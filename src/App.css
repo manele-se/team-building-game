@@ -89,3 +89,19 @@
     rgb(251, 242, 198) 100%
   );
 }
+
+.welcomeHeader {
+  margin: 2rem;
+  background: rgb(184, 251, 187);
+  background: linear-gradient(
+    0deg,
+    rgb(125, 255, 143) 0%,
+    rgb(248, 222, 104) 100%
+  );
+  font-family: "Chilanka", cursive;
+}
+
+.buttons {
+  text-align: center;
+  offset: none;
+}
