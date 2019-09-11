@@ -1,21 +1,17 @@
 import React, { Component } from "react";
 import CreateTeamButton from "../layouts/buttons/CreateTeamButton";
 import StartButton from "../layouts/buttons/StartButton";
-import QuitButton from "../layouts/buttons/QuitButton";
+import QuitButtonWelcome from "../layouts/buttons/QuitButtonWelcome";
 
 class WelcomeView extends Component {
   render() {
     return (
-      <div>
-        <div className="container  welcome">
-          <h1 className="jumbotron welcomeHeader ">
-            Welcome to the team game!
-          </h1>
-          <div className="container d-flex flex-column buttons">
-            <StartButton />
-            <CreateTeamButton />
-            <QuitButton />
-          </div>
+      <div className="container ">
+        <h1 className="titleWelcome">Welcome to the Team Game</h1>
+        <div className="d-flex flex-column justify-content-center">
+          <StartButton />
+          <CreateTeamButton />
+          <QuitButtonWelcome />
         </div>
       </div>
     );

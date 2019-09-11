@@ -3,7 +3,9 @@ import React from "react";
 const CreateTeamButton = () => {
   return (
     <div>
-      <button className="btn btn-warning ">Create Team</button>
+      <button type="button" className="btn btn-warning btn-lg ">
+        Create Team
+      </button>
     </div>
   );
 };
