@@ -54,15 +54,23 @@
   margin-left: auto;
   margin-right: auto;
 }
-
-.modalStyleTitleRight {
-  color: rgb(17, 153, 17);
+.modalTitle {
   font-size: 1.8rem;
 
   display: block;
   margin-left: auto;
   margin-right: auto;
   font-weight: bold;
+}
+.modalStyleTitleRight {
+  color: rgb(17, 153, 17);
+}
+
+.modalStyleTitleWrong {
+  color: red;
+}
+.contentModal {
+  font-family: "Chilanka", cursive;
 }
 
 .contentModalRight {
@@ -72,5 +80,12 @@
     rgb(233, 255, 236) 0%,
     rgb(251, 242, 198) 100%
   );
-  font-family: "Chilanka", cursive;
+}
+.contentModalWrong {
+  background: rgb(255, 208, 208);
+  background: linear-gradient(
+    0deg,
+    rgb(255, 181, 181) 0%,
+    rgb(251, 242, 198) 100%
+  );
 }

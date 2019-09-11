@@ -5,7 +5,8 @@ import Answers from "./questionElements/Answers";
 import QuestionHeader from "./questionElements/QuestionHeader";
 import QuitButton from "../../layouts/buttons/QuitButton";
 import { Provider } from "../../context";
-import Modal from "./questionElements/modals/Modal";
+import ModalRight from "./questionElements/modals/ModalRight";
+import ModalWrong from "./questionElements/modals/ModalWrong";
 
 const PlayerView = () => {
   return (
@@ -14,7 +15,8 @@ const PlayerView = () => {
       <QuestionHeader />
       <Answers />
       <QuitButton />
-      <Modal />
+      <ModalRight />
+      <ModalWrong />
     </Provider>
   );
 };
