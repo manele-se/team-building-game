@@ -4,6 +4,8 @@ import StartButton from "../layouts/buttons/StartButton";
 import QuitButtonWelcome from "../layouts/buttons/QuitButtonWelcome";
 import ModalQuitGame from "./playerView/questionElements/modals/ModalQuitGame";
 import { Link } from "react-router-dom";
+import soundfile from "../music/music.mp3";
+import Sound from "react-sound";
 
 class WelcomeView extends Component {
   render() {
