@@ -2,9 +2,13 @@ import React from "react";
 
 const QuitButtonWelcome = () => {
   return (
-    <div>
-      <button className="btn btn-danger btn-lg ">Quit Game</button>
-    </div>
+    <button
+      className="btn btn-danger buttonStyle btn-lg  "
+      data-target={"#modalQuitGame"}
+      data-toggle="modal"
+    >
+      Quit Game
+    </button>
   );
 };
 

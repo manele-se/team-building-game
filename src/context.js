@@ -37,7 +37,7 @@ export class Provider extends Component {
       },
       {
         id: 2,
-        textAnswer: "Are you kidding me?",
+        textAnswer: "There is no tree here",
         isRight: true
       },
       {
@@ -55,17 +55,20 @@ export class Provider extends Component {
       {
         id: 23,
         name: "Patrik",
-        score: 20
+        score: 40,
+        avatar: 1
       },
       {
         id: 24,
         name: "Hugo",
-        score: 40
+        score: 60,
+        avatar: 2
       },
       {
         id: 25,
         name: "Frida",
-        score: 50
+        score: 80,
+        avatar: 3
       }
     ],
 

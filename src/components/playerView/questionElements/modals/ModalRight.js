@@ -14,9 +14,7 @@ const ModalRight = () => {
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content contentModal contentModalRight">
           <div class="modal-header">
-            <h5 class="modal-title modalTitle modalStyleTitleRight">
-              Congratulation!{" "}
-            </h5>
+            <h5 class="modal-title modalTitle modalStyleTitleRight">Right! </h5>
           </div>
           <div class="modal-body">
             <p>

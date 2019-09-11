@@ -1,6 +1,7 @@
 import React from "react";
 import { Consumer } from "../context";
-import HomeButton from "./buttons/HomeButton";
+
+import { Link } from "react-router-dom";
 
 const Header = props => {
   return (
@@ -11,8 +12,10 @@ const Header = props => {
           <nav className="navbar navbar-expand-sm mb-3 py-3  navStyle">
             <div className="container ">
               <h1 className="title">{gameTitle}</h1>
-              <div className="navButtons">
-                <HomeButton />
+              <div className="nav-item">
+                <Link to="/" className="nav-link ">
+                  <i className="fas fa-home icon" />
+                </Link>
               </div>
             </div>
           </nav>

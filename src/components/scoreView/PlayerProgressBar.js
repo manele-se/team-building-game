@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import cow from "../../images/cow.png";
 
 //show progress for each player
 
@@ -11,7 +12,10 @@ class PlayerProgressBar extends Component {
     const { name, score } = this.props;
     return (
       <div>
-        <p>{name}</p>
+        <p>
+          {" "}
+          <img src={cow} className="avatar" alt="avatar" />{" "}
+        </p>
         <ProgressBar
           striped
           variant="success"

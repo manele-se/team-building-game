@@ -7,6 +7,7 @@ import QuitButton from "../../layouts/buttons/QuitButton";
 import { Provider } from "../../context";
 import ModalRight from "./questionElements/modals/ModalRight";
 import ModalWrong from "./questionElements/modals/ModalWrong";
+import ModalQuitGame from "./questionElements/modals/ModalQuitGame";
 
 const PlayerView = () => {
   return (
@@ -17,6 +18,7 @@ const PlayerView = () => {
       <QuitButton />
       <ModalRight />
       <ModalWrong />
+      <ModalQuitGame />
     </Provider>
   );
 };
