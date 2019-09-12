@@ -1,10 +1,32 @@
 import React, { Component } from "react";
+import Firebase from "./Firebase";
 
 const Context = React.createContext();
 
-const reducer = (state, action) => {
+const reducer = async (state, action) => {
   //evaluate the action
   switch (action.type) {
+    case "LOAD_GAME":
+      const { gameId } = action.payload;
+      const gamesResult = await Firebase.firestore()
+        .collection("games")
+        .get();
+
+      console.log(gamesResult);
+      const gameDocs = gamesResult.docs.map(document => ({
+        id: document.id,
+        ...document.data()
+      }));
+
+      const game = gameDocs.filter(g => g.id === gameId);
+
+      console.log(game);
+      gameDocs.sort((a, b) => a.created.seconds - b.created.seconds);
+      return {
+        ...state,
+        gameTitle: game.title
+      };
+
     case "NEW_QUIZ":
       return {
         ...state
@@ -49,7 +71,6 @@ export class Provider extends Component {
 
     questionTitle: "Question: 2/10",
     questionText: "How tall is the tree behind you?",
-    gameTitle: "Questions about a tree",
 
     scores: [
       {
@@ -72,8 +93,9 @@ export class Provider extends Component {
       }
     ],
 
-    dispatch: action => {
-      this.setState(state => reducer(state, action));
+    dispatch: async action => {
+      const newState = await reducer(this.state, action);
+      this.setState(newState);
     }
   };
 

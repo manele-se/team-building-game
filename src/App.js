@@ -7,16 +7,18 @@ import ScoreView from "./components/scoreView/ScoreView";
 import ModalRight from "./components/playerView/questionElements/modals/ModalRight";
 import WelcomeView from "./components/WelcomeView";
 import TeamView from "./components/playerView/TeamView";
+import { Provider } from "./context";
 
 function App() {
   return (
-    <Router>
-      <Route exact path="/" component={WelcomeView} />
-      <Route exact path="/play" component={PlayerView} />
-      <Route exact path="/score" component={ScoreView} />
-      <Route exact path="/modal" component={ModalRight} />
-      <Route exact path="/team" component={TeamView} />
-    </Router>
+    <Provider>
+      <Router>
+        <Route exact path="/start/:id" component={WelcomeView} />
+        <Route exact path="/play" component={PlayerView} />
+        <Route exact path="/score" component={ScoreView} />
+        <Route exact path="/team" component={TeamView} />
+      </Router>
+    </Provider>
   );
 }
 
