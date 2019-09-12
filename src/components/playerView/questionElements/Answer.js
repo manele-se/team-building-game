@@ -37,14 +37,16 @@ class Answer extends Component {
           const { dispatch } = value;
           return (
             <div
-              className={`card card-body mb-3 p-4 col-10 offset-1 board style={{ cursor: 'pointer'}} ${background}  `}
+              className={`card card-body mb-4 p-4 col-10 offset-1 board cardAnswer ${background}  `}
               style={{ cursor: "pointer" }}
               onClick={this.onShowResult.bind(this, dispatch)}
               data-toggle="modal"
               data-target={isRight ? "#modalRight" : "#modalWrong"}
             >
-              <div className="list-group">
-                <div className="list-group ">{textAnswer} </div>
+              <div className="list-group listCard ">
+                <div className="list-group " style={{ color: "blue" }}>
+                  {textAnswer}{" "}
+                </div>
               </div>
             </div>
           );

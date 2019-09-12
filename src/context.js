@@ -55,20 +55,20 @@ export class Provider extends Component {
       {
         id: 23,
         name: "Patrik",
-        score: 40,
-        avatar: 1
+        score: 20,
+        avatar: "cow"
       },
       {
         id: 24,
         name: "Hugo",
-        score: 60,
-        avatar: 2
+        score: 50,
+        avatar: "dog"
       },
       {
         id: 25,
         name: "Frida",
-        score: 80,
-        avatar: 3
+        score: 100,
+        avatar: "cat"
       }
     ],
 

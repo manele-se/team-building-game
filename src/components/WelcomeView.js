@@ -12,13 +12,13 @@ class WelcomeView extends Component {
     return (
       <div className="customContainer">
         <div className="container">
-          <h1 className="titleWelcome">Welcome to the Team Game</h1>
           <div className="d-flex flex-column justify-content-center align-items-center buttons">
+            <h1 className="titleWelcome">The Team Game</h1>
             <Link to="/play" className="nav-link ">
               <StartButton />
             </Link>
             <CreateTeamButton />
-            <QuitButtonWelcome />
+
             <ModalQuitGame />
           </div>
         </div>

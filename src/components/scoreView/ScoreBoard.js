@@ -16,6 +16,7 @@ class ScoreBoard extends Component {
                     key={score.id}
                     name={score.name}
                     score={score.score}
+                    avatar={score.avatar}
                   />
                 ))}
               </React.Fragment>
