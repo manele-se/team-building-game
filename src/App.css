@@ -29,7 +29,7 @@ body,
 }
 
 .buttonStyle {
-  margin-right: 2rem;
+  width: 16rem;
 }
 
 .titleCard {
@@ -143,5 +143,18 @@ img.avatarTest {
 
 .listText {
   color: var(--color-secondary);
-  font-size: 3rem;
+  font-size: 1.2rem;
+}
+
+.avatars img {
+  width: 6rem;
+}
+
+h3 {
+  color: aliceblue;
+  margin-left: 3rem;
+}
+
+.avatars .container .container {
+  height: 8rem;
 }

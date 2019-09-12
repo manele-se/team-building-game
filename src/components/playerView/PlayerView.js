@@ -15,7 +15,6 @@ const PlayerView = () => {
       <Header />
       <QuestionHeader />
       <Answers />
-      <QuitButton />
       <ModalRight />
       <ModalWrong />
       <ModalQuitGame />

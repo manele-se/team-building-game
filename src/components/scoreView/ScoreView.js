@@ -11,7 +11,6 @@ class ScoreView extends Component {
       <Provider>
         <Header />
         <ScoreBoard />
-        <QuitButton />
       </Provider>
     );
   }

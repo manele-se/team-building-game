@@ -44,9 +44,7 @@ class Answer extends Component {
               data-target={isRight ? "#modalRight" : "#modalWrong"}
             >
               <div className="list-group listCard ">
-                <div className="list-group " style={{ color: "blue" }}>
-                  {textAnswer}{" "}
-                </div>
+                <div className="list-group listText ">{textAnswer} </div>
               </div>
             </div>
           );
