@@ -7,6 +7,7 @@ import QuestionHeader from "./questionElements/QuestionHeader";
 import ModalRight from "../modals/ModalRight";
 import ModalWrong from "../modals/ModalWrong";
 import ModalQuitGame from "../modals/ModalQuitGame";
+import Spinner from "../../layouts/Spinner";
 
 const PlayerView = props => {
   const { playerId } = props.match.params;
@@ -28,7 +29,11 @@ const PlayerView = props => {
           );
         } else {
           value.subscribePlayer(playerId);
-          return "";
+          return (
+            <div>
+              <Spinner />
+            </div>
+          );
         }
       }}
     </Consumer>

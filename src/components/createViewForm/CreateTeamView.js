@@ -2,7 +2,7 @@ import React from "react";
 import { Consumer } from "../../context";
 import Header from "../../layouts/Header";
 import AddMemberButton from "../../layouts/buttons/AddMemberButton";
-import ContinueButton from "../../layouts/buttons/ContinueButton";
+import { Link } from "react-router-dom";
 
 class CreateTeamView extends React.Component {
   titleRef = React.createRef();
@@ -17,6 +17,7 @@ class CreateTeamView extends React.Component {
       <Consumer>
         {value => {
           const { dispatch } = value;
+          const { gameId } = this.props.match.params;
           return (
             <React.Fragment>
               <Header />
@@ -30,7 +31,9 @@ class CreateTeamView extends React.Component {
                     placeholder="Type the title of your game"
                     ref={this.titleRef}
                   ></input>
-                  <AddMemberButton />
+                  <Link to="/edit/team/new_member" className="nav-link">
+                    <AddMemberButton />
+                  </Link>
                 </form>
               </div>
             </React.Fragment>

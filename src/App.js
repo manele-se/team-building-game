@@ -8,6 +8,7 @@ import WelcomeView from "./components/WelcomeView";
 import TeamView from "./components/playerView/TeamView";
 import CreateTeamView from "./components/createViewForm/CreateTeamView";
 import { Provider } from "./context";
+import EnterPlayerName from "./components/modals/EnterPlayerName";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/create/team" component={CreateTeamView} />
         <Route exact path="/play/:playerId" component={PlayerView} />
         <Route exact path="/:gameId" component={WelcomeView} />
+        <Route exact path="/new_member" component={EnterPlayerName} />
       </Router>
     </Provider>
   );
