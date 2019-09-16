@@ -1,5 +1,7 @@
 import React from "react";
 
+//TODO: fix this layout
+
 const EnterPlayerName = () => {
   return (
     <div

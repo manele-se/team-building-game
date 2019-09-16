@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import soundfile from "../../music/music.mp3";
 
 import ScoreBoard from "./ScoreBoard";
-//why th e title is not there????
+//why the title is not there????
+//TODO: fix the layout it is awful
 
 class ScoreView extends Component {
   render() {
