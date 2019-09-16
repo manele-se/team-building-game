@@ -6,12 +6,12 @@ class QuestionHeader extends Component {
     return (
       <Consumer>
         {value => {
-          const { questionTitle, questionText } = value;
+          const { title, text } = value.player.currentQuestion;
           return (
             <React.Fragment>
               <div className="jumbotron col-10 offset-1 board titleCard">
-                <h2 className="questionNr">{questionTitle}</h2>
-                <p className="textQuestion">{questionText}</p>
+                <h2 className="questionNr">{title}</h2>
+                <p className="textQuestion">{text}</p>
               </div>
             </React.Fragment>
           );

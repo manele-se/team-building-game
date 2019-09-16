@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import QuitButton from "../../layouts/buttons/QuitButton";
 import Header from "../../layouts/Header";
 
 import ScoreBoard from "./ScoreBoard";
@@ -9,7 +8,7 @@ class ScoreView extends Component {
     return (
       <React.Fragment>
         <Header />
-        <ScoreBoard />
+        <ScoreBoard gameId={this.props.match.params.gameId} />
       </React.Fragment>
     );
   }

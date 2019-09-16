@@ -8,14 +8,14 @@ class Answers extends Component {
     return (
       <Consumer>
         {value => {
-          const { answers } = value;
+          const { answers, correctAnswerIndex } = value.player.currentQuestion;
           return (
             <React.Fragment>
-              {answers.map(answer => (
+              {answers.map((answer, index) => (
                 <Answer
-                  key={answer.id}
-                  textAnswer={answer.textAnswer}
-                  isRight={answer.isRight}
+                  key={index}
+                  textAnswer={answer}
+                  isRight={index === correctAnswerIndex}
                 />
               ))}
             </React.Fragment>

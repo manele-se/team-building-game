@@ -4,24 +4,33 @@ import { Consumer } from "../../context";
 
 class ScoreBoard extends Component {
   render() {
+    const { gameId } = this.props;
+
     return (
       <Consumer>
         {value => {
-          const { scores } = value;
-          return (
-            <div className="container card mb-3 p-4 col-10 offset-1 board">
-              <React.Fragment>
-                {scores.map(score => (
-                  <PlayerProgressBar
-                    key={score.id}
-                    name={score.name}
-                    score={score.score}
-                    avatar={score.avatar}
-                  />
-                ))}
-              </React.Fragment>
-            </div>
-          );
+          const { game } = value;
+          if (game) {
+            return (
+              <div className="container card mb-3 p-4 col-10 offset-1 board">
+                <React.Fragment>
+                  {game.players &&
+                    game.players.map(player => (
+                      <PlayerProgressBar
+                        key={player.id}
+                        name={player.name}
+                        playerId={player.id}
+                        score={player.score || 0}
+                        avatar={player.avatar}
+                      />
+                    ))}
+                </React.Fragment>
+              </div>
+            );
+          } else {
+            value.subscribe(gameId);
+            return ""; // TODO: return ( <LoadingWheel />) eller något sånt
+          }
         }}
       </Consumer>
     );

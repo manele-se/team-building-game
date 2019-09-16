@@ -1,22 +1,37 @@
 import React from "react";
 import Header from "../../layouts/Header";
+import { Consumer } from "../../context";
 
 import Answers from "./questionElements/Answers";
 import QuestionHeader from "./questionElements/QuestionHeader";
-import ModalRight from "./questionElements/modals/ModalRight";
-import ModalWrong from "./questionElements/modals/ModalWrong";
-import ModalQuitGame from "./questionElements/modals/ModalQuitGame";
+import ModalRight from "../modals/ModalRight";
+import ModalWrong from "../modals/ModalWrong";
+import ModalQuitGame from "../modals/ModalQuitGame";
 
-const PlayerView = () => {
+const PlayerView = props => {
+  const { playerId } = props.match.params;
   return (
-    <React.Fragment>
-      <Header />
-      <QuestionHeader />
-      <Answers />
-      <ModalRight />
-      <ModalWrong />
-      <ModalQuitGame />
-    </React.Fragment>
+    <Consumer>
+      {value => {
+        const { player, dispatch } = value;
+        if (player) {
+          console.log(player);
+          return (
+            <React.Fragment>
+              <Header />
+              <QuestionHeader title={player.currentQuestion.title} />
+              <Answers values={player.currentQuestion.answers} />
+              <ModalRight />
+              <ModalWrong />
+              <ModalQuitGame />
+            </React.Fragment>
+          );
+        } else {
+          value.subscribePlayer(playerId);
+          return "";
+        }
+      }}
+    </Consumer>
   );
 };
 

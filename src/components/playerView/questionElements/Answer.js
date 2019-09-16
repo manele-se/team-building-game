@@ -12,7 +12,7 @@ class Answer extends Component {
     const { isRight } = this.props;
     dispatch({
       type: "ANSWERED",
-      isRight
+      payload: isRight
     });
     if (isRight) {
       //show green

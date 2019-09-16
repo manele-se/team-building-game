@@ -1,25 +1,15 @@
 import React from "react";
-import { Consumer } from "../context";
-
-import { Link } from "react-router-dom";
-
+import ContinueButton from "../layouts/buttons/ContinueButton";
+//this is a general header
 const Header = props => {
   return (
-    <Consumer>
-      {value => {
-        const { gameTitle } = value;
-        return (
-          <nav className="navbar navbar-expand-sm my-3 py-3 col-10 offset-1 d-flex flex-row justify-content-between">
-            <h1 className="title">{gameTitle}</h1>
-            <div className="nav-item">
-              <Link to="/" className="nav-link ">
-                <i className="fas fa-home icon" />
-              </Link>
-            </div>
-          </nav>
-        );
-      }}
-    </Consumer>
+    <nav className="navbar navbar-expand-sm   mb-3 py-2 ">
+      <div className="collapse navbar-collapse " id="navbarMain">
+        <ul className="navbar-nav ml-auto">
+          <ContinueButton />
+        </ul>
+      </div>
+    </nav>
   );
 };
 
