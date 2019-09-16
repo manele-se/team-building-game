@@ -1,14 +1,17 @@
 import React, { Component } from "react";
-import Header from "../../layouts/Header";
+import soundfile from "../../music/music.mp3";
 
 import ScoreBoard from "./ScoreBoard";
+//why th e title is not there????
 
 class ScoreView extends Component {
   render() {
+    const { gameId } = this.props;
     return (
       <React.Fragment>
-        <Header />
+        <h1>{gameId}</h1>
         <ScoreBoard gameId={this.props.match.params.gameId} />
+        <audio src={soundfile} autoPlay />
       </React.Fragment>
     );
   }

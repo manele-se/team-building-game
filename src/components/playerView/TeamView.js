@@ -6,17 +6,19 @@ import dog from "../../images/dog.png";
 import cat from "../../images/cat.png";
 import bagger from "../../images/bagger.png";
 import crab from "../../images/crab.png";
+import soundfile from "../../music/music4.mp3";
+import Spinner from "../../layouts/Spinner";
 
 const avatars = { cow, dog, cat, bagger, crab };
 
-const TeamView = (props) => {
+const TeamView = props => {
   const { gameId } = props.match.params;
   return (
     <Consumer>
       {value => {
-          const { game } = value;
-          if (game) {
-          return(
+        const { game } = value;
+        if (game) {
+          return (
             <div className="customContainer avatars">
               <div className="container d-flex flex-column justify-content-center align-items-center">
                 <h1 className="titleWelcome">The Team</h1>
@@ -27,16 +29,19 @@ const TeamView = (props) => {
                   </div>
                 ))}
               </div>
+              <audio src={soundfile} autoPlay />
             </div>
-          )
-          } else {
-            value.subscribe(gameId);
-            return '';
-          }
+          );
+        } else {
+          value.subscribe(gameId);
+          return (
+            <div>
+              <Spinner />
+            </div>
+          );
         }
-      }
+      }}
     </Consumer>
-    
   );
 };
 

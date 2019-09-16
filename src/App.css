@@ -106,7 +106,8 @@ body,
 .titleWelcome {
   padding: 3rem;
   color: aliceblue;
-  font-size: 3rem;
+  font-size: 4rem;
+  margin-bottom: 3rem;
 }
 
 .buttons {

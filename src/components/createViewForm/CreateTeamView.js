@@ -31,7 +31,7 @@ class CreateTeamView extends React.Component {
                     placeholder="Type the title of your game"
                     ref={this.titleRef}
                   ></input>
-                  <Link to="/edit/team/new_member" className="nav-link">
+                  <Link to="/new_member" className="nav-link">
                     <AddMemberButton />
                   </Link>
                 </form>

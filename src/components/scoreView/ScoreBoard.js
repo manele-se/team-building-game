@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PlayerProgressBar from "./PlayerProgressBar";
 import { Consumer } from "../../context";
-
+import Spinner from "../../layouts/Spinner";
 class ScoreBoard extends Component {
   render() {
     const { gameId } = this.props;
@@ -29,7 +29,11 @@ class ScoreBoard extends Component {
             );
           } else {
             value.subscribe(gameId);
-            return ""; // TODO: return ( <LoadingWheel />) eller något sånt
+            return (
+              <div>
+                <Spinner />
+              </div>
+            );
           }
         }}
       </Consumer>

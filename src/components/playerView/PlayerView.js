@@ -19,7 +19,6 @@ const PlayerView = props => {
           console.log(player);
           return (
             <React.Fragment>
-              <Header />
               <QuestionHeader title={player.currentQuestion.title} />
               <Answers values={player.currentQuestion.answers} />
               <ModalRight />

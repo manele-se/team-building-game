@@ -3,7 +3,7 @@ import CreateTeamButton from "../layouts/buttons/CreateTeamButton";
 import EditTeamButton from "../layouts/buttons/CreateTeamButton";
 import StartButton from "../layouts/buttons/StartButton";
 import { Link } from "react-router-dom";
-import soundfile from "../music/music.mp3";
+import soundfile from "../music/music4.mp3";
 import MeetTeamButton from "../layouts/buttons/MeetTeamButton";
 
 class WelcomeView extends Component {
