@@ -6,9 +6,8 @@ import { Link } from "react-router-dom";
 import EnterPlayerName from "../modals/EnterPlayerName";
 import DatePicker from "react-datepicker";
 
-import "react-datepicker/dist/react-datepicker.css";
 
-console.log(EnterPlayerName);
+
 
 class CreateTeamView extends React.Component {
   titleRef = React.createRef();
@@ -19,37 +18,41 @@ class CreateTeamView extends React.Component {
     console.log(`Creating a game called "${this.titleRef.current.value}"`);
   }
 
-  onNewMemberName(name) {
-    console.log(`New member: ${name}`);
-  }
-
-  onAddMemberClicked() {
-    this.playerNameModalRef.current.show();
-  }
-
-  state = {
-    startDate: new Date()
-  };
-
-  handleChange = date => {
-    this.setState({
-      startDate: date
-    });
-  };
+  
+ 
 
   render() {
     return (
       <Consumer>
         {value => {
           const { dispatch } = value;
-          const { gameId } = this.props.match.params;
           return (
             <React.Fragment>
               <Header />
-
               <div className="container customFormContainer">
                 <form onSubmit={this.handleSubmit.bind(this, dispatch)}>
                   <input
+                    type="text"
+                    className="form-control form-control-lg customForm cardAnswer"
+                    id="titleGame"
+                    placeholder="Type your question here"
+                    ref={this.titleRef}
+                  />
+                   <input
+                    type="text"
+                    className="form-control  customForm cardAnswer"
+                    id="titleGame"
+                    placeholder="Type "
+                    ref={this.titleRef}
+                  />
+                   <input
+                    type="text"
+                    className="form-control form-control-lg customForm cardAnswer"
+                    id="titleGame"
+                    placeholder="Type the title of your game"
+                    ref={this.titleRef}
+                  />
+                   <input
                     type="text"
                     className="form-control form-control-lg customForm cardAnswer"
                     id="titleGame"
