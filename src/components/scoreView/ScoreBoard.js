@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PlayerProgressBar from "./PlayerProgressBar";
 import { Consumer } from "../../context";
 import Spinner from "../../layouts/Spinner";
+import "../../components/scoreView/score.css";
+
 class ScoreBoard extends Component {
   render() {
     const { gameId } = this.props;

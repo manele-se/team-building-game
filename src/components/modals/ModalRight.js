@@ -1,5 +1,6 @@
 import React from "react";
 import glad from "../../images/glad.png";
+//refactor with react modal!!!!
 
 const ModalRight = () => {
   return (

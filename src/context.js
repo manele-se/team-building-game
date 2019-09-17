@@ -38,6 +38,7 @@ export class Provider extends Component {
       this.setState(newState);
     },
 
+    //subscribe a game
     subscribe: gameId => {
       // Om det redan finns en subscription, avbryt den.
       if (this.unsubscribeGame) this.unsubscribeGame();
@@ -61,6 +62,7 @@ export class Provider extends Component {
         });
     },
 
+    //subscribe a player
     subscribePlayer: playerId => {
       if (this.unsubscribePlayer) this.unsubscribePlayer();
       console.log(`Subscribing to player ${playerId}`);

@@ -1,3 +1,9 @@
+:root {
+  --color-primary: rgb(165, 60, 214);
+  --color-secondary: rgb(26, 39, 216);
+  --color-text: aliceblue;
+}
+
 .modal-content {
   background-color: rgb(241, 241, 241);
 }
@@ -15,4 +21,12 @@
 
 .modalStyleTitleWrong {
   color: red;
+}
+
+.formModalPlayerName {
+  margin: 3rem;
+}
+
+.modalTutorial {
+  background: var(--color-secondary);
 }
