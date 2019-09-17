@@ -32,13 +32,28 @@ body,
   width: 16rem;
 }
 
-.createTeamButtonStyle {
+.exitButtonStyle {
+  border: 1px solid aliceblue;
+  margin-right: 2rem;
+  color: var(--color-text);
+}
+
+.exitButtonStyle:hover {
+  color: #858585;
+  cursor: pointer;
+}
+
+.createTeamButtonStyle,
+.editTeamButtonStyle {
   box-shadow: 0px 6px rgb(146, 108, 2);
 }
 
 .continueButton {
-  box-shadow: 0px 6px #c5c5c5;
   background: rgb(253, 253, 253);
+}
+
+.continueButton:hover {
+  color: #858585;
 }
 
 .startButtonStyle {
@@ -52,12 +67,14 @@ body,
     var(--color-secondary) 100%
   );
   color: var(--color-text);
+  box-shadow: 0px 6px 2px rgba(11, 11, 16, 0.2);
+  margin-top: 4rem;
 }
 
 .textQuestion {
   font-size: 1.6rem;
   font-weight: bold;
-  color: var(--color-text);
+  color: white;
 }
 
 .questionNr {
@@ -80,19 +97,6 @@ body,
   margin-left: auto;
   margin-right: auto;
 }
-.modalTitle {
-  font-size: 1.6rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.modalStyleTitleRight {
-  color: rgb(17, 153, 17);
-}
-
-.modalStyleTitleWrong {
-  color: red;
-}
 
 .customContainer {
   min-height: 100%;
@@ -110,8 +114,9 @@ body,
   margin-bottom: 3rem;
 }
 
-.buttons {
-  padding: 7rem;
+.welcomeViewGroup {
+  padding-top: 20%;
+  margin-bottom: 3rem;
 }
 
 .icon {
@@ -127,6 +132,7 @@ body,
   box-shadow: 0px 6px green;
   margin-top: 8rem;
 }
+
 .avatar {
   height: 3rem;
 }
@@ -155,11 +161,11 @@ img.avatarTest {
 
 .cardAnswer {
   cursor: pointer;
+  box-shadow: 0px 6px 2px rgba(177, 177, 177, 0.2);
 }
 
 .listText {
-  color: var(--color-secondary);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 .avatars img {
@@ -181,14 +187,15 @@ h3 {
   border: #a1a1a1;
   box-shadow: 0px 6px 2px rgba(177, 177, 177, 0.2);
 }
+
 .customFormContainer {
   margin: 10%;
 }
 
 .headerStyle {
   background: linear-gradient(
-    0deg,
-    var(--color-primary) 0%,
+    45deg,
+    var(--color-primary) 30%,
     var(--color-secondary) 100%
   );
   padding: 1.2rem;
@@ -196,4 +203,10 @@ h3 {
 
 .meetTeamButtonStyle {
   box-shadow: 0px 6px 2px rgba(19, 19, 19, 0.2);
+}
+
+.logo h4 {
+  color: white;
+  font-family: fantasy;
+  font-weight: bold;
 }

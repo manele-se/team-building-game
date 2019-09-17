@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CreateTeamButton from "../layouts/buttons/CreateTeamButton";
-import EditTeamButton from "../layouts/buttons/CreateTeamButton";
+import EditTeamButton from "../layouts/buttons/EditTeamButton";
 import StartButton from "../layouts/buttons/StartButton";
 import { Link } from "react-router-dom";
 import soundfile from "../music/music4.mp3";
@@ -14,7 +14,7 @@ class WelcomeView extends Component {
     return (
       <div className="customContainer">
         <div className="container">
-          <div className="d-flex flex-column justify-content-center align-items-center buttons">
+          <div className="d-flex flex-column justify-content-center align-items-center welcomeViewGroup">
             <h1 className="titleWelcome">The Team Game</h1>
             {gameId ? (
               <>

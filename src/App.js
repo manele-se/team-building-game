@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/create/team" component={CreateTeamView} />
         <Route exact path="/play/:playerId" component={PlayerView} />
         <Route exact path="/:gameId" component={WelcomeView} />
-        <Route exact path="/new_member" component={EnterPlayerName} />
+        <Route exact path="/new/member" component={EnterPlayerName} />
       </Router>
     </Provider>
   );

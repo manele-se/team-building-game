@@ -1,14 +1,11 @@
-import React from "react";
+import React from 'react';
 
-const CreateTeamButton = () => {
-  return (
-    <button
-      type="button"
-      className="btn btn-success btn-lg buttonStyle addMemberButton"
-    >
-      Add Member
-    </button>
-  );
+const CreateTeamButton = (props) => {
+	return (
+		<button type="button" onClick={props.onClick} className="btn btn-success btn-lg buttonStyle addMemberButton">
+			Add Member
+		</button>
+	);
 };
 
 export default CreateTeamButton;

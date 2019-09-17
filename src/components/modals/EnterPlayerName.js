@@ -1,26 +1,70 @@
-import React from "react";
+import React from 'react';
+import { Button } from 'react';
+import { Modal } from 'react-bootstrap';
+import '../inputs.css';
+import './modals.css';
 
 //TODO: fix this layout
+class EnterPlayerName extends React.Component {
+	state = {
+		show: false
+	};
 
-const EnterPlayerName = () => {
-  return (
-    <div
-      className="modal "
-      tabIndex="-1"
-      role="dialog"
-      id="modalPlayerName"
-      data-keyboard="true"
-    >
-      <div className="modal-dialog modal-dialog-centered" role="document">
-        <div className="modal-content contentModal contentModalWrong">
-          <div className="modal-header">
-            <div className="modal-title card "> Enter name </div>
-          </div>
-          <div className="modal-body"></div>
-        </div>
-      </div>
-    </div>
-  );
-};
+	constructor() {
+		super();
+		this.inputRef = React.createRef();
+	}
+
+	handleCancel() {
+		const { onClose } = this.props;
+		if (onClose) {
+			onClose();
+		}
+		this.setState({ show: false });
+	}
+
+	handleOk() {
+		const { onSave } = this.props;
+		if (onSave) {
+			const name = this.inputRef.current.value;
+			console.log(`handleOk : name = ${name}`);
+			onSave(name);
+		}
+		this.setState({ show: false });
+	}
+
+	show() {
+		this.setState({ show: true });
+	}
+
+	render() {
+		const { onClose, value } = this.props;
+		const { show } = this.state;
+
+		return (
+			<Modal show={show} tabIndex="-1" id="modalPlayerName" onHide={onClose}>
+				<Modal.Body>
+					<form>
+						<input
+							type="name"
+							className="big-input form-control-lg"
+							placeholder="Type name"
+							ref={this.inputRef}
+							defaultValue={value}
+						/>
+					</form>
+				</Modal.Body>
+				<Modal.Footer>
+					<button type="button" className="btn btn-secondary" onClick={this.handleCancel.bind(this)}>
+						Cancel
+					</button>
+					<button type="button" className="btn btn-primary" onClick={this.handleOk.bind(this)}>
+						OK
+					</button>
+				</Modal.Footer>
+			</Modal>
+		);
+	}
+}
 
 export default EnterPlayerName;
