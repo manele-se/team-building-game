@@ -7,20 +7,23 @@ import ScoreView from "./components/scoreView/ScoreView";
 import WelcomeView from "./components/WelcomeView";
 import TeamView from "./components/playerView/TeamView";
 import CreateTeamView from "./components/createViewForm/CreateTeamView";
+import CreatePlayerForm from "./components/createViewForm/CreatePlayerForm";
 import { Provider } from "./context";
 import EnterPlayerName from "./components/modals/EnterPlayerName";
+import * as ROUTES from "../src/routes";
 
 function App() {
   return (
     <Provider>
       <Router>
-        <Route exact path="/" component={WelcomeView} />
+        <Route exact path={ROUTES.HOME_VIEW} component={WelcomeView} />
         <Route exact path="/score/:gameId" component={ScoreView} />
         <Route exact path="/team/:gameId" component={TeamView} />
         <Route exact path="/create/team" component={CreateTeamView} />
         <Route exact path="/play/:playerId" component={PlayerView} />
         <Route exact path="/:gameId" component={WelcomeView} />
         <Route exact path="/new/member" component={EnterPlayerName} />
+        <Route exact path="/question/player" component={CreatePlayerForm} />
       </Router>
     </Provider>
   );

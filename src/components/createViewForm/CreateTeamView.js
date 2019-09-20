@@ -5,6 +5,7 @@ import AddMemberButton from "../../layouts/buttons/AddMemberButton";
 import { Link } from "react-router-dom";
 import EnterPlayerName from "../modals/EnterPlayerName";
 import DatePicker from "react-datepicker";
+import "./createView.css";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -47,11 +48,11 @@ class CreateTeamView extends React.Component {
             <React.Fragment>
               <Header />
 
-              <div className="container customFormContainer">
+              <div className="container customFormContainer ">
                 <form onSubmit={this.handleSubmit.bind(this, dispatch)}>
                   <input
                     type="text"
-                    className="form-control form-control-lg customForm cardAnswer"
+                    className="form-control form-control-lg customForm formStyle cardAnswer"
                     id="titleGame"
                     placeholder="Type the title of your game"
                     ref={this.titleRef}

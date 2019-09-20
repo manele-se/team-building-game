@@ -20,21 +20,30 @@ class EnterPlayerName extends React.Component {
     if (onClose) {
       onClose();
     }
-    this.setState({ show: false });
+    this.setState({
+      show: false
+    });
   }
 
   handleOk() {
     const { onSave } = this.props;
     if (onSave) {
+      console.log("ok knapp pressed");
       const name = this.inputRef.current.value;
       console.log(`handleOk : name = ${name}`);
+      //dispatch
+
       onSave(name);
     }
-    this.setState({ show: false });
+    this.setState({
+      show: false
+    });
   }
 
   show() {
-    this.setState({ show: true });
+    this.setState({
+      show: true
+    });
   }
 
   render() {
@@ -51,25 +60,23 @@ class EnterPlayerName extends React.Component {
               placeholder="Type name"
               ref={this.inputRef}
               defaultValue={value}
-            />
-          </form>
-        </Modal.Body>
+            />{" "}
+          </form>{" "}
+        </Modal.Body>{" "}
         <Modal.Footer>
           <button
             type="button"
-            className="btn btn-warning "
-            onClick={this.handleCancel.bind(this)}
-          >
-            Cancel
-          </button>
+            className="btn btn-danger"
+            onClick={this.handleCancel.bind(this)}>
+            Cancel{" "}
+          </button>{" "}
           <button
             type="button"
             className="btn btn-success"
-            onClick={this.handleOk.bind(this)}
-          >
-            OK
-          </button>
-        </Modal.Footer>
+            onClick={this.handleOk.bind(this)}>
+            OK{" "}
+          </button>{" "}
+        </Modal.Footer>{" "}
       </Modal>
     );
   }
