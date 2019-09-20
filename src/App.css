@@ -143,11 +143,3 @@ h3 {
   font-family: "Saira Stencil One", cursive;
   font-weight: bold;
 }
-
-.datePickerStyle {
-  padding: 0.5rem 0 0.5rem 0;
-  text-align: center;
-  font-size: 1.6rem;
-  border-color: rgb(236, 236, 236);
-  color: #333;
-}

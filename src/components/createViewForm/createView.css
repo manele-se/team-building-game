@@ -24,10 +24,23 @@
 }
 .customQuestion {
   padding: 4rem;
+  margin-bottom: 1rem;
 }
 
 .cardAnswer {
-  padding: 2.2rem;
-  margin: 1.4rem 0rem 1.4rem 0rem;
+  padding: 2.3rem;
+  margin: 2rem 0rem 0rem 0rem;
   text-align: left;
+}
+
+.checkBoxCustom {
+  cursor: pointer;
+  background-color: transparent;
+  margin: 2.4rem 0rem 0rem 0rem;
+  width: 4rem;
+}
+
+/*fixa*/
+.last {
+  margin-bottom: 2rem;
 }

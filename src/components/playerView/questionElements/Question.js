@@ -6,7 +6,7 @@ import Answers from "./Answers";
 class Question extends Component {
   render() {
     return (
-     <>
+   
         <QuestionHeader />
         <Answers />
      </>
