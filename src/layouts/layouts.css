@@ -1,0 +1,22 @@
+:root {
+  --color-primary: rgb(165, 60, 214);
+  --color-secondary: rgb(26, 39, 216);
+  --color-text: aliceblue;
+  --color-text-dark: #333;
+  --color-background: rgb(241, 241, 241);
+}
+
+.headerStyle {
+  background: linear-gradient(
+    45deg,
+    var(--color-primary) 30%,
+    var(--color-secondary) 100%
+  );
+  padding: 1.2rem;
+}
+
+.logo h4 {
+  color: white;
+  font-family: "Saira Stencil One", cursive;
+  font-weight: bold;
+}
