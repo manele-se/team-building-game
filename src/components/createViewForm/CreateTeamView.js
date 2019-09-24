@@ -41,13 +41,14 @@ class CreateTeamView extends React.Component {
   };
 
   //!!!It doesn't work with date!
-  onChoosingDate = (date, dispatch) => {
+  onChoosingDate = (dispatch, date) => {
+    console.log(date);
     this.setState({
       startDate: date
     });
     console.log(`New member: ${date}`);
     dispatch({
-      type: "UPDATE_DATE",
+      type: "UPDATE_GAMEDATE",
       payload: date
     });
   };
@@ -56,8 +57,9 @@ class CreateTeamView extends React.Component {
     return (
       <Consumer>
         {value => {
-          const { dispatch, players } = value;
-          const { gameId } = this.props.match.params;
+          const { dispatch, game } = value;
+          const players = game.players;
+
           return (
             <React.Fragment>
               <Header />
@@ -87,8 +89,8 @@ class CreateTeamView extends React.Component {
                 <DatePicker
                   selected={this.state.startDate}
                   className=" card formStyle datePickerStyle"
-                  onChange={() => {
-                    this.onChoosingDate(dispatch);
+                  onChange={date => {
+                    this.onChoosingDate(dispatch, date);
                   }}
                 />
               </div>

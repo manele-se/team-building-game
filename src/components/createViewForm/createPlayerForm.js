@@ -9,7 +9,7 @@ class CreatePlayerForm extends React.Component {
     console.log(`New member: ${question}`);
     dispatch({
       type: "ADD_QUESTION",
-      payload: question
+      payload: question //hur a question är kopplat till en spelare
     });
   };
   render() {
@@ -17,7 +17,9 @@ class CreatePlayerForm extends React.Component {
     return (
       <Consumer>
         {value => {
-          const { dispatch, players } = value;
+          const { dispatch, game } = value;
+          const players = game.players;
+
           return (
             <React.Fragment>
               <Header />

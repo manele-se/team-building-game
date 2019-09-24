@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import cow from "../../images/cow.png";
-import dog from "../../images/dog.png";
-import cat from "../../images/cat.png";
-import bagger from "../../images/bagger.png";
-import crab from "../../images/crab.png";
-
-const avatars = { cow, dog, cat, bagger, crab };
+import avatars from "../../images";
 
 //show progress for each player
 
@@ -28,10 +22,19 @@ class PlayerProgressBar extends Component {
             src={avatars[avatar]}
             className="avatar"
             alt="avatar"
-            style={{ marginLeft: `${score * 0.95}%`, transition: 'margin-left 0.5s ease-out' }}
+            style={{
+              marginLeft: `${score * 0.95}%`,
+              transition: "margin-left 0.5s ease-out"
+            }}
           />{" "}
         </p>
-        <p>{name} <em>(player link: <a href={`/play/${playerId}`}>{`/play/${playerId}`}</a></em></p>
+        <p>
+          {name}{" "}
+          <em>
+            (player link:{" "}
+            <a href={`/play/${playerId}`}>{`/play/${playerId}`}</a>
+          </em>
+        </p>
       </div>
     );
   }

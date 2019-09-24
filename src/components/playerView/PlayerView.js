@@ -8,6 +8,7 @@ import ModalRight from "../modals/ModalRight";
 import ModalWrong from "../modals/ModalWrong";
 import ModalQuitGame from "../modals/ModalQuitGame";
 import Spinner from "../../layouts/Spinner";
+import ChooseAvatar from "../createViewForm/ChooseAvatar";
 
 const PlayerView = props => {
   const { playerId } = props.match.params;
@@ -15,8 +16,12 @@ const PlayerView = props => {
     <Consumer>
       {value => {
         const { player, dispatch } = value;
+
         if (player) {
           console.log(player);
+          if (!player.avatar) {
+            return <ChooseAvatar />;
+          }
           return (
             <React.Fragment>
               <QuestionHeader title={player.currentQuestion.title} />

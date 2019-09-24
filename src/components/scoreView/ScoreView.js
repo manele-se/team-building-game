@@ -8,12 +8,12 @@ import { isValid } from "date-fns";
 
 class ScoreView extends Component {
   render() {
-    const { gameId } = this.props;
+    const { gameId } = this.props.match.params;
     return (
       <React.Fragment>
         <div className="scoreViewBackgound">
           <h1 className="round">Round 1 </h1>
-          <ScoreBoard gameId={this.props.match.params.gameId} />
+          <ScoreBoard gameId={gameId} />
           <audio src={soundfile} autoPlay />
         </div>
       </React.Fragment>

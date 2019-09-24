@@ -12,7 +12,7 @@ class ScoreBoard extends Component {
       <Consumer>
         {value => {
           const { game } = value;
-          if (game) {
+          if (game && game.id) {
             return (
               <div className="container card mb-3 p-4 col-10 offset-1 board">
                 <React.Fragment>

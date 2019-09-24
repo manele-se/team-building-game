@@ -17,7 +17,7 @@ const TeamView = props => {
     <Consumer>
       {value => {
         const { game } = value;
-        if (game) {
+        if (game && game.id) {
           return (
             <div className="customContainer avatars">
               <div className="container d-flex flex-column justify-content-center align-items-center">

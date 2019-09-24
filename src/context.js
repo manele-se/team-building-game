@@ -4,94 +4,61 @@ import Firebase from "./Firebase";
 const Context = React.createContext();
 
 const answeredReducer = async (state, isRight) => {
-  console.log(state);
-  state.player.isRight = isRight;
-  await Firebase.firestore()
-    .collection("players")
-    .doc(state.player.id)
-    .set(state.player);
-  return state;
+  const player = await Firebase.saveDoc("players", {
+    ...state.player,
+    isRight: isRight
+  });
+  return { ...state, player };
 };
 
 const updateTitleinDatabase = async (state, title) => {
-  state.title = title;
-  const { id } = state;
-  if (id) {
-    //if there is a id which corresponds to a game, pick the id
-    await Firebase.firestore()
-      .collection("games")
-      .doc(id)
-      .set({ title: state.title, player: state.players });
-  } else {
-    // create a new document
-    const newDoc = { title: state.title };
-    const res = await Firebase.firestore()
-      .collection("games")
-      .add(newDoc);
-    state.id = res.id;
-  }
-  return state;
+  // Update the game.title value with the new game title
+  const game = await Firebase.saveDoc("games", { ...state.game, title: title });
+  return { ...state, game };
 };
 
 const addDateinDatabase = async (state, date) => {
-  state.date = date;
-  const { id } = state;
-  if (id) {
-    //if there is a id which corresponds to a game, pick the id
-    await Firebase.firestore()
-      .collection("games")
-      .doc(id)
-      .set({ date: state.date, player: state.players });
-  } else {
-    // create a new document
-    const newDoc = { date: state.date };
-    const res = await Firebase.firestore()
-      .collection("games")
-      .add(newDoc);
-    state.id = res.id;
-  }
-  return state;
+  // Update the game.date value with the new date
+  const game = await Firebase.saveDoc("games", { ...state.game, date: date });
+  return { ...state, game };
 };
 
 const addQuestioninDatabase = async (state, question) => {
-  state.question = question;
-  const { id, players } = state;
-  if (id && players.id) {
-    //if there is a player which correspond to the id
-    await Firebase.firestore()
-      .collection("games")
-      .doc(id, players.id)
-      .set({ questio: state.question, player: state.players });
-  } else {
-    // create a new document
-    const newDoc = { question: state.question };
-    const res = await Firebase.firestore()
-      .collection("games")
-      .add(newDoc);
-    state.id = res.id;
-  }
-  return state;
+  // Add a new question to the end of the player.questions array
+  const player = await Firebase.saveDoc("players", {
+    ...state.player,
+    questions: [...state.player.questions, question]
+  });
+  return { ...state, player };
 };
 
 const addPlayerinDatabase = async (state, name) => {
-  state.players = [...state.players, { name: name }];
-  const { id } = state;
-  if (id) {
-    //if there is a id which corresponds to a game, pick the id
-    await Firebase.firestore()
-      .collection("games")
-      .doc(id)
-      .set({ title: state.title, players: state.players });
-  } else {
-    // create a new document
-    const newDoc = { players: state.players };
-    const res = await Firebase.firestore()
-      .collection("games")
-      .add(newDoc);
-    state.id = res.id;
-  }
-  return state;
+  // First create a new document in the players collection
+  const newPlayerDoc = await Firebase.saveDoc("players", {
+    name: name,
+    avatar: "",
+    gameId: state.game.id,
+    questions: []
+  });
+
+  // Now it's possible to get the new document's id
+  const newPlayerId = newPlayerDoc.id;
+
+  // Then update the game state to add the new player and their id to the game.players array
+  const game = await Firebase.saveDoc("games", {
+    ...state.game,
+    players: [
+      ...state.game.players,
+      {
+        name: name,
+        id: newPlayerId
+      }
+    ]
+  });
+
+  return { ...state, game };
 };
+
 const reducer = async (state, action) => {
   //evaluate the action
   switch (action.type) {
@@ -103,7 +70,7 @@ const reducer = async (state, action) => {
     case "UPDATE_GAMETITLE":
       //update database with the title of the game
       return await updateTitleinDatabase(state, action.payload);
-    case "UPDATE_DATE":
+    case "UPDATE_GAMEDATE":
       //update database with the date
       return await addDateinDatabase(state, action.payload);
     case "ADD_PLAYER":
@@ -124,7 +91,10 @@ const reducer = async (state, action) => {
 //here you can place your global states
 export class Provider extends Component {
   state = {
-    players: [],
+    game: { players: [] },
+
+    player: {},
+
     dispatch: async action => {
       const newState = await reducer(this.state, action);
       this.setState(newState);

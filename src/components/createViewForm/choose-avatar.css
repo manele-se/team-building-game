@@ -1,0 +1,18 @@
+.chooseAvatar {
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+}
+
+.chooseAvatar img {
+  width: 120px;
+  cursor: pointer;
+  filter: saturate(0.5);
+  transition: filter 0.2s;
+}
+
+.chooseAvatar img:hover {
+  filter: saturate(1.5) drop-shadow(0 0 1rem rgb(85, 71, 165));
+}
