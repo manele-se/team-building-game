@@ -1,55 +1,59 @@
 .navButtons {
-  display: flex;
-  flex-direction: row;
-  flex-direction: flex-end;
-  padding-right: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-direction: flex-end;
+    padding-right: 2rem;
 }
 
 .buttonStyle {
-  width: 16rem;
+    width: 16rem;
 }
 
 .exitButtonStyle {
-  border: 1px solid aliceblue;
-  margin-right: 2rem;
-  color: var(--color-text);
+    border: 1px solid aliceblue;
+    margin-right: 2rem;
+    color: var(--color-text);
 }
 
 .exitButtonStyle:hover {
-  color: #858585;
-  cursor: pointer;
+    color: #858585;
+    cursor: pointer;
 }
 
 .createTeamButtonStyle,
 .editTeamButtonStyle {
-  box-shadow: 0px 6px rgb(146, 108, 2);
+    box-shadow: 0px 6px rgb(146, 108, 2);
 }
 
 .continueButton {
-  background: rgb(253, 253, 253);
+    background: rgb(253, 253, 253);
 }
 
 .continueButton:hover {
-  color: #858585;
-  cursor: not-allowed;
+    cursor: not-allowed;
+}
+
+.continueButtonOk:hover {
+    color: #858585;
+    cursor: pointer;
 }
 
 .startButtonStyle {
-  box-shadow: 0px 6px rgb(81, 122, 15);
+    box-shadow: 0px 6px rgb(81, 122, 15);
 }
 
 .buttonStyle {
-  padding: 1.3rem 3rem 1.3rem 3rem;
+    padding: 1.3rem 3rem 1.3rem 3rem;
 }
 
 .addButton {
-  box-shadow: 0px 6px green;
+    box-shadow: 0px 6px green;
 }
 
 .addMemberButton {
-  margin: 3rem 0 4rem 0;
+    margin: 3rem 0 4rem 0;
 }
 
 .meetTeamButtonStyle {
-  box-shadow: 0px 6px 2px rgba(19, 19, 19, 0.2);
+    box-shadow: 0px 6px 2px rgba(19, 19, 19, 0.2);
 }

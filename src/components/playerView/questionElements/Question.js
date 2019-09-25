@@ -1,16 +1,17 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import QuestionHeader from "./QuestionHeader";
-import Answers from "./Answers";
+import QuestionHeader from './QuestionHeader';
+import Answers from './Answers';
 
 class Question extends Component {
-  render() {
-    return (
-        <QuestionHeader />
-        <Answers />
-     </>
-    );
-  }
+	render() {
+		return (
+			<React.Fragment>
+				<QuestionHeader />
+				<Answers />
+			</React.Fragment>
+		);
+	}
 }
 
 export default Question;
