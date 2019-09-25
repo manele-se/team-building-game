@@ -5,7 +5,7 @@ import '../scoreView/score.css';
 
 const ChooseAvatar = () => {
 	return (
-		<div className="container scoreViewBackground">
+		<div className=" scoreViewBackgound">
 			<h1 className="titelAvatar">Choose your avatar!</h1>
 			<div className="container chooseAvatar">
 				<img src={IMG.ape} />
