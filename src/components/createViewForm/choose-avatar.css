@@ -1,6 +1,14 @@
+.titelAvatar {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  color: aliceblue;
+}
+
 .chooseAvatar {
   align-items: center;
   display: grid;
+
   grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;

@@ -40,7 +40,6 @@ class CreateTeamView extends React.Component {
     });
   };
 
-  //!!!It doesn't work with date!
   onChoosingDate = (dispatch, date) => {
     console.log(date);
     this.setState({

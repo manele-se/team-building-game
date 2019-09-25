@@ -25,6 +25,7 @@ function App() {
         <Route exact path="/:gameId" component={WelcomeView} />
         <Route exact path="/new/member" component={EnterPlayerName} />
         <Route exact path="/question/player" component={CreatePlayerForm} />
+        <Route exact path="/avatar/player/:playerId" component={ChooseAvatar} />
       </Router>
     </Provider>
   );
