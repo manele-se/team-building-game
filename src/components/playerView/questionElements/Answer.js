@@ -6,8 +6,7 @@ class Answer extends Component {
   state = {
     background: ""
   };
-  //ifRight: setBackground green, showModalPanelRight, playerScore ++, uppdateScore in Master
-  //ifWrong: setBackf´ground red, showModalPanelWrong
+
   onShowResult = dispatch => {
     const { isRight } = this.props;
     dispatch({
@@ -41,8 +40,7 @@ class Answer extends Component {
               style={{ cursor: "pointer" }}
               onClick={this.onShowResult.bind(this, dispatch)}
               data-toggle="modal"
-              data-target={isRight ? "#modalRight" : "#modalWrong"}
-            >
+              data-target={isRight ? "#modalRight" : "#modalWrong"}>
               <div className="list-group listCard ">
                 <div className="list-group listText ">{textAnswer} </div>
               </div>

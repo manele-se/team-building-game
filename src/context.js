@@ -32,6 +32,15 @@ const addQuestioninDatabase = async (state, question) => {
   return { ...state, player };
 };
 
+const deletePlayerinDatabase = async (state, players) => {
+  // filter out the memeber you want to delete
+  const player = await Firebase.saveDoc("players", {
+    ...state.player,
+    players: players.filter(player => player.name !== player.name)
+  });
+  return { ...state, player };
+};
+
 const addPlayerinDatabase = async (state, name) => {
   // First create a new document in the players collection
   const newPlayerDoc = await Firebase.saveDoc("players", {
@@ -81,6 +90,8 @@ const reducer = async (state, action) => {
     case "ANSWERED":
       //send the player id and isRight answer to the database to uppdate the scoreboard
       return await answeredReducer(state, action.payload);
+    case "DELETE_MEMBER":
+      return await deletePlayerinDatabase(state, action.payload);
 
     default:
       console.error("unknown action", action);

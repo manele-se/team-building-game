@@ -63,7 +63,6 @@ class CreateTeamView extends React.Component {
           return (
             <React.Fragment>
               <Header />
-
               <div className="container customFormContainer ">
                 <form onSubmit={this.handleSubmit.bind(this, dispatch)}>
                   <input
@@ -74,8 +73,12 @@ class CreateTeamView extends React.Component {
                     ref={this.titleRef}
                   />
 
-                  {players.map(player => (
-                    <TeamMember key={player.id} player={player} />
+                  {players.map((player, index) => (
+                    <TeamMember
+                      key={index}
+                      player={player}
+                      className="ulCustom"
+                    />
                   ))}
 
                   <AddMemberButton

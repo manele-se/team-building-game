@@ -1,32 +1,48 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes, faEdit, faCopy } from "@fortawesome/free-solid-svg-icons";
+import { Consumer } from "../../context";
 class TeamMember extends Component {
+  //delete a player
+  onDeteleMember = (dispatch, name) => {
+    dispatch({
+      type: "DELETE_MEMBER",
+      payload: name
+    });
+  };
+
   render() {
-    //const { players } = value;
     return (
-      <React.Fragment>
-        <div className="list-group-item listCustom">
-          <h4>
-            {players.name}{" "}
-            <i className="fas fa-sort-down" style={{ cursor: "pointer" }} />
-            <i
-              className="fas fa-times"
-              style={{ cursor: "pointer", float: "right", color: "red" }}
-            />
-            <Link to="#">
-              <i
-                className="fas fa-pencil-alt"
-                style={{
-                  cursor: "pointer",
-                  float: "right",
-                  color: "black",
-                  marginRight: "1rem"
-                }}
-              />
-            </Link>
-          </h4>
-        </div>
-      </React.Fragment>
+      <Consumer>
+        {value => {
+          const { dispatch } = value;
+          const { player } = this.props;
+          return (
+            <div className=" list-group listCustom ">
+              <h4>
+                {player.name}{" "}
+                <FontAwesomeIcon
+                  icon={faTimes}
+                  style={{ cursor: "pointer", float: "right", color: "red" }}
+                  onClick={name => {
+                    this.onDeteleMember(dispatch, name);
+                  }}
+                />
+                <FontAwesomeIcon
+                  icon={faCopy}
+                  style={{
+                    cursor: "pointer",
+                    float: "right",
+                    marginRight: "2rem",
+                    color: "#808080"
+                  }}
+                />
+              </h4>
+            </div>
+          );
+        }}
+      </Consumer>
     );
   }
 }

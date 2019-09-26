@@ -1,67 +1,69 @@
 :root {
-    --color-primary: rgb(165, 60, 214);
-    --color-secondary: rgb(26, 39, 216);
-    --color-text-dark: #333;
-    --color-background: rgb(241, 241, 241);
+  --color-primary: rgb(165, 60, 214);
+  --color-secondary: rgb(26, 39, 216);
+  --color-text-dark: #333;
+  --color-background: rgb(241, 241, 241);
+  --color-gray: #c3c3c3;
 }
 
 .formStyle {
-    border-color: rgb(236, 236, 236);
-    box-shadow: 0px 6px 2px rgba(177, 177, 177, 0.2);
+  border-color: rgb(236, 236, 236);
+  box-shadow: 0px 6px 2px rgba(177, 177, 177, 0.2);
 }
 
 .customForm {
-    padding: 5rem;
-    font-size: 1.8rem;
+  padding: 5rem;
+  font-size: 1.8rem;
 }
 
 .customFormContainer {
-    margin: 10%;
+  margin: 10%;
 }
 
 .customCreateQuestionsContainer {
-    margin-top: 4rem;
+  margin-top: 4rem;
 }
 
 .datePickerStyle {
-    padding: 0.5rem 0 0.5rem 0;
-    text-align: center;
-    font-size: 1.6rem;
-    color: var(--color-text-dark);
+  padding: 0.5rem 0 0.5rem 0;
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--color-text-dark);
 }
 
 .customQuestion {
-    padding: 4rem;
-    margin-bottom: 1rem;
+  padding: 4rem;
+  margin-bottom: 1rem;
 }
 
 .listCustom {
-    font-size: 1.6rem;
-    background: var(--color-background);
-    color: var(--color-text-dark);
-    border-top: none;
+  font-size: 1.6rem;
+  background: var(--color-background);
+  color: var(--color-text-dark);
+  border-bottom: 1px dotted var(--color-gray);
+  padding: 2rem 0.2rem 0.2rem 0.2rem;
+  margin-top: 2rem;
 }
 
 .ulCustom {
-    margin: 2rem;
+  margin: 2rem;
 }
 
 .cardAnswer {
-    padding: 2.3rem;
-    margin: 2rem 0rem 0rem 0rem;
-    text-align: left;
+  padding: 2.3rem;
+  margin: 2rem 0rem 0rem 0rem;
+  text-align: left;
 }
 
 .checkBoxCustom {
-    cursor: pointer;
-    background-color: transparent;
-    margin: 2.4rem 0rem 0rem 0rem;
-    width: 4rem;
+  cursor: pointer;
+  background-color: transparent;
+  margin: 2.4rem 0rem 0rem 0rem;
+  width: 4rem;
 }
-
 
 /*fixa*/
 
 .last {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
