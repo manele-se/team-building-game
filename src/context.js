@@ -32,13 +32,13 @@ const addQuestioninDatabase = async (state, question) => {
   return { ...state, player };
 };
 
-const deletePlayerinDatabase = async (state, players) => {
-  // filter out the memeber you want to delete
-  const player = await Firebase.remove("players", {
-    ...state.player,
-    players: state.players.filter(player => player.name !== player.name)
+const deletePlayerinDatabase = async (state, id) => {
+  // filter out the memeber you want to delete from the games array
+  const game = await Firebase.saveDoc("games", {
+    ...state.game.players,
+    players: state.game.players.filter(player => player.id !== id)
   });
-  return { ...state, player };
+  return { ...state, game };
 };
 
 const addPlayerinDatabase = async (state, name) => {

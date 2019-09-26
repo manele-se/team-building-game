@@ -73,10 +73,11 @@ class CreateTeamView extends React.Component {
                     ref={this.titleRef}
                   />
 
-                  {players.map((player, index) => (
+                  {players.map((player, index, id) => (
                     <TeamMember
                       key={index}
                       player={player}
+                      id={id}
                       className="ulCustom"
                     />
                   ))}

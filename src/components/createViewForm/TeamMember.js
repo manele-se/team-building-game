@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faEdit, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { Consumer } from "../../context";
+
 class TeamMember extends Component {
   //delete a player
-  onDeteleMember = (dispatch, name) => {
+  onDeteleClick = (dispatch, id) => {
+    console.log(`id: ${id}`);
     dispatch({
       type: "DELETE_MEMBER",
-      payload: name
+      payload: id
     });
   };
 
@@ -25,8 +27,8 @@ class TeamMember extends Component {
                 <FontAwesomeIcon
                   icon={faTimes}
                   style={{ cursor: "pointer", float: "right", color: "red" }}
-                  onClick={name => {
-                    this.onDeteleMember(dispatch, name);
+                  onClick={id => {
+                    this.onDeteleClick(dispatch, player.id);
                   }}
                 />
                 <FontAwesomeIcon
