@@ -2,9 +2,10 @@ import React from "react";
 import { Consumer } from "../../context";
 import Header from "../../layouts/Header";
 import AddMemberButton from "../../layouts/buttons/AddMemberButton";
-import { Link } from "react-router-dom";
+
 import EnterPlayerName from "../modals/EnterPlayerName";
 import DatePicker from "react-datepicker";
+import TeamMember from "./TeamMember";
 import "./createView.css";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -72,13 +73,11 @@ class CreateTeamView extends React.Component {
                     placeholder="Type the title of your game"
                     ref={this.titleRef}
                   />
-                  <ul className="list-group list-group-flush ulCustom">
-                    {players.map((player, index) => (
-                      <li className="list-group-item listCustom" key={index}>
-                        {player.name}
-                      </li>
-                    ))}
-                  </ul>
+
+                  {players.map(player => (
+                    <TeamMember key={player.id} player={player} />
+                  ))}
+
                   <AddMemberButton
                     onClick={() => {
                       this.onAddMemberClicked(dispatch);
