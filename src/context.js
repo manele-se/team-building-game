@@ -88,6 +88,7 @@ const reducer = async (state, action) => {
 			//update database with the players name
 			return await addPlayerinDatabase(state, action.payload);
 		case 'ADD_QUESTION':
+			//update database, add a question to the player document
 			return await addQuestioninDatabase(state, action.payload);
 		case 'ANSWERED':
 			//send the player id and isRight answer to the database to uppdate the scoreboard

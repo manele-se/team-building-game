@@ -7,20 +7,26 @@ const ContinueButton = () => {
 		<Consumer>
 			{(value) => {
 				const { players, title, id } = value.game;
+				const { questions } = value.player;
+
+				let buttonOk = false;
+				let url = '';
+				if (players && players.length >= 2 && title) {
+					buttonOk = true;
+					url = `/team/created/${id}`;
+				} else if (questions && questions.length >= 1) {
+					buttonOk = true;
+					url = `/avatar/player/${value.player.id}`;
+				}
+
 				return (
 					<Route
 						render={({ history }) => (
 							<button
 								type="button"
-								className={
-									players.length >= 2 && title ? (
-										'btn continueButton continueButtonOk'
-									) : (
-										'btn continueButton'
-									)
-								}
+								className={buttonOk ? 'btn continueButton continueButtonOk' : 'btn continueButton'}
 								onClick={() => {
-									history.push(`/team/created/${id}`);
+									history.push(url);
 								}}>
 								Continue
 							</button>
