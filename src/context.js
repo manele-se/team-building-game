@@ -34,9 +34,9 @@ const addQuestioninDatabase = async (state, question) => {
 
 const deletePlayerinDatabase = async (state, players) => {
   // filter out the memeber you want to delete
-  const player = await Firebase.saveDoc("players", {
+  const player = await Firebase.remove("players", {
     ...state.player,
-    players: players.filter(player => player.name !== player.name)
+    players: state.players.filter(player => player.name !== player.name)
   });
   return { ...state, player };
 };
