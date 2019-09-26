@@ -13,7 +13,6 @@ import { Provider } from "./context";
 import EnterPlayerName from "./components/modals/EnterPlayerName";
 import * as ROUTES from "../src/routes";
 import CongratulationView from "./components/createViewForm/CongratulationView";
-import TeamMember from "./components/createViewForm/TeamMember";
 
 function App() {
   return (
@@ -26,14 +25,17 @@ function App() {
         <Route exact path="/play/:playerId" component={PlayerView} />
         <Route exact path="/:gameId" component={WelcomeView} />
         <Route exact path="/new/member" component={EnterPlayerName} />
-        <Route exact path="/question/player" component={CreatePlayerForm} />
+        <Route
+          exact
+          path="/question/player/:playerId"
+          component={CreatePlayerForm}
+        />
         <Route exact path="/avatar/player/:playerId" component={ChooseAvatar} />
         <Route
           exact
           path="/team/created/:gameId"
           component={CongratulationView}
         />
-        <Route exact path="/team/member/card" component={TeamMember} />
       </Router>
     </Provider>
   );

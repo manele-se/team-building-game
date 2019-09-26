@@ -1,25 +1,25 @@
 .titelAvatar {
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 5rem;
-    color: aliceblue;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 10rem;
+  color: #333;
 }
 
 .chooseAvatar {
-    align-items: center;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-column-gap: 3rem;
-    grid-row-gap: 3rem;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 5rem;
+  grid-row-gap: 5rem;
 }
 
 .chooseAvatar img {
-    width: 120px;
-    cursor: pointer;
-    filter: saturate(0.5);
-    transition: filter 0.2s;
+  width: 120px;
+  cursor: pointer;
+  filter: saturate(0.5);
+  transition: filter 0.2s;
 }
 
 .chooseAvatar img:hover {
-    filter: saturate(1.5) drop-shadow(0 0 1rem rgb(224, 208, 112));
+  filter: saturate(1.5) drop-shadow(0 0 1rem rgb(26, 39, 216));
 }

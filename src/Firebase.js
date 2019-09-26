@@ -3,6 +3,14 @@ import firebaseConfig from "./firebaseConfig";
 
 const firebase = GoogleFirebase.initializeApp(firebaseConfig);
 
+const deleteDoc = async (collection, id) => {
+  await firebase
+    .firestore()
+    .collection(collection)
+    .doc(id)
+    .delete();
+};
+
 const saveDoc = async (collection, state) => {
   // if state exists, get the id from the state
   const id = state && state.id;
@@ -39,7 +47,8 @@ const saveDoc = async (collection, state) => {
 
 const Firebase = {
   firestore: firebase.firestore.bind(firebase),
-  saveDoc: saveDoc
+  saveDoc: saveDoc,
+  deleteDoc: deleteDoc
 };
 
 export default Firebase;

@@ -1,26 +1,35 @@
-import React from 'react';
-import IMG from '../../images';
-import './choose-avatar.css';
-import '../scoreView/score.css';
+import React from "react";
+import IMG from "../../images";
+import "./choose-avatar.css";
+import "../scoreView/score.css";
+import Header from "../../layouts/Header";
 
+//save the avatar which correspond to the playerId in the database
 const ChooseAvatar = () => {
-	return (
-		<div className=" scoreViewBackgound">
-			<h1 className="titelAvatar">Choose your avatar!</h1>
-			<div className="container chooseAvatar">
-				<img src={IMG.ape} />
-				<img src={IMG.badger} />
-				<img src={IMG.cat} />
-				<img src={IMG.cow} />
-				<img src={IMG.crab} />
-				<img src={IMG.dog} />
-				<img src={IMG.goat} />
-				<img src={IMG.hedgehog} />
-				<img src={IMG.mouse} />
-				<img src={IMG.turtle} />
-			</div>
-		</div>
-	);
+  return (
+    <React.Fragment>
+      <Header />
+      <h1 className="titelAvatar">Choose your avatar!</h1>
+      <div className="container chooseAvatar">
+        <img
+          className="img1"
+          src={IMG.ape}
+          onClick={() => {
+            this.onAvatarClicked();
+          }}
+        />
+        <img className="img2" src={IMG.badger} />
+        <img className="img3" src={IMG.cat} />
+        <img className="img4" src={IMG.cow} />
+        <img className="img5" src={IMG.crab} />
+        <img className="img6" src={IMG.dog} />
+        <img className="img7" src={IMG.goat} />
+        <img className="img8" src={IMG.hedgehog} />
+        <img className="img9" src={IMG.mouse} />
+        <img className="img10" src={IMG.turtle} />
+      </div>
+    </React.Fragment>
+  );
 };
 
 export default ChooseAvatar;
