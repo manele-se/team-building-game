@@ -4,24 +4,29 @@ import Header from "../../layouts/Header";
 import AddQuestionButton from "../../layouts/buttons/AddQuestionButton";
 import CreateAnswer from "./CreateAnswer";
 import Spinner from "../../layouts/Spinner";
+import CreateQuestion from "./CreateQuestion";
 
 class CreatePlayerForm extends React.Component {
   // Reference to the question title input element
   questionRef = React.createRef();
+  answersRef = React.createRef();
 
   onAddQuestionCreated = dispatch => {
     const question = this.questionRef.current.value;
+    const answer = this.answersRef.current.value;
     console.log(`New question: ${question}`);
 
     dispatch({
       type: "ADD_QUESTION",
       payload: {
         title: question,
-        answers: []
+        answers: [],
+        counter: 0
       }
     });
 
     this.questionRef.current.value = "";
+    this.answersRef.current.value = [];
   };
   render() {
     const answers = [{}, {}, {}];
@@ -37,13 +42,7 @@ class CreatePlayerForm extends React.Component {
                 <Header />
                 <div className="container customCreateQuestionsContainer">
                   <form>
-                    <input
-                      type="text"
-                      className="form-control form-control-lg customQuestion  formStyle "
-                      id="question"
-                      placeholder="Type here your question..."
-                      ref={this.questionRef}
-                    />
+                    <CreateQuestion />
                     <div className="container  answerContainer">
                       {answers.map((answer, index) => (
                         <CreateAnswer key={index} />
@@ -52,6 +51,7 @@ class CreatePlayerForm extends React.Component {
                         onClick={() => {
                           this.onAddQuestionCreated(dispatch);
                         }}
+                        ref={this.answersRef}
                       />
                     </div>
                   </form>
