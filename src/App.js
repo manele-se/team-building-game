@@ -13,6 +13,7 @@ import { Provider } from "./context";
 import EnterPlayerName from "./components/modals/EnterPlayerName";
 import * as ROUTES from "../src/routes";
 import CongratulationView from "./components/createViewForm/CongratulationView";
+import About from "../src/layouts/About";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/play/:playerId" component={PlayerView} />
         <Route exact path="/:gameId" component={WelcomeView} />
         <Route exact path="/new/member" component={EnterPlayerName} />
+        <Route exact path="/about/the/game" component={About} />
         <Route
           exact
           path="/question/player/:playerId"
