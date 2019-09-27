@@ -4,7 +4,6 @@ import soundfile from "../../music/music.mp3";
 import ScoreBoard from "./ScoreBoard";
 import { isValid } from "date-fns";
 //why the title is not there????
-//TODO: fix the layout it is awful
 
 class ScoreView extends Component {
   render() {
