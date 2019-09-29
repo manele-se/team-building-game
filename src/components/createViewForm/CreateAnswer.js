@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './create-answer.css';
-import { threadId } from 'worker_threads';
 
 class CreateAnswer extends Component {
 	text = '';
