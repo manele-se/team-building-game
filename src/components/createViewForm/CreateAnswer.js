@@ -10,7 +10,7 @@ class CreateAnswer extends Component {
   };
 
   onCheckboxChanged = e => {
-    this.correct = e.target.value;
+    this.correct = e.target.checked;
   };
 
   //need to be a consumer to save the correct answer?
