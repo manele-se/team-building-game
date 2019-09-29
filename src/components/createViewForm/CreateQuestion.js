@@ -8,8 +8,8 @@ class CreateQuestion extends Component {
           type="text"
           className="form-control form-control-lg customForm formStyle "
           id="titleGame"
-          placeholder="Type the title of your game"
-          ref={this.titleRef}
+          placeholder="Type your question"
+          ref={this.props.textRef}
         />
       </div>
     );

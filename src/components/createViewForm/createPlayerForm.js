@@ -9,27 +9,39 @@ import CreateQuestion from "./CreateQuestion";
 class CreatePlayerForm extends React.Component {
   // Reference to the question title input element
   questionRef = React.createRef();
-  answersRef = React.createRef();
+
+  // TODO: Refactor to make more generic
+  answers = [
+    {
+      ref: React.createRef()
+    },
+    {
+      ref: React.createRef()
+    },
+    {
+      ref: React.createRef()
+    }
+  ];
 
   onAddQuestionCreated = dispatch => {
     const question = this.questionRef.current.value;
-    const answer = this.answersRef.current.value;
+
     console.log(`New question: ${question}`);
 
     dispatch({
       type: "ADD_QUESTION",
       payload: {
         title: question,
-        answers: [],
-        counter: 0
+        answers: this.answers.map(answer => ({
+          text: answer.ref.current.text,
+          isCorrect: answer.ref.current.correct
+        }))
       }
     });
 
     this.questionRef.current.value = "";
-    this.answersRef.current.value = [];
   };
   render() {
-    const answers = [{}, {}, {}];
     return (
       <Consumer>
         {value => {
@@ -42,16 +54,15 @@ class CreatePlayerForm extends React.Component {
                 <Header />
                 <div className="container customCreateQuestionsContainer">
                   <form>
-                    <CreateQuestion />
+                    <CreateQuestion textRef={this.questionRef} />
                     <div className="container  answerContainer">
-                      {answers.map((answer, index) => (
-                        <CreateAnswer key={index} />
+                      {this.answers.map((answer, index) => (
+                        <CreateAnswer key={index} ref={answer.ref} />
                       ))}
                       <AddQuestionButton
                         onClick={() => {
                           this.onAddQuestionCreated(dispatch);
                         }}
-                        ref={this.answersRef}
                       />
                     </div>
                   </form>
