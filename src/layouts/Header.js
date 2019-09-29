@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "../layouts/layouts.css";
 
 const Header = props => {
+  console.log("Header props:", props);
   return (
     <nav className="navbar navbar-expand-sm headerStyle ">
       <ul className="navbar-nav d-flex w-100">
@@ -17,7 +18,10 @@ const Header = props => {
           <ExitButton />
         </li>
         <li className="nav-item">
-          <ContinueButton />
+          <ContinueButton
+            canContinue={props.canContinue}
+            continueUrl={props.continueUrl}
+          />
         </li>
       </ul>
     </nav>

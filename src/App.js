@@ -8,7 +8,7 @@ import WelcomeView from "./components/WelcomeView";
 import TeamView from "./components/playerView/TeamView";
 import CreateTeamView from "./components/createViewForm/CreateTeamView";
 import ChooseAvatar from "./components/createViewForm/ChooseAvatar";
-import CreatePlayerForm from "./components/createViewForm/CreatePlayerForm";
+import CreatePlayerForm from "./components/createViewForm/createPlayerForm";
 import { Provider } from "./context";
 
 import * as ROUTES from "../src/routes";

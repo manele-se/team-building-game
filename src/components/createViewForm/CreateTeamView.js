@@ -59,10 +59,15 @@ class CreateTeamView extends React.Component {
         {value => {
           const { dispatch, game } = value;
           const players = game.players;
+          const title = game.title;
+          const continueOk = players && players.length >= 2 && title;
 
           return (
             <React.Fragment>
-              <Header />
+              <Header
+                canContinue={continueOk}
+                continueUrl={`/team/created/${game.id}`}
+              />
               <div className="container customFormContainer ">
                 <form onSubmit={this.handleSubmit.bind(this, dispatch)}>
                   <input

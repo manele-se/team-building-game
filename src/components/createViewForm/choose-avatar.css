@@ -18,8 +18,35 @@
   cursor: pointer;
   filter: saturate(0.5);
   transition: filter 0.2s;
+  transform-origin: 50% 90%;
 }
 
-.chooseAvatar img:hover {
+.chooseAvatar img:hover,
+.chooseAvatar img.selected {
   filter: saturate(1.5) drop-shadow(0 0 1rem rgb(26, 39, 216));
+}
+
+.chooseAvatar img.selected {
+  animation: wiggle 0.5s;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-20deg);
+  }
+  40% {
+    transform: rotate(15deg);
+  }
+  60% {
+    transform: rotate(-10deg);
+  }
+  80% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
