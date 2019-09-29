@@ -5,8 +5,10 @@ import { faTimes, faEdit, faCopy } from "@fortawesome/free-solid-svg-icons";
 import { Consumer } from "../../context";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
+// OBS!! Byt ut domännamnet
+const DOMAIN_NAME = "http://localhost:3000/";
+
 class TeamMember extends Component {
-  //den kopierar inte länken men bara texten i rutan
   state = {
     copied: false
   };
@@ -21,6 +23,7 @@ class TeamMember extends Component {
   };
 
   onCopy = () => {
+    console.log("copied!");
     this.setState({ copied: true });
   };
 
@@ -33,7 +36,10 @@ class TeamMember extends Component {
           return (
             <div className=" list-group listCustom ">
               <h4>
-                {player.name} <Link> {`/question/player/${player.id}`}</Link>
+                {player.name}{" "}
+                <Link to={`/question/player/${player.id}`}>
+                  {`/question/player/${player.id}`}
+                </Link>
                 <FontAwesomeIcon
                   icon={faTimes}
                   style={{ cursor: "pointer", float: "right", color: "red" }}
@@ -41,7 +47,9 @@ class TeamMember extends Component {
                     this.onDeteleClick(dispatch, player.id);
                   }}
                 />
-                <CopyToClipboard>
+                <CopyToClipboard
+                  onCopy={this.onCopy}
+                  text={`${DOMAIN_NAME}question/player/${player.id}`}>
                   <FontAwesomeIcon
                     icon={faCopy}
                     style={{
@@ -50,8 +58,6 @@ class TeamMember extends Component {
                       marginRight: "2rem",
                       color: "#808080"
                     }}
-                    onCopy={this.onCopy}
-                    text={`/question/player/${player.id}`}
                   />
                 </CopyToClipboard>
               </h4>
