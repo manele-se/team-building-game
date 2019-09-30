@@ -10,9 +10,9 @@ import CreateTeamView from "./components/createViewForm/CreateTeamView";
 import ChooseAvatar from "./components/createViewForm/ChooseAvatar";
 import CreatePlayerForm from "./components/createViewForm/createPlayerForm";
 import { Provider } from "./context";
-
 import * as ROUTES from "../src/routes";
 import CongratulationView from "./components/createViewForm/CongratulationView";
+import PlayerCreated from "./components/createViewForm/PlayerCreated";
 import About from "../src/layouts/About";
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
         <Route exact path="/play/:playerId" component={PlayerView} />
         <Route exact path="/:gameId" component={WelcomeView} />
         <Route exact path="/about/the/game" component={About} />
+        <Route exact path="/player/ready/:playerId" component={PlayerCreated} />
         <Route
           exact
           path="/question/player/:playerId"

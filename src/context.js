@@ -23,6 +23,14 @@ const addDateinDatabase = async (state, date) => {
   return { ...state, game };
 };
 
+const addAvatarinDatabase = async (state, avatar) => {
+  // Update the game.date value with the new date
+  const player = await Firebase.saveDoc("players", {
+    ...state.player,
+    avatar: avatar
+  });
+  return { ...state, player };
+};
 const addQuestioninDatabase = async (state, question) => {
   // Add a new question to the end of the player.questions array
   const player = await Firebase.saveDoc("players", {
@@ -90,6 +98,9 @@ const reducer = async (state, action) => {
     case "ADD_QUESTION":
       //update database, add a question to the player document
       return await addQuestioninDatabase(state, action.payload);
+    case "ADD_AVATAR":
+      //add the avatar in the player doc
+      return await addAvatarinDatabase(state, action.payload);
     case "ANSWERED":
       //send the player id and isRight answer to the database to uppdate the scoreboard
       return await answeredReducer(state, action.payload);
