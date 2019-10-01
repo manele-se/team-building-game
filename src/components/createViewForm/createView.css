@@ -75,14 +75,30 @@
   margin: 6rem;
   width: 300px;
   transform-origin: 50% 90%;
+  position: relative;
+  left: 0;
+  top: 0;
   animation: move 2s infinite;
 }
 
 @keyframes animation {
   from {
-    left: 0px;
+    top: 100px;
+    animation-timing-function: ease-out;
+  }
+  25% {
+    top: 50px;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    top: 150px;
+    animation-timing-function: ease-out;
+  }
+  75% {
+    top: 75px;
+    animation-timing-function: ease-in;
   }
   to {
-    right: 200px;
+    top: 100px;
   }
 }
