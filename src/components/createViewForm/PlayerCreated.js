@@ -13,16 +13,15 @@ class PlayerCreated extends Component {
       <Consumer>
         {value => {
           const { player, game } = value;
-          if (player && player.id && game && game.id && game.date) {
+          if (player && player.id && game && game.id) {
             return (
               <div className="scoreViewBackgound">
                 <div className="container ">
                   <h2 className="round">
-                    {`Congratulation! You are now ready to play 
-									the ${game.datetoDate().toLocaleDateString()}`
-                      ? game.date
-                      : "Congratulation, you are now ready to play!"}
-                    }
+                    {game.date
+                      ? `Congratulation! You are now ready to play 
+									the ${game.date.toDate().toLocaleDateString()}`
+                      : "Congratulation! You are now ready to play"}
                   </h2>
                   <div className="container choosenAvatar ">
                     <img src={avatars[player.avatar]} alt="avatar" />

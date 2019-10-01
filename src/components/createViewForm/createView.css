@@ -71,6 +71,18 @@
 
 .choosenAvatar img {
   align-items: center;
-  margin: 2rem;
-  width: 320px;
+  text-align: center;
+  margin: 6rem;
+  width: 300px;
+  transform-origin: 50% 90%;
+  animation: move 2s infinite;
+}
+
+@keyframes animation {
+  from {
+    left: 0px;
+  }
+  to {
+    right: 200px;
+  }
 }
