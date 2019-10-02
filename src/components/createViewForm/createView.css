@@ -81,7 +81,7 @@
   animation: move 2s infinite;
 }
 
-@keyframes animation {
+@keyframes move {
   from {
     top: 100px;
     animation-timing-function: ease-out;
