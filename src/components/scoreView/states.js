@@ -1,0 +1,7 @@
+export default {
+	SHOW_SUBJECT: 1,
+	SHOW_SCORE: 2,
+	SHOW_RIGHT_ANSWER: 3,
+	SHOW_WINNER: 4,
+	SHOW_GAME_OVER: 5
+};
