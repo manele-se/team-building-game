@@ -15,6 +15,7 @@ const ContinueButton = props => {
               : "btn continueButton"
           }
           onClick={() => {
+            // TODO: Check canContinue before pushing the next url
             history.push(continueUrl);
           }}>
           Continue
