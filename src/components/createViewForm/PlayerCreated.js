@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import { Consumer } from "../../context";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Consumer } from '../../context';
 
-import soundfile from "../../music/music4.mp3";
-import Spinner from "../../layouts/Spinner";
-import avatars from "../../images";
+import soundfile from '../../music/music4.mp3';
+import Spinner from '../../layouts/Spinner';
+import avatars from '../../images';
 
 class PlayerCreated extends Component {
   render() {
@@ -11,17 +12,21 @@ class PlayerCreated extends Component {
     const { playerId } = this.props.match.params;
     return (
       <Consumer>
-        {value => {
+        {(value) => {
           const { player, game } = value;
           if (player && player.id && game && game.id) {
             return (
               <div className="scoreViewBackgound">
                 <div className="container ">
                   <h2 className="round">
-                    {game.date
-                      ? `Congratulation! You are now ready to play 
+                    <Link to={`/play/${player.id}`}>
+                      {game.date ? (
+                        `Congratulation! You are now ready to play 
 									the ${game.date.toDate().toLocaleDateString()}`
-                      : "Congratulation! You are now ready to play"}
+                      ) : (
+                        'Congratulation! You are now ready to play'
+                      )}
+                    </Link>
                   </h2>
                   <div className="container choosenAvatar ">
                     <img src={avatars[player.avatar]} alt="avatar" />
