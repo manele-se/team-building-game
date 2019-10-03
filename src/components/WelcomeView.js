@@ -7,10 +7,14 @@ import soundfile from "../music/music4.mp3";
 import MeetTeamButton from "../layouts/buttons/MeetTeamButton";
 
 class WelcomeView extends Component {
+  startGame = () => {
+    console.log("start game");
+  };
   render() {
     const { gameId } = this.props.match.params;
     // TODO: Make an EditTeamButton component
-    //if there is a game Id
+    //if there is a game Id go to the start view
+    //if start gme is pressed go to the view SubjectView
     return (
       <div className="customContainer">
         <div className="container">
@@ -19,7 +23,11 @@ class WelcomeView extends Component {
             {gameId ? (
               <>
                 <Link to={`/score/${gameId}`} className="nav-link ">
-                  <StartButton />
+                  <StartButton
+                    onClick={() => {
+                      this.startGame();
+                    }}
+                  />
                 </Link>
                 <Link to={`/team/${gameId}`} className="nav-link ">
                   <MeetTeamButton />

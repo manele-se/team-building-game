@@ -81,13 +81,14 @@
   animation: move 2s infinite;
 }
 
+/*check this animation so that the avatar goes*/
 @keyframes move {
   from {
     top: 100px;
     animation-timing-function: ease-out;
   }
   25% {
-    top: 50px;
+    top: 90px;
     animation-timing-function: ease-in;
   }
   50% {

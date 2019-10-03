@@ -14,6 +14,7 @@ import * as ROUTES from "../src/routes";
 import CongratulationView from "./components/createViewForm/CongratulationView";
 import PlayerCreated from "./components/createViewForm/PlayerCreated";
 import About from "../src/layouts/About";
+import SubjectView from "./components/scoreView/SubjectView";
 
 function App() {
   return (
@@ -27,6 +28,11 @@ function App() {
         <Route exact path="/:gameId" component={WelcomeView} />
         <Route exact path="/about/the/game" component={About} />
         <Route exact path="/player/ready/:playerId" component={PlayerCreated} />
+        <Route
+          exact
+          path="/subject/choosen/:playerId"
+          component={SubjectView}
+        />
         <Route
           exact
           path="/question/player/:playerId"
