@@ -4,7 +4,7 @@ import ScoreBoard from './ScoreBoard';
 
 class ScoreView extends Component {
 	render() {
-		const { gameId } = this.props.match.params;
+		const { gameId } = this.props;
 		return (
 			<React.Fragment>
 				<div className="scoreViewBackgound">

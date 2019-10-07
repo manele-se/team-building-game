@@ -9,21 +9,20 @@ import { Consumer } from '../../context';
 //en subject kommer att vara utvald av systemet
 //lägg till timer och avatar sysn inte!!
 class SubjectView extends Component {
-	countdownFinished = (dispatch) => {
-		//sent and action
-		console.log('countdown finished');
+	countdownFinished = () => {
+		this.props.countdownFinished();
 	};
 	render() {
 		return (
 			<Consumer>
 				{(value) => {
 					const { player, game, dispatch } = value;
-					const { playerId } = this.props.match.params;
+					const { playerId } = this.props;
 					if (player && player.id) {
 						return (
 							<div className="scoreViewBackgound">
 								<div className="container">
-									<Timer onFinished={() => this.countdownFinished(dispatch)} />
+									<Timer onFinished={() => this.countdownFinished()} />
 									<h1 className="round">{player.name}</h1>
 									<h2 className="round">Frågor nu handlar om dig!</h2>
 									<div className="container choosenAvatar ">
