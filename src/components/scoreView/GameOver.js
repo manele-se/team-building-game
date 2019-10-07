@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Consumer } from "../../context";
 import soundfile from "../../music/music4.mp3";
+import avatars from "../../images";
 
 //visar vem har vunnit hela spelkväll. Skicka data till databasen med alla spelarens data.
 //consumer

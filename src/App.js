@@ -15,6 +15,7 @@ import CongratulationView from "./components/createViewForm/CongratulationView";
 import PlayerCreated from "./components/createViewForm/PlayerCreated";
 import About from "../src/layouts/About";
 import SubjectView from "./components/scoreView/SubjectView";
+import MasterView from "./components/scoreView/MasterView";
 
 function App() {
   return (
@@ -22,13 +23,17 @@ function App() {
       <Router>
         <Route exact path={ROUTES.HOME_VIEW} component={WelcomeView} />
         <Route exact path="/score/:gameId" component={ScoreView} />
+        <Route exact path="/master/:gameId" component={MasterView} />
         <Route exact path="/team/:gameId" component={TeamView} />
         <Route exact path="/create/team" component={CreateTeamView} />
         <Route exact path="/play/:playerId" component={PlayerView} />
         <Route exact path="/:gameId" component={WelcomeView} />
         <Route exact path="/about/game/:gameId" component={About} />
         <Route exact path="/player/ready/:playerId" component={PlayerCreated} />
-        <Route exact path="/subject/choosen/:playerId" component={SubjectView}
+        <Route
+          exact
+          path="/subject/choosen/:playerId"
+          component={SubjectView}
         />
         <Route
           exact
