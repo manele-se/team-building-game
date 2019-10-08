@@ -68,38 +68,3 @@
 .last {
   margin-bottom: 2rem;
 }
-
-.choosenAvatar img {
-  align-items: center;
-  text-align: center;
-  margin: 6rem;
-  width: 300px;
-  transform-origin: 50% 90%;
-  position: relative;
-  left: 0;
-  top: 0;
-  animation: move 2s infinite;
-}
-
-/*check this animation so that the avatar goes*/
-@keyframes move {
-  from {
-    top: 100px;
-    animation-timing-function: ease-out;
-  }
-  25% {
-    top: 90px;
-    animation-timing-function: ease-in;
-  }
-  50% {
-    top: 150px;
-    animation-timing-function: ease-out;
-  }
-  75% {
-    top: 75px;
-    animation-timing-function: ease-in;
-  }
-  to {
-    top: 100px;
-  }
-}

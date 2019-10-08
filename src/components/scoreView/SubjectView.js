@@ -4,6 +4,7 @@ import Spinner from '../../layouts/Spinner';
 import avatars from '../../images';
 import Timer from './Timer';
 import { Consumer } from '../../context';
+import './score.css';
 
 //consumer, show the subject of the next group of questions and a timer
 //en subject kommer att vara utvald av systemet
@@ -22,10 +23,10 @@ class SubjectView extends Component {
 						return (
 							<div className="scoreViewBackgound">
 								<div className="container">
-									<Timer onFinished={() => this.countdownFinished()} />
+									<Timer seconds="12" onFinished={() => this.countdownFinished()} />
 									<h1 className="round">{player.name}</h1>
-									<h2 className="round">It's your turn now!</h2>
-									<div className="container choosenAvatar ">
+									<h1 className="round">It's your turn now!</h1>
+									<div className="container choosenAvatar">
 										<img src={avatars[player.avatar]} alt="avatar" />
 									</div>
 									<audio src={soundfile} autoPlay loop />
