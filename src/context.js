@@ -189,7 +189,7 @@ export class Provider extends Component {
 					console.log('Received snapshot', player);
 					tempPlayers[index] = player;
 					++playersCount;
-					if (playersCount === playerIds.length) {
+					if (playersCount >= playerIds.length) {
 						this.setState({ players: tempPlayers });
 					}
 				});
