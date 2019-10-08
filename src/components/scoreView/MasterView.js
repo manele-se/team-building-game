@@ -28,6 +28,7 @@ class MasterView extends Component {
 			gameState: gameStates.SHOW_SCORE
 		});
 	};
+
 	selectView(game) {
 		switch (this.state.gameState) {
 			case gameStates.SHOW_SUBJECT:

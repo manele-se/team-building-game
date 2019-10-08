@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import soundfile from '../../music/music.mp3';
+import soundfile from '../../music/music-remixed.mp3';
 import ScoreBoard from './ScoreBoard';
 
 class ScoreView extends Component {

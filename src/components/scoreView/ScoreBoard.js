@@ -38,7 +38,7 @@ class ScoreBoard extends Component {
 												playerId={player.id}
 												score={player.score || 0}
 												avatar={player.avatar}
-												currentSubject={player.id == currentPlayerId}
+												currentSubject={player.id === currentPlayerId}
 											/>
 										))}
 								</div>
