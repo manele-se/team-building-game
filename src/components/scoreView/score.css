@@ -19,3 +19,41 @@
 .scoreViewBackgound h2 a {
   color: #fff;
 }
+
+.player-progress-bar {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    padding: 0.5rem 2rem;
+}
+
+.player-progress-bar>.progress {
+    height: 3rem;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    align-self: center;
+}
+
+.player-progress-bar>.player-avatar-holder {
+    height: 6rem;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    align-self: center;
+}
+
+.player-progress-bar img.player-avatar {
+    height: 6rem;
+    width: 6rem;
+    object-fit: contain;
+    margin: 0;
+    transition: margin-left 0.5s ease-out;
+}
+
+.player-progress-bar.current-player img.player-avatar {
+    filter: drop-shadow(0 0 1rem rgb(26, 39, 216));
+}
+
+.player-progress-bar>.player-name {
+    font-size: 1.7rem;
+    grid-row: 2/3;
+    grid-column: 1/2;
+}

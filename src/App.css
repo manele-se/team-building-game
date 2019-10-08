@@ -15,10 +15,6 @@ body,
   background: var(--color-background);
 }
 
-.progress {
-  margin: 1.3rem;
-}
-
 .titleCard {
   background: linear-gradient(
     0deg,
@@ -77,15 +73,6 @@ body,
 .icon {
   font-size: 1.6rem;
   color: rgba(12, 12, 12, 0.2);
-}
-
-.avatar {
-  height: 3rem;
-}
-
-.player-progress-bar > p {
-  margin-top: -4rem;
-  margin-bottom: 4rem;
 }
 
 img.avatarTest {
