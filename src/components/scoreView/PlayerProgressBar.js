@@ -8,22 +8,22 @@ class PlayerProgressBar extends Component {
 	render() {
 		//consumer av states
 		//check the score for a player
-		const { playerId, name, score, avatar } = this.props;
+		const { playerId, name, score, avatar, currentSubject } = this.props;
+		const className = currentSubject ? 'player-progress-bar current-player' : 'player-progress-bar';
 		return (
-			<div className="player-progress-bar">
-				<ProgressBar striped variant="success" now={score} className="progress" />
-				<p>
+			<div className={className}>
+				<ProgressBar striped variant="success" now={score} />
+				<div className="player-avatar-holder">
 					<img
 						src={avatars[avatar]}
-						className="avatar"
+						className="player-avatar"
 						alt="avatar"
 						style={{
-							marginLeft: `${score * 0.95}%`,
-							transition: 'margin-left 0.5s ease-out'
+							marginLeft: `calc(${Math.round(score)}% - 3rem)`
 						}}
 					/>{' '}
-				</p>
-				<p>{name}</p>
+				</div>
+				<div className="player-name">{name}</div>
 			</div>
 		);
 	}

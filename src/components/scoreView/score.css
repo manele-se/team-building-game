@@ -1,23 +1,27 @@
 .board {
-  box-shadow: 0px 6px 2px rgba(177, 177, 177, 0.2);
-  margin: 5rem;
+    box-shadow: 0px 6px 2px rgba(177, 177, 177, 0.2);
+    margin: 5rem;
 }
 
 .round {
-  margin: 3rem;
-  text-align: center;
-  color: aliceblue;
+    margin: 3rem;
+    text-align: center;
+    color: aliceblue;
+}
+
+.round>strong {
+    color: lightsalmon;
 }
 
 .scoreViewBackgound {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(10deg, var(--color-primary) 40%, var(--color-secondary) 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(10deg, var(--color-primary) 40%, var(--color-secondary) 100%);
 }
 
 .scoreViewBackgound h2 a {
-  color: #fff;
+    color: #fff;
 }
 
 .player-progress-bar {
