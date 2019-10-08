@@ -11,14 +11,18 @@ class ScoreBoard extends Component {
 		return (
 			<Consumer>
 				{(value) => {
-					const { game, player } = value;
-					if (game && game.id && player && player.id) {
-						const currentPlayerId = player.id;
+					const { game, player, players } = value;
+					const currentPlayerId = player && player.id;
+					console.log(players);
+					const currentPlayer = players && players.find((p) => p.id === currentPlayerId);
+
+					if (game && game.id && player && currentPlayer) {
 						return (
 							<React.Fragment>
 								<h1 className="round">
 									Questions about <strong>{player.name}</strong>
 								</h1>
+								<h2 className="round">{currentPlayer.questions[0].title}</h2>
 								<div className="card mb-3 p-4 col-10 offset-1 board">
 									{game.players &&
 										game.players.map((player) => (
@@ -35,7 +39,16 @@ class ScoreBoard extends Component {
 							</React.Fragment>
 						);
 					} else {
-						value.subscribe(gameId);
+						if (!(game && game.id)) {
+							throw new Error('Should not be able to get here without a state.game!');
+						}
+						if (!(player && player.id)) {
+							throw new Error('Should not be able to get here without a state.player!');
+						}
+						if (!(players && players.length)) {
+							const playerIds = game.players.map((p) => p.id);
+							value.subscribePlayers(playerIds);
+						}
 						return (
 							<div>
 								<Spinner />

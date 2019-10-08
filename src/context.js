@@ -170,26 +170,33 @@ export class Provider extends Component {
       });
     },
 
-    // subscribe multiple players
-    subscribePlayers: (playerIds) => {
-      if (this.unsubscribePlayers) {
-        this.unsubscribePlayers.forEach((unsubscribeCallback) => unsubscribeCallback());
-        this.unsubscribePlayers = playerIds.map((playerId, index) => {
-          const unsubscribe = Firebase.firestore().collection('players').doc(playerId).onSnapshot((doc) => {
-            const player = {
-              ...doc.data(),
-              id: playerId
-            };
-            console.log('Received snapshot', player);
-            const players = this.state.players || [];
-            players[index] = player;
-            this.setState({ players: players });
-          });
-          return unsubscribe;
-        });
-      }
-    }
-  };
+		// subscribe multiple players
+		subscribePlayers: (playerIds) => {
+			if (this.unsubscribePlayers) {
+				this.unsubscribePlayers.forEach((unsubscribeCallback) => unsubscribeCallback());
+			}
+
+			const tempPlayers = [];
+			let playersCount = 0;
+
+			this.unsubscribePlayers = playerIds.map((playerId, index) => {
+				console.log(`Subscribing to multiple players, id=${playerId}`);
+				const unsubscribe = Firebase.firestore().collection('players').doc(playerId).onSnapshot((doc) => {
+					const player = {
+						...doc.data(),
+						id: playerId
+					};
+					console.log('Received snapshot', player);
+					tempPlayers[index] = player;
+					++playersCount;
+					if (playersCount === playerIds.length) {
+						this.setState({ players: tempPlayers });
+					}
+				});
+				return unsubscribe;
+			});
+		}
+	};
 
   render() {
     //the provider provides the value
