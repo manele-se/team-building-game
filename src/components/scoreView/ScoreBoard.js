@@ -6,17 +6,23 @@ import '../../components/scoreView/score.css';
 
 class ScoreBoard extends Component {
 	render() {
-		const { gameId } = this.props;
-
 		return (
 			<Consumer>
 				{(value) => {
 					const { game, player, players } = value;
-					const currentPlayerId = player && player.id;
-					console.log(players);
+
+					if (!(game && game.id)) {
+						throw new Error('Should not be able to get here without a state.game!');
+					}
+
+					if (!(player && player.id)) {
+						throw new Error('Should not be able to get here without a state.player!');
+					}
+
+					const currentPlayerId = player.id;
 					const currentPlayer = players && players.find((p) => p.id === currentPlayerId);
 
-					if (game && game.id && player && currentPlayer) {
+					if (currentPlayer) {
 						return (
 							<React.Fragment>
 								<h1 className="round">
@@ -39,16 +45,8 @@ class ScoreBoard extends Component {
 							</React.Fragment>
 						);
 					} else {
-						if (!(game && game.id)) {
-							throw new Error('Should not be able to get here without a state.game!');
-						}
-						if (!(player && player.id)) {
-							throw new Error('Should not be able to get here without a state.player!');
-						}
-						if (!(players && players.length)) {
-							const playerIds = game.players.map((p) => p.id);
-							value.subscribePlayers(playerIds);
-						}
+						const playerIds = game.players.map((p) => p.id);
+						value.subscribePlayers(playerIds);
 						return (
 							<div>
 								<Spinner />

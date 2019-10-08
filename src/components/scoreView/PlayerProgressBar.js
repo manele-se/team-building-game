@@ -8,7 +8,7 @@ class PlayerProgressBar extends Component {
 	render() {
 		//consumer av states
 		//check the score for a player
-		const { playerId, name, score, avatar, currentSubject } = this.props;
+		const { name, score, avatar, currentSubject } = this.props;
 		const className = currentSubject ? 'player-progress-bar current-player' : 'player-progress-bar';
 		return (
 			<div className={className}>
