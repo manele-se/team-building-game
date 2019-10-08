@@ -10,7 +10,7 @@ class ScoreView extends Component {
 				<div className="scoreViewBackgound">
 					<h1 className="round">Round 1 </h1>
 					<ScoreBoard gameId={gameId} />
-					<audio src={soundfile} autoPlay />
+					<audio src={soundfile} autoPlay loop />
 				</div>
 			</React.Fragment>
 		);
