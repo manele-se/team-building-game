@@ -16,7 +16,7 @@ class SubjectView extends Component {
 		return (
 			<Consumer>
 				{(value) => {
-					const { player, game, dispatch } = value;
+					const { player } = value;
 					const { playerId } = this.props;
 					if (player && player.id) {
 						return (
@@ -24,7 +24,7 @@ class SubjectView extends Component {
 								<div className="container">
 									<Timer onFinished={() => this.countdownFinished()} />
 									<h1 className="round">{player.name}</h1>
-									<h2 className="round">Frågor nu handlar om dig!</h2>
+									<h2 className="round">It's your turn now!</h2>
 									<div className="container choosenAvatar ">
 										<img src={avatars[player.avatar]} alt="avatar" />
 									</div>
