@@ -21,7 +21,7 @@ export default class GameOver extends Component {
                 <div className="container choosenAvatar  ">
                   <img src={avatars[player.avatar]} alt="avatar" />
                 </div>
-                <audio src={soundfile} autoPlay />
+								<audio src={soundfile} autoPlay loop />
               </div>
             </div>
           );

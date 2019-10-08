@@ -43,7 +43,7 @@ class WelcomeView extends Component {
 						)}
 					</div>
 				</div>
-				<audio src={soundfile} autoPlay />
+				<audio src={soundfile} autoPlay loop />
 			</div>
 		);
 	}

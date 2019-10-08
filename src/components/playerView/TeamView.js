@@ -22,7 +22,7 @@ const TeamView = (props) => {
 									</div>
 								))}
 							</div>
-							<audio src={soundfile} autoPlay />
+							<audio src={soundfile} autoPlay loop />
 						</div>
 					);
 				} else {
