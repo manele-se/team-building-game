@@ -1,30 +1,35 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Timer extends Component {
-  state = {
-    time: 6
-  };
+	state = {
+		time: 5
+	};
 
-  componentDidMount = () => {
-    this.startCounter();
-  };
+	constructor(props) {
+		super(props);
+		this.state.time = props.seconds || 5;
+	}
 
-  startCounter = () => {
-    const { time } = this.state;
-    if (time !== 0) {
-      this.setState({
-        time: time - 1
-      });
-      setTimeout(this.startCounter, 1000);
-    } else if (this.props.onFinished) {
-      this.props.onFinished();
-    }
-  };
+	componentDidMount = () => {
+		this.startCounter();
+	};
 
-  render() {
-    const { time } = this.state;
-    return <div>{time}</div>;
-  }
+	startCounter = () => {
+		const { time } = this.state;
+		if (time !== 0) {
+			this.setState({
+				time: time - 1
+			});
+			setTimeout(this.startCounter, 1000);
+		} else if (this.props.onFinished) {
+			this.props.onFinished();
+		}
+	};
+
+	render() {
+		const { time } = this.state;
+		return <div>{time}</div>;
+	}
 }
 
 export default Timer;
