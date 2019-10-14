@@ -11,34 +11,33 @@ import Spinner from '../../layouts/Spinner';
 import ChooseAvatar from '../createViewForm/ChooseAvatar';
 
 const PlayerView = (props) => {
-  const { playerId } = props.match.params;
-  return (
-    <Consumer>
-      {(value) => {
-        const { player, dispatch } = value;
+	const { playerId } = props.match.params;
+	return (
+		<Consumer>
+			{(value) => {
+				const { player, dispatch } = value;
 
-        if (player && player.id) {
-          console.log(player);
-          return (
-            <React.Fragment>
-              <QuestionHeader title={player.currentQuestion.title} />
-              <Answers values={player.currentQuestion.answers} />
-              <ModalRight />
-              <ModalWrong />
-              <ModalQuitGame />
-            </React.Fragment>
-          );
-        } else {
-          value.subscribePlayer(playerId);
-          return (
-            <div>
-              <Spinner />
-            </div>
-          );
-        }
-      }}
-    </Consumer>
-  );
+				if (player && player.id) {
+					return (
+						<React.Fragment>
+							<QuestionHeader title={player.currentQuestion.title} />
+							<Answers values={player.currentQuestion.answers} />
+							<ModalRight />
+							<ModalWrong />
+							<ModalQuitGame />
+						</React.Fragment>
+					);
+				} else {
+					value.subscribePlayer(playerId);
+					return (
+						<div>
+							<Spinner />
+						</div>
+					);
+				}
+			}}
+		</Consumer>
+	);
 };
 
 export default PlayerView;

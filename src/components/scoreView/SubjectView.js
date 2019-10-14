@@ -14,35 +14,19 @@ class SubjectView extends Component {
 		this.props.countdownFinished();
 	};
 	render() {
+		const { player } = this.props;
 		return (
-			<Consumer>
-				{(value) => {
-					const { player } = value;
-					const { playerId } = this.props;
-					if (player && player.id) {
-						return (
-							<div className="scoreViewBackgound">
-								<div className="container">
-									<Timer seconds="12" onFinished={() => this.countdownFinished()} />
-									<h1 className="round">{player.name}</h1>
-									<h1 className="round">It's your turn now!</h1>
-									<div className="container choosenAvatar">
-										<img src={avatars[player.avatar]} alt="avatar" />
-									</div>
-									<audio src={soundfile} autoPlay loop />
-								</div>
-							</div>
-						);
-					} else {
-						value.subscribePlayer(playerId);
-						return (
-							<div>
-								<Spinner />
-							</div>
-						);
-					}
-				}}
-			</Consumer>
+			<div className="scoreViewBackgound">
+				<div className="container">
+					<Timer seconds="8" onFinished={() => this.countdownFinished()} />
+					<h1 className="round">{player.name}</h1>
+					<h1 className="round">It's your turn now!</h1>
+					<div className="container choosenAvatar">
+						<img src={avatars[player.avatar]} alt="avatar" />
+					</div>
+					<audio src={soundfile} autoPlay loop />
+				</div>
+			</div>
 		);
 	}
 }

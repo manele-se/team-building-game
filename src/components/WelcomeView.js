@@ -12,9 +12,7 @@ class WelcomeView extends Component {
 	};
 	render() {
 		const { gameId } = this.props.match.params;
-		// TODO: Make an EditTeamButton component
-		//if there is a game Id go to the start view
-		//if start gme is pressed go to the view SubjectView
+
 		return (
 			<div className="customContainer">
 				<div className="container">

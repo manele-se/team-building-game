@@ -6,55 +6,27 @@ import '../../components/scoreView/score.css';
 
 class ScoreBoard extends Component {
 	render() {
+		const { game, subject, question, questionNumber } = this.props;
 		return (
-			<Consumer>
-				{(value) => {
-					const { game, player, players } = value;
-
-					if (!(game && game.id)) {
-						throw new Error('Should not be able to get here without a state.game!');
-					}
-
-					if (!(player && player.id)) {
-						throw new Error('Should not be able to get here without a state.player!');
-					}
-
-					const currentPlayerId = player.id;
-					const currentPlayer = players && players.find((p) => p.id === currentPlayerId);
-
-					if (currentPlayer) {
-						return (
-							<React.Fragment>
-								<h1 className="round">
-									Questions about <strong>{player.name}</strong>
-								</h1>
-								<h2 className="round">{currentPlayer.questions[0].title}</h2>
-								<div className="card mb-3 p-4 col-10 offset-1 board">
-									{game.players &&
-										game.players.map((player) => (
-											<PlayerProgressBar
-												key={player.id}
-												name={player.name}
-												playerId={player.id}
-												score={player.score || 0}
-												avatar={player.avatar}
-												currentSubject={player.id === currentPlayerId}
-											/>
-										))}
-								</div>
-							</React.Fragment>
-						);
-					} else {
-						const playerIds = game.players.map((p) => p.id);
-						value.subscribePlayers(playerIds);
-						return (
-							<div>
-								<Spinner />
-							</div>
-						);
-					}
-				}}
-			</Consumer>
+			<React.Fragment>
+				<h1 className="round">
+					Questions about <strong>{subject.name}</strong>
+				</h1>
+				<h2 className="round">{question.title}</h2>
+				<div className="card mb-3 p-4 col-10 offset-1 board">
+					{game.players &&
+						game.players.map((player) => (
+							<PlayerProgressBar
+								key={player.id}
+								name={player.name}
+								playerId={player.id}
+								score={player.score || 0}
+								avatar={player.avatar}
+								currentSubject={player.id === subject.id}
+							/>
+						))}
+				</div>
+			</React.Fragment>
 		);
 	}
 }

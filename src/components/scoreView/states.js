@@ -1,4 +1,5 @@
 export default {
+	NO_STATE: 0,
 	SHOW_SUBJECT: 1,
 	SHOW_SCORE: 2,
 	SHOW_RIGHT_ANSWER: 3,

@@ -1,107 +1,101 @@
 .choosenAvatar {
-  perspective: 800px;
+    perspective: 800px;
 }
 
 .choosenAvatar img {
-  display: block;
-  text-align: center;
-  margin: 6rem auto;
-  width: 300px;
-  transform-origin: 50% 90%;
-  position: relative;
-  left: 0;
-  top: 0;
-  animation: move 6s infinite;
+    display: block;
+    text-align: center;
+    margin: 6rem auto;
+    width: 300px;
+    transform-origin: 50% 90%;
+    position: relative;
+    left: 0;
+    top: 0;
+    animation: move 6s infinite;
 }
+
 
 /*check this animation so that the avatar goes*/
 
 @keyframes move {
-  from {
-    transform: translate(-200px, 0px) rotateY(0deg);
-    animation-timing-function: ease-in-out;
-  }
-  40% {
-    transform: translate(200px, 0px) rotateY(0deg);
-    animation-timing-function: ease-in-out;
-  }
-  50% {
-    transform: translate(200px, 0px) rotateY(-180deg);
-    animation-timing-function: ease-in-out;
-  }
-  90% {
-    transform: translate(-200px, 0px) rotateY(-180deg);
-    animation-timing-function: ease-in-out;
-  }
-  to {
-    transform: translate(-200px, 0px) rotateY(0deg);
-  }
+    from {
+        transform: translate(-200px, 0px) rotateY(0deg);
+        animation-timing-function: ease-in-out;
+    }
+    40% {
+        transform: translate(200px, 0px) rotateY(0deg);
+        animation-timing-function: ease-in-out;
+    }
+    50% {
+        transform: translate(200px, 0px) rotateY(-180deg);
+        animation-timing-function: ease-in-out;
+    }
+    90% {
+        transform: translate(-200px, 0px) rotateY(-180deg);
+        animation-timing-function: ease-in-out;
+    }
+    to {
+        transform: translate(-200px, 0px) rotateY(0deg);
+    }
 }
 
 .board {
-  box-shadow: 0px 6px 2px rgba(177, 177, 177, 0.2);
-  margin: 5rem;
+    box-shadow: 0px 6px 2px rgba(177, 177, 177, 0.2);
+    margin: 5rem;
 }
 
 .round {
-  margin: 3rem;
-  text-align: center;
-  color: aliceblue;
-}
-
-.round > strong {
-  color: var(--color-secondary);
+    margin: 3rem;
+    text-align: center;
+    color: aliceblue;
 }
 
 .scoreViewBackgound {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    10deg,
-    var(--color-primary) 40%,
-    var(--color-secondary) 100%
-  );
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( 10deg, var(--color-primary) 40%, var(--color-secondary) 100%);
 }
 
 .scoreViewBackgound h2 a {
-  color: #fff;
+    color: #fff;
 }
 
 .player-progress-bar {
-  display: grid;
-  grid-template-rows: 2fr 1fr;
-  padding: 0.5rem 2rem;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    padding: 0.5rem 2rem;
 }
 
-.player-progress-bar > .progress {
-  height: 3rem;
-  grid-row: 1/2;
-  grid-column: 1/2;
-  align-self: center;
+.player-progress-bar>.progress {
+    height: 3rem;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    align-self: center;
 }
 
-.player-progress-bar > .player-avatar-holder {
-  height: 6rem;
-  grid-row: 1/2;
-  grid-column: 1/2;
-  align-self: center;
+.player-progress-bar>.player-avatar-holder {
+    height: 6rem;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    align-self: center;
 }
 
 .player-progress-bar img.player-avatar {
-  height: 6rem;
-  width: 6rem;
-  object-fit: contain;
-  margin: 0;
-  transition: margin-left 0.5s ease-out;
+    height: 6rem;
+    width: 6rem;
+    object-fit: contain;
+    margin: 0;
+    transition: margin-left 0.5s ease-out;
 }
+
 
 /*.player-progress-bar.current-player img.player-avatar {
   filter: drop-shadow(0 0 1rem rgb(26, 39, 216));
 }*/
 
-.player-progress-bar > .player-name {
-  font-size: 1.7rem;
-  grid-row: 2/3;
-  grid-column: 1/2;
+.player-progress-bar>.player-name {
+    font-size: 1.7rem;
+    grid-row: 2/3;
+    grid-column: 1/2;
 }

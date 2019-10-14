@@ -14,15 +14,30 @@ class Timer extends Component {
 		this.startCounter();
 	};
 
+	componentWillUnmount = () => {
+		this.stopCounter();
+	};
+
 	startCounter = () => {
 		const { time } = this.state;
 		if (time !== 0) {
 			this.setState({
 				time: time - 1
 			});
-			setTimeout(this.startCounter, 1000);
+			if (this.timerId) {
+				clearTimeout(this.timerId);
+				this.timerId = null;
+			}
+			this.timerId = setTimeout(this.startCounter, 1000);
 		} else if (this.props.onFinished) {
 			this.props.onFinished();
+		}
+	};
+
+	stopCounter = () => {
+		if (this.timerId) {
+			clearTimeout(this.timerId);
+			this.timerId = null;
 		}
 	};
 
