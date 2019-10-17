@@ -74,14 +74,14 @@ class MasterView extends Component {
   };
 
   selectView = value => {
-    const { game, dispatch } = value;
+    const { game, players, dispatch } = value;
 
     switch (this.state.gameState) {
       case gameStates.SHOW_SUBJECT:
         return this.renderShowSubject(dispatch);
 
       case gameStates.SHOW_SCORE:
-        return this.renderShowScore(game);
+        return this.renderShowScore(game, players);
 
       case gameStates.SHOW_RIGHT_ANSWER:
         return <RightAnswerView />;
@@ -95,17 +95,26 @@ class MasterView extends Component {
     }
   };
 
-  renderShowScore(game) {
+  renderShowScore(game, players) {
     const { subject } = this.state;
     const question = subject.questions[game.currentQuestionIndex];
-    return (
-      <ScoreView
-        game={game}
-        subject={subject}
-        question={question}
-        questionNumber={game.currentQuestionIndex + 1}
-      />
+    const playersPlaying = players.filter(p => p.id !== game.currentSubjectId);
+    console.log(playersPlaying);
+    const anyPlayerNotDone = playersPlaying.find(
+      p => p.isRight !== true && p.isRight !== false
     );
+    if (anyPlayerNotDone) {
+      return (
+        <ScoreView
+          game={game}
+          subject={subject}
+          question={question}
+          questionNumber={game.currentQuestionIndex + 1}
+        />
+      );
+    } else {
+      return <div>All players have answered!</div>;
+    }
   }
 
   renderShowSubject(dispatch) {
