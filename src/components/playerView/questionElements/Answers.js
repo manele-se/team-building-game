@@ -12,7 +12,7 @@ class Answers extends Component {
           <Answer
             key={index}
             textAnswer={answer.text}
-            isRight={index === answer.isCorrect}
+            isRight={answer.isCorrect}
           />
         ))}
       </React.Fragment>
