@@ -40,6 +40,8 @@ class MasterView extends Component {
         type: "UPDATE_QUESTION_SCORES",
         payload: null
       });
+
+      // Replace this timeout with the Timer component on the page
       window.setTimeout(
         () =>
           this.setState({
@@ -47,10 +49,6 @@ class MasterView extends Component {
           }),
         3000
       );
-    } else {
-      this.setState({
-        gameState: gameStates.SHOW_RIGHT_ANSWER
-      });
     }
   };
 
@@ -95,16 +93,17 @@ class MasterView extends Component {
 
   selectView = value => {
     const { game, players, dispatch } = value;
+    const { gameState } = this.state;
 
-    switch (this.state.gameState) {
+    switch (gameState) {
       case gameStates.SHOW_SUBJECT:
         return this.renderShowSubject(dispatch);
 
       case gameStates.SHOW_SCORE:
-        return this.renderShowScore(game, players, dispatch);
-
       case gameStates.SHOW_RIGHT_ANSWER:
-        return <RightAnswerView />;
+        const showRightAnswer = gameState === gameStates.SHOW_RIGHT_ANSWER;
+        return this.renderShowScore(game, players, dispatch, showRightAnswer);
+
       case gameStates.SHOW_WINNER:
         return <WinnerView />;
       case gameStates.SHOW_GAME_OVER:
@@ -115,24 +114,40 @@ class MasterView extends Component {
     }
   };
 
-  renderShowScore(game, players, dispatch) {
+  renderShowScore(game, players, dispatch, showRightAnswer) {
     const { subject } = this.state;
     const question = subject.questions[game.currentQuestionIndex];
+
+    const rightAnswers = question.answers
+      .filter(answer => answer.isRight)
+      .map(answer => answer.text);
+
     const playersPlaying = players.filter(p => p.id !== game.currentSubjectId);
-    console.log(playersPlaying);
-    const anyPlayerNotDone = playersPlaying.find(
+
+    // Find any player that hasn't answered yet
+    const anyPlayerNotAnswered = playersPlaying.find(
       p => p.isRight !== true && p.isRight !== false
     );
-    if (!anyPlayerNotDone) {
+
+    // If no such player exists, all players have answered this question!
+    if (!anyPlayerNotAnswered) {
       this.updatePlayerScores(game, players, dispatch);
     }
+
     return (
-      <ScoreView
-        game={game}
-        subject={subject}
-        question={question}
-        questionNumber={game.currentQuestionIndex + 1}
-      />
+      <React.Fragment>
+        <ScoreView
+          game={game}
+          subject={subject}
+          question={question}
+          questionNumber={game.currentQuestionIndex + 1}
+        />
+        <RightAnswerView
+          show={showRightAnswer}
+          question={question.title}
+          rightAnswers={rightAnswers}
+        />
+      </React.Fragment>
     );
   }
 

@@ -147,7 +147,8 @@ const updateQuestionScores = async state => {
   const newGamePlayers = state.game.players.map(player => {
     const fullPlayer = state.players.find(fp => fp.id === player.id);
     if (fullPlayer && fullPlayer.isRight) {
-      return { ...player, score: (player.score || 0) + 10 };
+      // TODO: Increase score percent by (100 % / number of questions about subject)
+      return { ...player, score: (player.score || 0) + 20 };
     } else {
       return { ...player, score: player.score || 0 };
     }
