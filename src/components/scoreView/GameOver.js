@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Consumer } from "../../context";
-import soundfile from "../../music/music4.mp3";
-import avatars from "../../images";
+import React, { Component } from 'react';
+import { Consumer } from '../../context';
+import soundfile from '../../music/music4.mp3';
+import avatars from '../../images';
 
 //visar vem har vunnit hela spelkväll. Skicka data till databasen med alla spelarens data.
 //consumer
@@ -12,7 +12,7 @@ export default class GameOver extends Component {
     const { playerId } = this.props.match.params;
     return (
       <Consumer>
-        {value => {
+        {(value) => {
           const { player, game } = value;
           return (
             <div className="scoreViewBackgound">
@@ -21,7 +21,7 @@ export default class GameOver extends Component {
                 <div className="container choosenAvatar  ">
                   <img src={avatars[player.avatar]} alt="avatar" />
                 </div>
-								<audio src={soundfile} autoPlay loop />
+                <audio src={soundfile} autoPlay loop />
               </div>
             </div>
           );

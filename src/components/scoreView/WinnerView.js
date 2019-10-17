@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import { Consumer } from "../../context";
+import React, { Component } from 'react';
+import { Consumer } from '../../context';
 
-import soundfile from "../../music/music4.mp3";
-import Spinner from "../../layouts/Spinner";
-import avatars from "../../images";
+import soundfile from '../../music/music4mixed.mp3';
+import Spinner from '../../layouts/Spinner';
+import avatars from '../../images';
+import './winner.css';
 
 //visar vinnare. den som har svarat mest frågor om ett subject.
 //lägg till nmnet på vinnare
@@ -17,7 +18,7 @@ export default class WinnerView extends Component {
 
     return (
       <Consumer>
-        {value => {
+        {(value) => {
           const { game } = value;
           if (game && game.id) {
             const winner = game.players[0];
@@ -28,7 +29,7 @@ export default class WinnerView extends Component {
                   <div className="container choosenAvatar ">
                     <img src={avatars[winner.avatar]} alt="avatar" />
                   </div>
-                  <h1 className="round">You win!</h1>
+                  <h1 className="winner">You win!</h1>
                   <audio src={soundfile} autoPlay loop />
                 </div>
               </div>
