@@ -137,7 +137,29 @@ const setCurrentQuestionIndex = async (state, payload) => {
   }
 
   return await updateGame(state, {
-    currentQuestionIndex: payload
+    currentQuestionIndex: payload,
+    scoresUpdated: false
+  });
+};
+
+const updateQuestionScores = async state => {
+  // payload: nothing
+  const newGamePlayers = state.game.players.map(player => {
+    const fullPlayer = state.players.find(fp => fp.id === player.id);
+    if (fullPlayer && fullPlayer.isRight) {
+      return { ...player, score: (player.score || 0) + 10 };
+    } else {
+      return { ...player, score: player.score || 0 };
+    }
+  });
+
+  for (let player of state.players) {
+    await updatePlayerDoc(player, { currentQuestion: null });
+  }
+
+  return await updateGame(state, {
+    players: newGamePlayers,
+    scoresUpdated: true
   });
 };
 
@@ -173,6 +195,8 @@ const reducer = async (state, action) => {
       return await setCurrentSubjectId(state, action.payload);
     case "SET_CURRENT_QUESTION_INDEX":
       return await setCurrentQuestionIndex(state, action.payload);
+    case "UPDATE_QUESTION_SCORES":
+      return await updateQuestionScores(state);
 
     default:
       console.error("unknown action", action);

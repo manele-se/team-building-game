@@ -34,6 +34,26 @@ class MasterView extends Component {
     });
   };
 
+  updatePlayerScores = async (game, players, dispatch) => {
+    if (!game.scoresUpdated) {
+      await dispatch({
+        type: "UPDATE_QUESTION_SCORES",
+        payload: null
+      });
+      window.setTimeout(
+        () =>
+          this.setState({
+            gameState: gameStates.SHOW_RIGHT_ANSWER
+          }),
+        3000
+      );
+    } else {
+      this.setState({
+        gameState: gameStates.SHOW_RIGHT_ANSWER
+      });
+    }
+  };
+
   checkCurrentState = async value => {
     const { game, players, dispatch } = value;
 
@@ -81,7 +101,7 @@ class MasterView extends Component {
         return this.renderShowSubject(dispatch);
 
       case gameStates.SHOW_SCORE:
-        return this.renderShowScore(game, players);
+        return this.renderShowScore(game, players, dispatch);
 
       case gameStates.SHOW_RIGHT_ANSWER:
         return <RightAnswerView />;
@@ -95,7 +115,7 @@ class MasterView extends Component {
     }
   };
 
-  renderShowScore(game, players) {
+  renderShowScore(game, players, dispatch) {
     const { subject } = this.state;
     const question = subject.questions[game.currentQuestionIndex];
     const playersPlaying = players.filter(p => p.id !== game.currentSubjectId);
@@ -103,18 +123,17 @@ class MasterView extends Component {
     const anyPlayerNotDone = playersPlaying.find(
       p => p.isRight !== true && p.isRight !== false
     );
-    if (anyPlayerNotDone) {
-      return (
-        <ScoreView
-          game={game}
-          subject={subject}
-          question={question}
-          questionNumber={game.currentQuestionIndex + 1}
-        />
-      );
-    } else {
-      return <div>All players have answered!</div>;
+    if (!anyPlayerNotDone) {
+      this.updatePlayerScores(game, players, dispatch);
     }
+    return (
+      <ScoreView
+        game={game}
+        subject={subject}
+        question={question}
+        questionNumber={game.currentQuestionIndex + 1}
+      />
+    );
   }
 
   renderShowSubject(dispatch) {
