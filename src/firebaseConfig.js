@@ -8,4 +8,6 @@ const firebaseConfig = {
   appId: "1:186031145091:web:bec80041d2195f74b2dbb6"
 };
 
+//unsafe login change to safare when deployed
+
 export default firebaseConfig;
