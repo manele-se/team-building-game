@@ -26,8 +26,8 @@ const PlayerView = props => {
                   text={player.currentQuestion.text}
                 />
                 <Answers answers={player.currentQuestion.answers} />
-                <ModalRight />
-                <ModalWrong />
+                <ModalRight show={player.isRight === true} />
+                <ModalWrong show={player.isRight === false} />
                 <ModalQuitGame />
               </React.Fragment>
             );
