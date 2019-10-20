@@ -7,6 +7,7 @@ import WinnerView from "./WinnerView";
 import GameOver from "./GameOver";
 import { Spinner } from "react-bootstrap";
 import { Consumer } from "../../context";
+import GameEngine from "../../GameEngine";
 
 //classen hantera states mellan master. Lyssna på databas och player documents.
 //it is a game engine
@@ -25,8 +26,7 @@ class MasterView extends Component {
 
   changeToScoreView = dispatch => {
     dispatch({
-      type: "SET_CURRENT_QUESTION_INDEX",
-      payload: 0
+      type: "SHOW_NEXT_QUESTION"
     }).then(() => {
       this.setState({
         gameState: gameStates.SHOW_SCORE
@@ -49,6 +49,7 @@ class MasterView extends Component {
           }),
         3000
       );
+      window.setTimeout(() => dispatch({ type: "SHOW_NEXT_QUESTION" }), 7000);
     }
   };
 
@@ -119,8 +120,10 @@ class MasterView extends Component {
     const question = subject.questions[game.currentQuestionIndex];
 
     const rightAnswers = question.answers
-      .filter(answer => answer.isRight)
+      .filter(answer => answer.isCorrect)
       .map(answer => answer.text);
+
+    console.log({ subject, question, rightAnswers });
 
     const playersPlaying = players.filter(p => p.id !== game.currentSubjectId);
 
@@ -165,7 +168,9 @@ class MasterView extends Component {
     return (
       <Consumer>
         {value => {
-          return this.selectView(value);
+          return (
+            <GameEngine value={value}>/* All child views here */</GameEngine>
+          );
         }}
       </Consumer>
     );

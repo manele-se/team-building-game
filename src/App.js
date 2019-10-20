@@ -17,6 +17,8 @@ import About from "../src/layouts/About";
 import SubjectView from "./components/scoreView/SubjectView";
 import MasterView from "./components/scoreView/MasterView";
 import WinnerView from "./components/scoreView/WinnerView";
+import RightAnswerView from "./components/modals/RightAnswerView";
+import { GameEngineTestView } from "./GameEngine";
 
 function App() {
   return (
@@ -48,6 +50,18 @@ function App() {
           component={CongratulationView}
         />
         <Route exact path="/final/winner/:gameId" component={WinnerView} />
+        <Route
+          exact
+          path="/test/rightanswerview"
+          component={() => (
+            <RightAnswerView show question="Fråga" rightAnswers={["a", "b"]} />
+          )}
+        />
+        <Route
+          exact
+          path="/test/gameengine/:gameId"
+          component={GameEngineTestView}
+        />
       </Router>
     </Provider>
   );

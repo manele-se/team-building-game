@@ -102,6 +102,24 @@ const updatePlayerDoc = async (player, changes) => {
   return await Firebase.saveDoc("players", Object.assign({}, player, changes));
 };
 
+const showNextSubject = async state => {
+  const { currentSubjectId } = state.game;
+  const currentPlayerIndex = state.game.players.findIndex(
+    p => p.id === currentSubjectId
+  );
+  const nextPlayerIndex = currentPlayerIndex + 1;
+
+  if (nextPlayerIndex >= state.game.players.length) {
+    // TODO: Show final game over
+    return state;
+  } else {
+    return await setCurrentSubjectId(
+      state,
+      state.game.players[nextPlayerIndex].id
+    );
+  }
+};
+
 const setCurrentSubjectId = async (state, payload) => {
   // payload : id of subject (player)
   for (let player of state.players) {
@@ -111,9 +129,27 @@ const setCurrentSubjectId = async (state, payload) => {
   }
 
   return await updateGame(state, {
+    scoresUpdated: false,
     currentSubjectId: payload,
     currentQuestionIndex: -1
   });
+};
+
+const showNextQuestion = async state => {
+  // payload : nothing
+  const currentSubject = state.players.find(
+    p => p.id === state.game.currentSubjectId
+  );
+
+  const currentQuestionIndex = state.game.currentQuestionIndex;
+  const nextQuestionIndex =
+    currentQuestionIndex >= -1 ? currentQuestionIndex + 1 : 0;
+
+  if (nextQuestionIndex >= currentSubject.questions.length) {
+    return await showNextSubject(state);
+  } else {
+    return await setCurrentQuestionIndex(state, nextQuestionIndex);
+  }
 };
 
 const setCurrentQuestionIndex = async (state, payload) => {
@@ -198,6 +234,8 @@ const reducer = async (state, action) => {
       return await setCurrentQuestionIndex(state, action.payload);
     case "UPDATE_QUESTION_SCORES":
       return await updateQuestionScores(state);
+    case "SHOW_NEXT_QUESTION":
+      return await showNextQuestion(state);
 
     default:
       console.error("unknown action", action);
@@ -215,6 +253,19 @@ export class Provider extends Component {
     dispatch: async action => {
       const newState = await reducer(this.state, action);
       this.setState(newState);
+    },
+
+    subscribeDoc: (collection, id, callback) => {
+      Firebase.firestore()
+        .collection(collection)
+        .doc(id)
+        .onSnapshot(doc => {
+          const docData = {
+            ...doc.data(),
+            id
+          };
+          callback(docData);
+        });
     },
 
     //subscribe a game

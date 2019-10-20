@@ -30,3 +30,19 @@
 .modalTutorial {
   background: var(--color-secondary);
 }
+
+.rightAnswerDisplay h5 {
+  font-size: 3rem;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.rightAnswerDisplay h6 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.rightAnswerDisplay .answer {
+  font-size: 2.5rem;
+  text-align: center;
+}
