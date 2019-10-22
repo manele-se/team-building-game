@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import ScoreView from "./ScoreView";
-import gameStates from "./states";
-import SubjectView from "./SubjectView";
-import RightAnswerView from "../modals/RightAnswerView";
-import WinnerView from "./WinnerView";
-import GameOver from "./GameOver";
-import { Spinner } from "react-bootstrap";
-import { Consumer } from "../../context";
-import GameEngine from "../../GameEngine";
+import React, { Component } from 'react';
+import ScoreView from './ScoreView';
+import gameStates from './states';
+import SubjectView from './SubjectView';
+import RightAnswerView from '../modals/RightAnswerView';
+import WinnerView from './WinnerView';
+import GameOver from './GameOver';
+import { Spinner } from 'react-bootstrap';
+import { Consumer } from '../../context';
+import GameEngine from '../../GameEngine';
 
 //classen hantera states mellan master. Lyssna på databas och player documents.
 //it is a game engine
@@ -24,9 +24,9 @@ class MasterView extends Component {
     return players[choosenIndex].id;
   }
 
-  changeToScoreView = dispatch => {
+  changeToScoreView = (dispatch) => {
     dispatch({
-      type: "SHOW_NEXT_QUESTION"
+      type: 'SHOW_NEXT_QUESTION'
     }).then(() => {
       this.setState({
         gameState: gameStates.SHOW_SCORE
@@ -37,7 +37,7 @@ class MasterView extends Component {
   updatePlayerScores = async (game, players, dispatch) => {
     if (!game.scoresUpdated) {
       await dispatch({
-        type: "UPDATE_QUESTION_SCORES",
+        type: 'UPDATE_QUESTION_SCORES',
         payload: null
       });
 
@@ -49,11 +49,11 @@ class MasterView extends Component {
           }),
         3000
       );
-      window.setTimeout(() => dispatch({ type: "SHOW_NEXT_QUESTION" }), 7000);
+      window.setTimeout(() => dispatch({ type: 'SHOW_NEXT_QUESTION' }), 7000);
     }
   };
 
-  checkCurrentState = async value => {
+  checkCurrentState = async (value) => {
     const { game, players, dispatch } = value;
 
     if (!(game && game.id)) {
@@ -64,20 +64,20 @@ class MasterView extends Component {
     }
     if (!players) {
       // Players aren't loaded - load using player ids from game.players
-      const playerIds = game.players.map(p => p.id);
+      const playerIds = game.players.map((p) => p.id);
       value.subscribePlayers(playerIds);
       return;
     }
     if (!game.currentSubjectId) {
       // No current subject - select one randomly
       dispatch({
-        type: "SET_CURRENT_SUBJECT_ID",
+        type: 'SET_CURRENT_SUBJECT_ID',
         payload: this.choosePlayer(game)
       });
       return;
     }
 
-    const subject = players.find(p => p.id === game.currentSubjectId);
+    const subject = players.find((p) => p.id === game.currentSubjectId);
 
     if (game.currentQuestionIndex === -1) {
       this.setState({
@@ -92,7 +92,7 @@ class MasterView extends Component {
     }
   };
 
-  selectView = value => {
+  selectView = (value) => {
     const { game, players, dispatch } = value;
     const { gameState } = this.state;
 
@@ -119,18 +119,14 @@ class MasterView extends Component {
     const { subject } = this.state;
     const question = subject.questions[game.currentQuestionIndex];
 
-    const rightAnswers = question.answers
-      .filter(answer => answer.isCorrect)
-      .map(answer => answer.text);
+    const rightAnswers = question.answers.filter((answer) => answer.isCorrect).map((answer) => answer.text);
 
     console.log({ subject, question, rightAnswers });
 
-    const playersPlaying = players.filter(p => p.id !== game.currentSubjectId);
+    const playersPlaying = players.filter((p) => p.id !== game.currentSubjectId);
 
     // Find any player that hasn't answered yet
-    const anyPlayerNotAnswered = playersPlaying.find(
-      p => p.isRight !== true && p.isRight !== false
-    );
+    const anyPlayerNotAnswered = playersPlaying.find((p) => p.isRight !== true && p.isRight !== false);
 
     // If no such player exists, all players have answered this question!
     if (!anyPlayerNotAnswered) {
@@ -139,38 +135,22 @@ class MasterView extends Component {
 
     return (
       <React.Fragment>
-        <ScoreView
-          game={game}
-          subject={subject}
-          question={question}
-          questionNumber={game.currentQuestionIndex + 1}
-        />
-        <RightAnswerView
-          show={showRightAnswer}
-          question={question.title}
-          rightAnswers={rightAnswers}
-        />
+        <ScoreView game={game} subject={subject} question={question} questionNumber={game.currentQuestionIndex + 1} />
+        <RightAnswerView show={showRightAnswer} question={question.title} rightAnswers={rightAnswers} />
       </React.Fragment>
     );
   }
 
   renderShowSubject(dispatch) {
     const { subject } = this.state;
-    return (
-      <SubjectView
-        player={subject}
-        countdownFinished={() => this.changeToScoreView(dispatch)}
-      />
-    );
+    return <SubjectView player={subject} countdownFinished={() => this.changeToScoreView(dispatch)} />;
   }
 
   render() {
     return (
       <Consumer>
-        {value => {
-          return (
-            <GameEngine value={value}>/* All child views here */</GameEngine>
-          );
+        {(value) => {
+          return <GameEngine value={value}>{/* All child views here */}</GameEngine>;
         }}
       </Consumer>
     );

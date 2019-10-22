@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import Answer from "./Answer";
-import { Consumer } from "../../../context";
+import React, { Component } from 'react';
+import Answer from './Answer';
 
 //data come from the database and are displyed on the player board
 class Answers extends Component {
@@ -8,13 +7,7 @@ class Answers extends Component {
     const { answers } = this.props;
     return (
       <React.Fragment>
-        {answers.map((answer, index) => (
-          <Answer
-            key={index}
-            textAnswer={answer.text}
-            isRight={answer.isCorrect}
-          />
-        ))}
+        {answers.map((answer, index) => <Answer key={index} textAnswer={answer.text} isRight={answer.isCorrect} />)}
       </React.Fragment>
     );
   }

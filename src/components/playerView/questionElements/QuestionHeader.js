@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { Consumer } from "../../../context";
+import React, { Component } from 'react';
 
 class QuestionHeader extends Component {
   render() {

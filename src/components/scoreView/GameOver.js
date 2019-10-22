@@ -8,12 +8,10 @@ import avatars from '../../images';
 //lägg till en rolig musik
 export default class GameOver extends Component {
   render() {
-    //matching the paramethers in the url
-    const { playerId } = this.props.match.params;
     return (
       <Consumer>
         {(value) => {
-          const { player, game } = value;
+          const { player } = value;
           return (
             <div className="scoreViewBackgound">
               <div className="container ">

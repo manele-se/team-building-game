@@ -1,12 +1,10 @@
-import React, { Component } from "react";
-import PlayerProgressBar from "./PlayerProgressBar";
-import { Consumer } from "../../context";
-import Spinner from "../../layouts/Spinner";
-import "../../components/scoreView/score.css";
+import React, { Component } from 'react';
+import PlayerProgressBar from './PlayerProgressBar';
+import '../../components/scoreView/score.css';
 
 class ScoreBoard extends Component {
   render() {
-    const { game, subject, question, questionNumber } = this.props;
+    const { game, subject, question } = this.props;
     return (
       <React.Fragment>
         <h1 className="round">
@@ -16,8 +14,8 @@ class ScoreBoard extends Component {
         <div className="card mb-3 p-4 col-10 offset-1 board">
           {game.players &&
             game.players
-              .filter(player => player.id !== subject.id)
-              .map(player => (
+              .filter((player) => player.id !== subject.id)
+              .map((player) => (
                 <PlayerProgressBar
                   key={player.id}
                   name={player.name}
