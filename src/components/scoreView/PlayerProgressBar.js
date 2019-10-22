@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import ProgressBar from "react-bootstrap/ProgressBar";
-import avatars from "../../images";
+import React, { Component } from 'react';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+import avatars from '../../images';
 
 //show progress for each player
 //do not show avatar if anwers is about the same avatar!!!
@@ -8,22 +8,20 @@ import avatars from "../../images";
 
 class PlayerProgressBar extends Component {
   render() {
-    const { score, avatar, currentSubject } = this.props;
-    const className = currentSubject
-      ? "player-progress-bar current-player"
-      : "player-progress-bar";
+    const { score, avatar, currentSubject, questionCount } = this.props;
+    const className = currentSubject ? 'player-progress-bar current-player' : 'player-progress-bar';
     return (
       <div className={className}>
-        <ProgressBar striped variant="success" now={score} />
+        <ProgressBar striped variant="success" min={0} now={score} max={questionCount} />
         <div className="player-avatar-holder">
           <img
             src={avatars[avatar]}
             className="player-avatar"
             alt="avatar"
             style={{
-              marginLeft: `calc(${Math.round(score)}% - 3rem)`
+              marginLeft: `calc(${Math.round(score * 100 / questionCount)}% - 3rem)`
             }}
-          />{" "}
+          />{' '}
         </div>
       </div>
     );

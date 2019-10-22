@@ -160,6 +160,16 @@ class MasterView extends Component {
                 <Spinner />
               </Wrapper>
               <SubjectView gameState="SHOW_CURRENT_SUBJECT" />
+              <ScoreView gameState="SHOW_CURRENT_QUESTION" />
+              <Wrapper gameState="SHOW_CORRECT_ANSWERS">
+                <h1>TODO: Show correct answers</h1>
+              </Wrapper>
+              <Wrapper gameState="SHOW_SUBJECT_WINNER">
+                <h1>TODO: Show subject winner</h1>
+              </Wrapper>
+              <Wrapper gameState="SHOW_TOTAL_WINNER">
+                <h1>TODO: Show total winner</h1>
+              </Wrapper>
             </GameEngine>
           );
         }}

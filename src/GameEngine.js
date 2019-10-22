@@ -17,6 +17,10 @@ const SHOW_CORRECT_ANSWERS = 'SHOW_CORRECT_ANSWERS';
 const SHOW_SUBJECT_WINNER = 'SHOW_SUBJECT_WINNER';
 const SHOW_TOTAL_WINNER = 'SHOW_TOTAL_WINNER';
 
+const CURRENT_SUBJECT_DELAY = 5000;
+const CORRECT_ANSWERS_DELAY = 5000;
+const SUBJECT_WINNER_DELAY = 5000;
+
 class GameEngine extends React.Component {
   state = {
     gameId: null,
@@ -157,7 +161,7 @@ class GameEngine extends React.Component {
       currentQuestion: null,
       currentQuestionIndex: -1
     });
-    await delay(4000);
+    await delay(CURRENT_SUBJECT_DELAY);
   }
 
   async showCurrentQuestion(index) {
@@ -217,12 +221,12 @@ class GameEngine extends React.Component {
 
   async showCorrectAnswers() {
     this.setState({ gameState: SHOW_CORRECT_ANSWERS });
-    await delay(5000);
+    await delay(CORRECT_ANSWERS_DELAY);
   }
 
   async showWinnerForThisSubject() {
     this.setState({ gameState: SHOW_SUBJECT_WINNER });
-    await delay(8000);
+    await delay(SUBJECT_WINNER_DELAY);
   }
 
   showTotalWinner() {
@@ -317,8 +321,10 @@ class GameEngine extends React.Component {
       .map((child) =>
         React.cloneElement(child, {
           gameEngine: this,
+          currentGame: this.state.game,
           currentSubject: this.state.currentSubject,
           currentQuestion: this.state.currentQuestion,
+          currentQuestionNumber: this.state.currentQuestionIndex + 1,
           scores:
             this.state.game &&
             this.state.game.players &&

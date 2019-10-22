@@ -21,6 +21,7 @@ class ScoreBoard extends Component {
                   name={player.name}
                   playerId={player.id}
                   score={player.score || 0}
+                  questionCount={subject.questions.length}
                   avatar={player.avatar}
                   currentSubject={player.id === subject.id}
                 />
