@@ -7,7 +7,7 @@ import WinnerView from './WinnerView';
 import GameOver from './GameOver';
 import { Spinner } from 'react-bootstrap';
 import { Consumer } from '../../context';
-import GameEngine from '../../GameEngine';
+import GameEngine, { Wrapper } from '../../GameEngine';
 
 //classen hantera states mellan master. Lyssna på databas och player documents.
 //it is a game engine
@@ -147,10 +147,21 @@ class MasterView extends Component {
   }
 
   render() {
+    const { gameId } = this.props.match.params;
     return (
       <Consumer>
         {(value) => {
-          return <GameEngine value={value}>{/* All child views here */}</GameEngine>;
+          return (
+            <GameEngine value={value} gameId={gameId} autoStart>
+              <Wrapper gameState="NONE">
+                <Spinner />
+              </Wrapper>
+              <Wrapper gameState="WAITING">
+                <Spinner />
+              </Wrapper>
+              <SubjectView gameState="SHOW_CURRENT_SUBJECT" />
+            </GameEngine>
+          );
         }}
       </Consumer>
     );

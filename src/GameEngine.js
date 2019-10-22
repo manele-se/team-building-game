@@ -36,22 +36,24 @@ class GameEngine extends React.Component {
   }
 
   componentDidMount() {
-    const { value, gameId } = this.props;
+    const { value, gameId, autoStart } = this.props;
 
     this.dispatch = value.dispatch;
     this.subscribeDoc = value.subscribeDoc;
     this.updateDoc = value.updateDoc;
 
-    this.playGame(gameId);
+    this.playGame(gameId, autoStart);
   }
 
-  async playGame(gameId) {
+  async playGame(gameId, autoStart) {
     this.setState({ gameState: WAITING, gameId: gameId });
     await this.startSubscriptions();
     await this.gameIsReadyToPlay();
 
-    this.setState({ gameState: READY_TO_PLAY });
-    await this.startButtonIsClicked();
+    if (!autoStart) {
+      this.setState({ gameState: READY_TO_PLAY });
+      await this.startButtonIsClicked();
+    }
 
     // Loop as many times as there are players
     for (let i = 0; i < this.state.players.length; i++) {
@@ -335,6 +337,12 @@ class GameEngine extends React.Component {
 
 export default GameEngine;
 
+class Wrapper extends React.Component {
+  render() {
+    return <React.Fragment>{this.props.children}</React.Fragment>;
+  }
+}
+
 class GameEngineTestChild extends React.Component {
   render() {
     return (
@@ -363,7 +371,7 @@ const GameEngineTestView = (props) => {
     <Consumer>
       {(value) => {
         return (
-          <GameEngine value={value} gameId={props.match.params.gameId}>
+          <GameEngine value={value} gameId={props.match.params.gameId} autoStart>
             <GameEngineTestChild text="No state" gameState="NONE" />
             <GameEngineTestChild text="Waiting state" gameState="WAITING" />
             <GameEngineTestChild text="Ready to play" gameState="READY_TO_PLAY" />
@@ -391,4 +399,4 @@ const GameEngineTestView = (props) => {
   );
 };
 
-export { GameEngineTestView };
+export { GameEngineTestView, Wrapper };
