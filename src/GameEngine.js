@@ -98,6 +98,15 @@ class GameEngine extends React.Component {
       return !game.players.find((player) => !player.avatar);
     });
 
+    // Clear all scores and total scores!
+    this.updateDoc('games', this.state.gameId, {
+      players: this.state.game.players.map((p) => ({
+        ...p,
+        score: 0,
+        totalScore: 0
+      }))
+    });
+
     // Then wait until all player documents are loaded
     await Promise.all(this.state.game.players.map((p, i) => this.playerIsUpdated(i, true)));
   }
@@ -122,6 +131,14 @@ class GameEngine extends React.Component {
   }
 
   async showCurrentSubject() {
+    // Clear all scores but not total scores!
+    await this.updateDoc('games', this.state.gameId, {
+      players: this.state.game.players.map((p) => ({
+        ...p,
+        score: 0
+      }))
+    });
+
     this.setState({
       gameState: SHOW_CURRENT_SUBJECT,
       currentSubject: this.state.players[this.state.currentSubjectIndex],
@@ -159,12 +176,29 @@ class GameEngine extends React.Component {
   async allPlayersHaveAnswered() {
     console.log('allPlayersHaveAnswered : starting to wait');
     await Promise.all(
-      this.state.players.map((player, index) =>
-        this.playerIsUpdated(
-          index,
-          (updatedPlayer) => updatedPlayer.currentQuestion == null || typeof updatedPlayer.isRight === 'boolean'
-        )
-      )
+      this.state.players.map((player, index) => {
+        return new Promise((resolve, reject) => {
+          if (index === this.state.currentSubjectIndex) resolve();
+          else {
+            this.whenPlayerIsUpdated(
+              index,
+              (updatedPlayer) => typeof updatedPlayer.isRight === 'boolean',
+              (updatedPlayer, index) => {
+                const oldScore = this.state.game.players[index].score || 0;
+                const oldTotalScore = this.state.game.players[index].totalScore || 0;
+                const questionScore = updatedPlayer.isRight ? 1 : 0;
+                const newScore = oldScore + questionScore;
+                const newTotalScore = oldTotalScore + questionScore;
+                const newPlayerArray = this.state.game.players.map(
+                  (p, i) => (i === index ? { ...p, score: newScore, totalScore: newTotalScore } : p)
+                );
+                this.updateDoc('games', this.state.gameId, { players: newPlayerArray }).then(resolve);
+              },
+              true
+            );
+          }
+        });
+      })
     );
     console.log('allPlayersHaveAnswered : waiting done');
   }
