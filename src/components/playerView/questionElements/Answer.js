@@ -1,30 +1,36 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Consumer } from "../../../context";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Consumer } from '../../../context';
 
 class Answer extends Component {
   state = {
-    background: ""
+    background: ''
   };
 
-  onShowResult = dispatch => {
+  onShowResult = (dispatch) => {
     const { isRight } = this.props;
     dispatch({
-      type: "ANSWERED",
+      type: 'ANSWERED',
       payload: isRight
     });
     if (isRight) {
       //show green
       this.setState({
-        background: "list-group-item-success"
+        background: 'list-group-item-success'
       });
     } else {
       //show red
       this.setState({
-        background: "list-group-item-danger"
+        background: 'list-group-item-danger'
       });
     }
   };
+
+  componentDidUpdate(oldProps) {
+    if (JSON.stringify(oldProps) !== JSON.stringify(this.props)) {
+      this.setState({ background: '' });
+    }
+  }
 
   render() {
     const { textAnswer, isRight } = this.props;
@@ -32,15 +38,15 @@ class Answer extends Component {
 
     return (
       <Consumer>
-        {value => {
+        {(value) => {
           const { dispatch } = value;
           return (
             <div
               className={`card card-body mb-4 p-4 col-10 offset-1 board cardAnswer ${background}  `}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
               onClick={this.onShowResult.bind(this, dispatch)}
               data-toggle="modal"
-              data-target={isRight ? "#modalRight" : "#modalWrong"}>
+              data-target={isRight ? '#modalRight' : '#modalWrong'}>
               <div className="list-group listCard ">
                 <div className="list-group listText ">{textAnswer} </div>
               </div>

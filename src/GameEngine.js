@@ -14,6 +14,8 @@ const READY_TO_PLAY = 'READY_TO_PLAY';
 const SHOW_CURRENT_SUBJECT = 'SHOW_CURRENT_SUBJECT';
 const SHOW_CURRENT_QUESTION = 'SHOW_CURRENT_QUESTION';
 const SHOW_CORRECT_ANSWERS = 'SHOW_CORRECT_ANSWERS';
+const SHOW_SUBJECT_WINNER = 'SHOW_SUBJECT_WINNER';
+const SHOW_TOTAL_WINNER = 'SHOW_TOTAL_WINNER';
 
 class GameEngine extends React.Component {
   state = {
@@ -70,7 +72,7 @@ class GameEngine extends React.Component {
       }
     }
 
-    //await this.showTotalWinner();
+    this.showTotalWinner();
   }
 
   // This method starts all Firestore subscriptions
@@ -109,6 +111,14 @@ class GameEngine extends React.Component {
 
     // Then wait until all player documents are loaded
     await Promise.all(this.state.game.players.map((p, i) => this.playerIsUpdated(i, true)));
+
+    for (let i = 0; i < this.state.players.length; i++) {
+      const player = this.state.players[i];
+      await this.updateDoc('players', player.id, {
+        currentQuestion: null,
+        isRight: null
+      });
+    }
   }
 
   startButtonIsClicked() {
@@ -208,6 +218,15 @@ class GameEngine extends React.Component {
     await delay(5000);
   }
 
+  async showWinnerForThisSubject() {
+    this.setState({ gameState: SHOW_SUBJECT_WINNER });
+    await delay(8000);
+  }
+
+  showTotalWinner() {
+    this.setState({ gameState: SHOW_TOTAL_WINNER });
+  }
+
   // -----------------------------------------------
   // Boilerplate code - this could be moved to a
   // base class, and hidden away from view!
@@ -298,7 +317,15 @@ class GameEngine extends React.Component {
           gameEngine: this,
           currentSubject: this.state.currentSubject,
           currentQuestion: this.state.currentQuestion,
-          scores: this.state.players.map((p) => ({ name: p.name, avatar: p.avatar, score: p.score }))
+          scores:
+            this.state.game &&
+            this.state.game.players &&
+            this.state.game.players.map((p) => ({
+              name: p.name,
+              avatar: p.avatar,
+              score: p.score,
+              totalScore: p.totalScore
+            }))
         })
       );
 
@@ -355,6 +382,8 @@ const GameEngineTestView = (props) => {
               propsKey="currentQuestion"
               gameState="SHOW_CORRECT_ANSWERS"
             />
+            <GameEngineTestChild text="Showing subject winner" propsKey="scores" gameState="SHOW_SUBJECT_WINNER" />
+            <GameEngineTestChild text="Showing total winner" propsKey="scores" gameState="SHOW_TOTAL_WINNER" />
           </GameEngine>
         );
       }}
