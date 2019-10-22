@@ -13,6 +13,7 @@ const WAITING = 'WAITING';
 const READY_TO_PLAY = 'READY_TO_PLAY';
 const SHOW_CURRENT_SUBJECT = 'SHOW_CURRENT_SUBJECT';
 const SHOW_CURRENT_QUESTION = 'SHOW_CURRENT_QUESTION';
+const SHOW_CORRECT_ANSWERS = 'SHOW_CORRECT_ANSWERS';
 
 class GameEngine extends React.Component {
   state = {
@@ -61,7 +62,6 @@ class GameEngine extends React.Component {
         await this.allPlayersHaveAnswered();
         await delay(3000);
         await this.showCorrectAnswers();
-        await delay(5000);
       }
 
       if (this.state.players.length >= 3) {
@@ -112,16 +112,13 @@ class GameEngine extends React.Component {
   }
 
   pickNextSubject() {
-    const { players } = this.state.game;
-    const unusedPlayerIndices = players
-      .map((player, index) => ({ doc: player, index }))
-      .filter(({ doc }) => !doc.usedSubject)
-      .map(({ index }) => index);
-    console.log(unusedPlayerIndices);
-
-    const indexIndex = Math.floor(Math.random() * unusedPlayerIndices.length);
-    console.log({ indexIndex });
-    this.setState({ currentSubjectIndex: unusedPlayerIndices[indexIndex] });
+    if (this.state.currentSubjectIndex === -1) {
+      const firstIndex = Math.floor(Math.random() * this.state.players.length);
+      this.setState({ currentSubjectIndex: firstIndex });
+    } else {
+      const nextIndex = (this.state.currentSubjectIndex + 1) % this.state.players.length;
+      this.setState({ currentSubjectIndex: nextIndex });
+    }
   }
 
   async showCurrentSubject() {
@@ -145,7 +142,7 @@ class GameEngine extends React.Component {
 
     for (let i = 0; i < this.state.players.length; i++) {
       const player = this.state.players[i];
-      if (i === index) {
+      if (i === this.state.currentSubjectIndex) {
         await this.updateDoc('players', player.id, {
           currentQuestion: null,
           isRight: null
@@ -170,6 +167,11 @@ class GameEngine extends React.Component {
       )
     );
     console.log('allPlayersHaveAnswered : waiting done');
+  }
+
+  async showCorrectAnswers() {
+    this.setState({ gameState: SHOW_CORRECT_ANSWERS });
+    await delay(5000);
   }
 
   // -----------------------------------------------
@@ -313,6 +315,11 @@ const GameEngineTestView = (props) => {
               text="Showing current question"
               propsKey="currentQuestion"
               gameState="SHOW_CURRENT_QUESTION"
+            />
+            <GameEngineTestChild
+              text="Showing correct answers"
+              propsKey="currentQuestion"
+              gameState="SHOW_CORRECT_ANSWERS"
             />
           </GameEngine>
         );
