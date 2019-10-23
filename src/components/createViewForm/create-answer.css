@@ -23,5 +23,22 @@
 .create-answer>input[type="checkbox"] {
     flex-grow: 0;
     flex-shrink: 0;
-    transform: scale(2);
+    appearance: none;
+    width: 2rem;
+    height: 2rem;
+    background-color: #fee;
+    border: 1px solid #666;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+.create-answer>input[type="checkbox"]:checked {
+    flex-grow: 0;
+    flex-shrink: 0;
+    appearance: none;
+    width: 2rem;
+    height: 2rem;
+    background-color: #4b2;
+    border: 1px solid #666;
+    border-radius: 0.3rem;
 }

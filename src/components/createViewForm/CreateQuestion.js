@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class CreateQuestion extends Component {
   render() {
@@ -6,9 +6,12 @@ class CreateQuestion extends Component {
       <div>
         <input
           type="text"
-          className="form-control form-control-lg customForm formStyle "
+          autoComplete="off"
+          data-lpignore="true"
+          className="form-control form-control-lg customForm formStyle"
           id="titleGame"
           placeholder="Type your question"
+          required
           ref={this.props.textRef}
         />
       </div>

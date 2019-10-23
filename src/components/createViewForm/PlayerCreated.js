@@ -31,12 +31,12 @@ class PlayerCreated extends Component {
                   <div className="container choosenAvatar ">
                     <img src={avatars[player.avatar]} alt="avatar" />
                   </div>
-									<audio src={soundfile} autoPlay loop />
+                  <audio src={soundfile} autoPlay loop />
                 </div>
               </div>
             );
           } else if (player && player.id) {
-            value.subscribe(player.gameId);
+            value.subscribeGame(player.gameId);
             return (
               <div>
                 <Spinner />

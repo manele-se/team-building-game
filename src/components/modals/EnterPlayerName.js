@@ -54,7 +54,7 @@ class EnterPlayerName extends React.Component {
             <input
               type="name"
               className="big-input form-control-lg "
-              placeholder="Type name"
+              placeholder="Type player's name"
               ref={this.inputRef}
               defaultValue={value}
             />{' '}

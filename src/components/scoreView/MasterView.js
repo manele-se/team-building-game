@@ -3,9 +3,8 @@ import Spinner from '../../layouts/Spinner';
 import ScoreView from './ScoreView';
 import SubjectView from './SubjectView';
 import WinnerView from './WinnerView';
-import GameOver from './GameOver';
 import { Consumer } from '../../context';
-import GameEngine, { Wrapper } from '../../GameEngine';
+import GameEngine from '../../GameEngine';
 
 //classen hantera states mellan master. Lyssna på databas och player documents.
 //it is a game engine
