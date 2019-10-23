@@ -317,11 +317,12 @@ class GameEngine extends React.Component {
 
     const childrenWithGameEngine = React.Children
       .toArray(children)
-      .filter((child) => child.props.gameState === this.state.gameState)
+      .filter((child) => child.props.gameState.split(',').map((gs) => gs.trim()).includes(this.state.gameState))
       .map((child) =>
         React.cloneElement(child, {
           gameEngine: this,
           currentGame: this.state.game,
+          currentGameState: this.state.gameState,
           currentSubject: this.state.currentSubject,
           currentQuestion: this.state.currentQuestion,
           currentQuestionNumber: this.state.currentQuestionIndex + 1,
