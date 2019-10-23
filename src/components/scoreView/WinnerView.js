@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Consumer } from '../../context';
-
 import soundfile from '../../music/music4mixed.mp3';
-import Spinner from '../../layouts/Spinner';
 import avatars from '../../images';
 import './winner.css';
 
@@ -10,40 +7,26 @@ import './winner.css';
 //lägg till nmnet på vinnare
 export default class WinnerView extends Component {
   render() {
-    //matching the parameters in the url
-    const { gameId } = this.props.match.params;
-
-    // TODO: find out who won!
-    // For now, just use the first player!
+    const { scores, currentGameState } = this.props;
+    const isFinalWinner = currentGameState === 'SHOW_TOTAL_WINNER';
+    const scoreGetter = isFinalWinner ? (s) => s.totalScore : (s) => s.score;
+    const maxScore = Math.max(...scores.map(scoreGetter));
+    const winners = maxScore === 0 ? [] : scores.filter((s) => scoreGetter(s) === maxScore);
+    const avatarContainerClass = isFinalWinner ? 'container choosenAvatar' : 'container choosenAvatar smaller';
 
     return (
-      <Consumer>
-        {(value) => {
-          const { game } = value;
-          if (game && game.id) {
-            const winner = game.players[0];
-
-            return (
-              <div className="scoreViewBackgound">
-                <div className="container">
-                  <div className="container choosenAvatar ">
-                    <img src={avatars[winner.avatar]} alt="avatar" />
-                  </div>
-                  <h1 className="winner">You win!</h1>
-                  <audio src={soundfile} autoPlay loop />
-                </div>
-              </div>
-            );
-          } else {
-            value.subscribe(gameId);
-            return (
-              <div>
-                <Spinner />
-              </div>
-            );
-          }
-        }}
-      </Consumer>
+      <div className="scoreViewBackgound">
+        <div className="container">
+          <h1 className="winner">Congratulations!</h1>
+          <div className={avatarContainerClass}>
+            {winners.map((winner) => <img src={avatars[winner.avatar]} key={winner.name} alt="avatar" />)}
+          </div>
+          <h1 className="winnerScore">
+            You win {isFinalWinner ? 'the game' : 'this round'} with a score of {maxScore} points!
+          </h1>
+          <audio src={soundfile} autoPlay loop />
+        </div>
+      </div>
     );
   }
 }

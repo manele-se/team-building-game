@@ -68,13 +68,13 @@ class GameEngine extends React.Component {
       for (let j = 0; j < this.state.currentSubject.questions.length; j++) {
         await this.showCurrentQuestion(j);
         await this.allPlayersHaveAnswered();
-        await delay(3000);
+        await delay(1000);
         await this.showCorrectAnswers();
       }
 
       if (this.state.players.length >= 3) {
         await this.showWinnerForThisSubject();
-        await delay(10000);
+        await delay(5000);
       }
     }
 

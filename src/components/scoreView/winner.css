@@ -3,3 +3,9 @@ h1.winner {
     font-size: 6rem;
     text-align: center;
 }
+
+h1.winnerScore {
+    color: white;
+    font-size: 4rem;
+    text-align: center;
+}

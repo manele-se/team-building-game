@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Spinner from '../../layouts/Spinner';
 import ScoreView from './ScoreView';
 import SubjectView from './SubjectView';
-import RightAnswerView from '../modals/RightAnswerView';
 import WinnerView from './WinnerView';
 import GameOver from './GameOver';
 import { Consumer } from '../../context';
@@ -22,12 +21,7 @@ class MasterView extends Component {
               <Spinner gameState="NONE, WAITING" />
               <SubjectView gameState="SHOW_CURRENT_SUBJECT" />
               <ScoreView gameState="SHOW_CURRENT_QUESTION, SHOW_CORRECT_ANSWERS" />
-              <Wrapper gameState="SHOW_SUBJECT_WINNER">
-                <h1>TODO: Show subject winner</h1>
-              </Wrapper>
-              <Wrapper gameState="SHOW_TOTAL_WINNER">
-                <h1>TODO: Show total winner</h1>
-              </Wrapper>
+              <WinnerView gameState="SHOW_SUBJECT_WINNER, SHOW_TOTAL_WINNER" />
             </GameEngine>
           );
         }}
