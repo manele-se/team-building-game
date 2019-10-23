@@ -173,6 +173,8 @@ class GameEngine extends React.Component {
       currentQuestion
     });
 
+    const numberText = `Question ${index + 1} / ${this.state.currentSubject.questions.length}`;
+
     for (let i = 0; i < this.state.players.length; i++) {
       const player = this.state.players[i];
       if (i === this.state.currentSubjectIndex) {
@@ -182,7 +184,7 @@ class GameEngine extends React.Component {
         });
       } else {
         await this.updateDoc('players', player.id, {
-          currentQuestion,
+          currentQuestion: { ...currentQuestion, number: numberText },
           isRight: null
         });
       }
