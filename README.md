@@ -1,4 +1,11 @@
-Working start link: http://localhost:3000/start/QI9w0idVvGeIYcpZzDll
+# Team Building Game
+
+**TL;DR** Build and deploy with these scripts:
+
+```sh
+$ npm run build
+$ firebase deploy
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

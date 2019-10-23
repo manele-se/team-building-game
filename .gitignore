@@ -25,3 +25,7 @@ yarn-error.log*
 # Audacity temporary files
 *.aup
 *.au
+
+.firebase/
+
+.firebaserc
