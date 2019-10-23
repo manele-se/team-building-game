@@ -19,7 +19,7 @@ const PlayerView = (props) => {
           if (player.currentQuestion) {
             return (
               <React.Fragment>
-                <QuestionHeader title={player.currentQuestion.title} text={player.currentQuestion.text} />
+                <QuestionHeader number={player.currentQuestion.number} text={player.currentQuestion.title} />
                 <Answers answers={player.currentQuestion.answers} />
                 <ModalRight show={player.isRight === true} />
                 <ModalWrong show={player.isRight === false} />
@@ -29,7 +29,7 @@ const PlayerView = (props) => {
           } else {
             return (
               <React.Fragment>
-                <QuestionHeader title="You have no question right now" />
+                <QuestionHeader text="You have no question right now" />
                 <Answers answers={[]} />
               </React.Fragment>
             );
