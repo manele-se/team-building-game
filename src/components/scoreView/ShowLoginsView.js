@@ -13,7 +13,7 @@ export default class ShowLoginsView extends Component {
         <div className="container">
           <div className="d-flex flex-column justify-content-center align-items-center showLoginsViewGroup">
             <h1 className="titleWelcome">Enter this link</h1>
-            <h2 className="titleLink">{DOMAIN_NAME}</h2>
+            <h2 className="titleLink">{DOMAIN_NAME}join</h2>
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center showLoginsViewGroup">
             {players.map((p) => (
