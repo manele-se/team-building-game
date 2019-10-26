@@ -6,7 +6,8 @@ import { Consumer } from '../../context';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 // OBS!! Byt ut domännamnet
-const DOMAIN_NAME = 'http://localhost:3000/';
+const { protocol, host } = document.location;
+const DOMAIN_NAME = `${protocol}//${host}/`;
 
 class TeamMember extends Component {
   state = {
