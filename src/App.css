@@ -1,128 +1,121 @@
 :root {
-  --color-primary: rgb(165, 60, 214);
-  --color-secondary: rgb(26, 39, 216);
-  --color-text: aliceblue;
-  --color-text-dark: #333;
-  --color-background: rgb(241, 241, 241);
+    --color-primary: rgb(165, 60, 214);
+    --color-secondary: rgb(26, 39, 216);
+    --color-text: aliceblue;
+    --color-text-dark: #333;
+    --color-background: rgb(241, 241, 241);
 }
 
 html,
 body,
 #root {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: var(--color-background);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--color-background);
 }
 
 .titleCard {
-  background: linear-gradient(
-    0deg,
-    var(--color-primary) 0%,
-    var(--color-secondary) 100%
-  );
-  color: var(--color-text);
-  box-shadow: 0px 6px 2px rgba(11, 11, 16, 0.2);
-  margin-top: 4rem;
+    background: linear-gradient(0deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-text);
+    box-shadow: 0px 6px 2px rgba(11, 11, 16, 0.2);
+    margin-top: 4rem;
 }
 
 .textQuestion {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: white;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: white;
 }
 
 .questionNr {
-  font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .title {
-  font-size: 2.5rem;
-  padding-left: 2rem;
-  color: var(--color-secondary);
+    font-size: 2.5rem;
+    padding-left: 2rem;
+    color: var(--color-secondary);
 }
 
 .image {
-  max-width: 7rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    max-width: 7rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .customContainer {
-  min-height: 100%;
-  background: linear-gradient(
-    0deg,
-    var(--color-primary) 10%,
-    var(--color-secondary) 100%
-  );
+    min-height: 100%;
+    background: linear-gradient(0deg, var(--color-primary) 10%, var(--color-secondary) 100%);
 }
 
 .titleWelcome {
-  padding: 3rem;
-  color: aliceblue;
-  font-size: 4rem;
-  margin-bottom: 3rem;
+    padding: 3rem;
+    color: aliceblue;
+    font-size: 4rem;
+    margin-bottom: 1rem;
 }
 
 .welcomeViewGroup {
-  padding-top: 20%;
-  margin-bottom: 3rem;
+    padding-top: 20%;
+    margin-bottom: 3rem;
 }
 
 .icon {
-  font-size: 1.6rem;
-  color: rgba(12, 12, 12, 0.2);
+    font-size: 1.6rem;
+    color: rgba(12, 12, 12, 0.2);
 }
 
 img.avatarTest {
-  animation: dancing 1s alternate infinite ease-in-out;
-  transform-origin: 50% 100%;
+    animation: dancing 1s alternate infinite ease-in-out;
+    transform-origin: 50% 100%;
 }
 
 @keyframes dancing {
-  0% {
-    transform: skewX(-10deg) rotate(-5deg);
-  }
-  50% {
-    transform: scaleY(0.9);
-  }
-  100% {
-    transform: skewX(10deg) rotate(5deg);
-  }
+    0% {
+        transform: skewX(-10deg) rotate(-5deg);
+    }
+    50% {
+        transform: scaleY(0.9);
+    }
+    100% {
+        transform: skewX(10deg) rotate(5deg);
+    }
 }
 
 .cardAnswer {
-  cursor: pointer;
-  box-shadow: 0px 6px 2px rgba(177, 177, 177, 0.2);
+    cursor: pointer;
+    box-shadow: 0px 6px 2px rgba(177, 177, 177, 0.2);
 }
 
 .listText {
-  font-size: 1.4rem;
+    font-size: 1.4rem;
 }
 
 .avatars img {
-  width: 6rem;
+    width: 6rem;
 }
 
 h3 {
-  color: aliceblue;
-  margin-left: 3rem;
+    color: aliceblue;
+    margin-left: 3rem;
 }
 
 .avatars .container .container {
-  height: 8rem;
+    height: 8rem;
 }
+
 
 /*mobile version : !!! maybe do the header as a grid!!*/
+
 @media (max-witdh: 579px) {
-  .headerStyle {
-    padding: 0.75rem;
-  }
-  .continueButton {
-    text-align: center;
-  }
+    .headerStyle {
+        padding: 0.75rem;
+    }
+    .continueButton {
+        text-align: center;
+    }
 }
 
-@media (max-witdh: 500px) {
-}
+@media (max-witdh: 500px) {}

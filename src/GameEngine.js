@@ -11,6 +11,7 @@ const same = (one, other) => {
 const NONE = 'NONE';
 const WAITING = 'WAITING';
 const READY_TO_PLAY = 'READY_TO_PLAY';
+const WAITING_FOR_PLAYERS = 'WAITING_FOR_PLAYERS';
 const SHOW_CURRENT_SUBJECT = 'SHOW_CURRENT_SUBJECT';
 const SHOW_CURRENT_QUESTION = 'SHOW_CURRENT_QUESTION';
 const SHOW_CORRECT_ANSWERS = 'SHOW_CORRECT_ANSWERS';
@@ -45,6 +46,7 @@ class GameEngine extends React.Component {
     this.dispatch = value.dispatch;
     this.subscribeDoc = value.subscribeDoc;
     this.updateDoc = value.updateDoc;
+    this.writeDoc = value.writeDoc;
 
     this.playGame(gameId, autoStart);
   }
@@ -53,6 +55,9 @@ class GameEngine extends React.Component {
     this.setState({ gameState: WAITING, gameId: gameId });
     await this.startSubscriptions();
     await this.gameIsReadyToPlay();
+
+    this.setState({ gameState: WAITING_FOR_PLAYERS });
+    await this.allPlayersAreLoggedIn();
 
     if (!autoStart) {
       this.setState({ gameState: READY_TO_PLAY });
@@ -118,12 +123,30 @@ class GameEngine extends React.Component {
     // Then wait until all player documents are loaded
     await Promise.all(this.state.game.players.map((p, i) => this.playerIsUpdated(i, true)));
 
+    // Create random codes for logging in
+    const initialCode = Math.round(Math.random() * 36 * 36 * 36 * 18 + 36 * 36 * 36);
+    let code = initialCode;
+
     for (let i = 0; i < this.state.players.length; i++) {
       const player = this.state.players[i];
+      const codeText = (code | 0).toString(36).toUpperCase();
       await this.updateDoc('players', player.id, {
         currentQuestion: null,
-        isRight: null
+        isRight: null,
+        code: codeText,
+        loggedIn: false
       });
+
+      await this.updateDoc('codes', codeText, { playerId: player.id });
+
+      code += Math.round(Math.random() * 36 * 36 * 36 * 18);
+    }
+  }
+
+  // This method waits until all players are logged in
+  async allPlayersAreLoggedIn() {
+    while (true) {
+      await delay(10000);
     }
   }
 
@@ -328,6 +351,15 @@ class GameEngine extends React.Component {
           currentSubject: this.state.currentSubject,
           currentQuestion: this.state.currentQuestion,
           currentQuestionNumber: this.state.currentQuestionIndex + 1,
+          loginLinks:
+            this.state &&
+            this.state.players &&
+            this.state.players.map((p) => ({
+              name: p.name,
+              avatar: p.avatar,
+              code: p.code,
+              loggedIn: p.loggedIn
+            })),
           scores:
             this.state.game &&
             this.state.game.players &&

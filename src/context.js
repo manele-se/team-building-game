@@ -145,6 +145,10 @@ export class Provider extends Component {
       await Firebase.saveDoc(collection, Object.assign({}, doc, changes));
     },
 
+    writeDoc: async (collection, id, doc) => {
+      await Firebase.saveDoc(collection, Object.assign({ id }, doc));
+    },
+
     //subscribe a game
     subscribeGame: (gameId) => {
       if (this.unsubscribeGame) this.unsubscribeGame();
