@@ -9,7 +9,7 @@ class ScoreView extends Component {
     const { currentGame, currentSubject, currentQuestion, currentQuestionNumber, currentGameState } = this.props;
     return (
       <React.Fragment>
-        <div className="scoreViewBackgound">
+        <div className="scoreViewBackground">
           <ScoreBoard
             game={currentGame}
             subject={currentSubject}

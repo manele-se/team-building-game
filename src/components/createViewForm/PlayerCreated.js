@@ -16,7 +16,7 @@ class PlayerCreated extends Component {
           const { player, game } = value;
           if (player && player.id && game && game.id) {
             return (
-              <div className="scoreViewBackgound">
+              <div className="scoreViewBackground">
                 <div className="container ">
                   <h2 className="round">
                     <Link to={`/play/${player.id}`}>

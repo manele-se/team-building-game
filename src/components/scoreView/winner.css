@@ -9,3 +9,73 @@ h1.winnerScore {
     font-size: 4rem;
     text-align: center;
 }
+
+div.winner {
+    perspective: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.winner img {
+    display: block;
+    text-align: center;
+    margin: 6rem auto;
+    width: 300px;
+    object-fit: contain;
+    transform-origin: 50% 90%;
+    position: relative;
+    left: 0;
+    top: 0;
+    animation: winner 2s infinite;
+}
+
+.winner.smaller img {
+    width: 200px;
+}
+
+.winner img:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.winner img:nth-child(2) {
+    animation-delay: 400ms;
+}
+
+.winner img:nth-child(3) {
+    animation-delay: 800ms;
+}
+
+.winner img:nth-child(4) {
+    animation-delay: 1200ms;
+}
+
+.winner img:nth-child(5) {
+    animation-delay: 1600ms;
+}
+
+@keyframes winner {
+    from {
+        transform: rotateY(0deg) skewX(0deg);
+        animation-timing-function: ease-in-out;
+    }
+    60% {
+        transform: rotateY(0deg) skewX(0deg);
+        animation-timing-function: ease-in-out;
+    }
+    70% {
+        transform: rotateY(0deg) skewX(-3deg);
+        animation-timing-function: ease-in-out;
+    }
+    80% {
+        transform: rotateY(-20deg) skewX(3deg);
+        animation-timing-function: ease-in-out;
+    }
+    90% {
+        transform: rotateY(20deg) skewX(0deg);
+        animation-timing-function: ease-in-out;
+    }
+    to {
+        transform: rotateY(0deg) skewX(0deg);
+    }
+}

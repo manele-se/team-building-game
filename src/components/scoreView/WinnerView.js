@@ -12,10 +12,11 @@ export default class WinnerView extends Component {
     const scoreGetter = isFinalWinner ? (s) => s.totalScore : (s) => s.score;
     const maxScore = Math.max(...scores.map(scoreGetter));
     const winners = maxScore === 0 ? [] : scores.filter((s) => scoreGetter(s) === maxScore);
-    const avatarContainerClass = isFinalWinner ? 'container choosenAvatar' : 'container choosenAvatar smaller';
+    const avatarContainerClass = isFinalWinner ? 'container winner' : 'container winner smaller';
+    const outerClassName = isFinalWinner ? 'scoreViewBackground2' : 'scoreViewBackground';
 
     return (
-      <div className="scoreViewBackgound">
+      <div className={outerClassName}>
         <div className="container">
           <h1 className="winner">Congratulations!</h1>
           <div className={avatarContainerClass}>

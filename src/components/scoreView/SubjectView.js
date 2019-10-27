@@ -10,7 +10,7 @@ class SubjectView extends Component {
   render() {
     const { currentSubject } = this.props;
     return (
-      <div className="scoreViewBackgound">
+      <div className="scoreViewBackground">
         <div className="container">
           <h1 className="round">{currentSubject.name}</h1>
           <h1 className="round">It's your turn now!</h1>
