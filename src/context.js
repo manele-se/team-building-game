@@ -167,12 +167,20 @@ export class Provider extends Component {
     },
 
     //subscribe a player
-    subscribePlayer: (playerId) => {
+    subscribePlayer: (playerId, initialUpdateCallback) => {
       if (this.unsubscribePlayer) this.unsubscribePlayer();
+      let callbackCalled = false;
 
       this.unsubscribePlayer = Firebase.firestore().collection('players').doc(playerId).onSnapshot((doc) => {
+        const docData = doc.data();
+        if (!callbackCalled && initialUpdateCallback) {
+          initialUpdateCallback(docData);
+          callbackCalled = true;
+          this.state.updateDoc('players', playerId, docData);
+        }
+
         const player = {
-          ...doc.data(),
+          ...docData,
           id: playerId
         };
         this.setState({ player: player });

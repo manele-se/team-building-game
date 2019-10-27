@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Consumer } from '../../context';
+import './joinGameForm.css';
 
 export default class JoinGameForm extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ export default class JoinGameForm extends Component {
   }
 
   async handleSubmit(readDoc) {
-    const code = this.codeRef.current.value;
+    const code = this.codeRef.current.value.toUpperCase().trim();
     const { playerId } = await readDoc('codes', code);
     document.location.replace(`/play/${playerId}`);
   }
@@ -22,7 +23,7 @@ export default class JoinGameForm extends Component {
               e.preventDefault();
               this.handleSubmit(value.readDoc);
             }}>
-            <input type="text" id="joinCode" ref={this.codeRef} />
+            <input type="text" id="joinCode" ref={this.codeRef} placeholder="Type your code" />
           </form>
         )}
       </Consumer>

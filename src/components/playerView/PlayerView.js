@@ -35,7 +35,7 @@ const PlayerView = (props) => {
             );
           }
         } else {
-          value.subscribePlayer(playerId);
+          value.subscribePlayer(playerId, (p) => (p.loggedIn = true));
           return (
             <div>
               <Spinner />
