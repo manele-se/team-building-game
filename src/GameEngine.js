@@ -58,6 +58,7 @@ class GameEngine extends React.Component {
 
     this.setState({ gameState: WAITING_FOR_PLAYERS });
     await this.allPlayersAreLoggedIn();
+    await delay(3000);
 
     if (!autoStart) {
       this.setState({ gameState: READY_TO_PLAY });
@@ -145,9 +146,23 @@ class GameEngine extends React.Component {
 
   // This method waits until all players are logged in
   async allPlayersAreLoggedIn() {
-    while (true) {
-      await delay(10000);
-    }
+    console.log('allPlayersAreLoggedIn : starting to wait');
+    await Promise.all(
+      this.state.players.map((player, index) => {
+        return new Promise((resolve, reject) => {
+          this.whenPlayerIsUpdated(
+            index,
+            (updatedPlayer) => updatedPlayer.loggedIn,
+            (updatedPlayer, index) => {
+              console.log(`allPlayersAreLoggedIn : ${updatedPlayer.name} logged in`);
+              resolve();
+            },
+            true
+          );
+        });
+      })
+    );
+    console.log('allPlayersAreLoggedIn : waiting done');
   }
 
   startButtonIsClicked() {
