@@ -231,6 +231,7 @@ class GameEngine extends React.Component {
 
   async allPlayersHaveAnswered() {
     console.log('allPlayersHaveAnswered : starting to wait');
+    let pointsToWin = 10;
     await Promise.all(
       this.state.players.map((player, index) => {
         return new Promise((resolve, reject) => {
@@ -242,7 +243,8 @@ class GameEngine extends React.Component {
               (updatedPlayer, index) => {
                 const oldScore = this.state.game.players[index].score || 0;
                 const oldTotalScore = this.state.game.players[index].totalScore || 0;
-                const questionScore = updatedPlayer.isRight ? 1 : 0;
+                const questionScore = updatedPlayer.isRight ? pointsToWin : 0;
+                pointsToWin -= updatedPlayer.isRight ? 1 : 0;
                 const newScore = oldScore + questionScore;
                 const newTotalScore = oldTotalScore + questionScore;
                 const newPlayerArray = this.state.game.players.map(

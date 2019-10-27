@@ -12,14 +12,14 @@ class PlayerProgressBar extends Component {
     const className = currentSubject ? 'player-progress-bar current-player' : 'player-progress-bar';
     return (
       <div className={className}>
-        <ProgressBar striped variant="success" min={0} now={score} max={questionCount} />
+        <ProgressBar striped variant="success" min={0} now={score} max={questionCount * 10} />
         <div className="player-avatar-holder">
           <img
             src={avatars[avatar]}
             className="player-avatar"
             alt="avatar"
             style={{
-              marginLeft: `calc(${Math.round(score * 100 / questionCount)}% - 3rem)`
+              marginLeft: `calc(${Math.round(score * 100 / (questionCount * 10))}% - 3rem)`
             }}
           />{' '}
         </div>
