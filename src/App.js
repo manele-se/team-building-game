@@ -19,6 +19,7 @@ import MasterView from './components/scoreView/MasterView';
 import WinnerView from './components/scoreView/WinnerView';
 import RightAnswerView from './components/modals/RightAnswerView';
 import { GameEngineTestView } from './GameEngine';
+import { ConfettiTestView } from './components/scoreView/Confetti';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           component={() => <RightAnswerView show question="Fråga" rightAnswers={[ 'a', 'b' ]} />}
         />
         <Route exact path="/test/gameengine/:gameId" component={GameEngineTestView} />
+        <Route exact path="/test/confetti" component={ConfettiTestView} />
       </Router>
     </Provider>
   );

@@ -19,7 +19,7 @@ class PlayerProgressBar extends Component {
             className="player-avatar"
             alt="avatar"
             style={{
-              marginLeft: `calc(${Math.round(score * 100 / questionCount)}% - 3rem)`
+              marginLeft: `calc(${Math.round(score * 100 / questionCount)}% - 5rem)`
             }}
           />{' '}
         </div>
